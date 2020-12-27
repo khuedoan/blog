@@ -1,29 +1,12 @@
 version: '3'
 
 services:
-  install:
+  web:
     image: node
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
-    command: "npm install"
-  dev:
-    image: node
-    volumes:
-      - .:/usr/src/app
-    working_dir: /usr/src/app
-    command: "npm start"
+    entrypoint: "/bin/sh -c"
+    command: "'npm install && npm start'"
     ports:
       - '3000:3000'
-  build:
-    image: node
-    volumes:
-      - .:/usr/src/app
-    working_dir: /usr/src/app
-    command: "npm run build"
-  stag:
-    image: nginx
-    volumes:
-      - ./build:/usr/share/nginx/html
-    ports:
-      - '80:80'
