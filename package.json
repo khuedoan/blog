@@ -1,5 +1,6 @@
 {
   "name": "khuedoan.com",
+  "homepage": "https://www.khuedoan.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
