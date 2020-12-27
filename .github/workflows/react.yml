@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -16,13 +16,7 @@ jobs:
       run: npm install
     - name: Test
       run: npm run test
-  build:
-    runs-on: ubuntu-latest
-    steps:
     - name: Build
       run: npm run build
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
     - name: Deploy
       run: npm run build
