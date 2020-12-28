@@ -12,8 +12,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Cache node modules
       uses: actions/cache@v2
@@ -41,7 +39,7 @@ jobs:
 
     - name: Deploy
       run: |
-        git config --list
+        git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/khuedoan/khuedoan.com.git
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         npm run deploy
