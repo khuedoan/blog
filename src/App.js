@@ -1,4 +1,5 @@
 import { Button } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
 import './App.css';
 
 function App() {
@@ -8,7 +9,10 @@ function App() {
         <p>
           <code>coming soon</code>
         </p>
-        <Button type="primary" href="https://github.com/khuedoan">GitHub</Button>
+        <Button type="primary" href="https://github.com/khuedoan">
+          <GithubOutlined />
+          GitHub
+        </Button>
       </header>
     </div>
   );
