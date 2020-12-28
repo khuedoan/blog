@@ -22,6 +22,7 @@ jobs:
       run: npm run build
     - name: Deploy
       run: |
+        git config --list
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         npm run deploy
