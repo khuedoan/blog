@@ -37,7 +37,7 @@ jobs:
 
     - name: Deploy
       run: |
-        git config --global user.name 'Khue Doan'
+        git config --global user.name 'git'
         git config --global user.email 'mail@khuedoan.com'
         git config --global user.password "${{ secrets.GITHUB_TOKEN }}"
         npm run deploy
