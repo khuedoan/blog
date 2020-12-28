@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          <code>under construction</code>
+          <code>coming soon</code>
         </p>
         <a
           className="App-link"
