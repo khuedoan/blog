@@ -37,7 +37,7 @@ jobs:
 
     - name: Deploy
       run: |
-        git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.GITHUB_REPOSITORY }}.git
+        git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git
         git config --global user.name 'GitHub Action'
         git config --global user.email 'github-action@users.noreply.github.com'
         npm run deploy
