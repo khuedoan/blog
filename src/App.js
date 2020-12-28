@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import './App.css';
 
 function App() {
@@ -7,14 +8,7 @@ function App() {
         <p>
           <code>coming soon</code>
         </p>
-        <a
-          className="App-link"
-          href="https://github.com/khuedoan"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        <Button type="primary" href="https://github.com/khuedoan">GitHub</Button>
       </header>
     </div>
   );
