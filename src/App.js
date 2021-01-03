@@ -1,4 +1,7 @@
 import './App.css';
+import Button from 'react-bootstrap/Button';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -7,14 +10,7 @@ function App() {
         <p>
           <code>coming soon</code>
         </p>
-        <a
-          className="App-link"
-          href="https://github.com/khuedoan"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        <Button variant="dark" href="https://github.com/khuedoan">GitHub</Button>
       </header>
     </div>
   );
