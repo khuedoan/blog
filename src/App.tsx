@@ -1,7 +1,4 @@
 import './App.css';
-import Button from 'react-bootstrap/Button';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -10,7 +7,6 @@ function App() {
         <p>
           <code>coming soon</code>
         </p>
-        <Button variant="dark" href="https://github.com/khuedoan">GitHub</Button>
       </header>
     </div>
   );
