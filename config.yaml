@@ -7,7 +7,7 @@ theme: "PaperMod"
 params:
   homeInfoParams:
     Title: "Hi, I'm Khue \U0001F44B"
-    Content: Welcome to my website, where I write tutorials, thoughts and rants about technology
+    Content: More content coming soon!
   socialIcons:
     - name: email
       url: "mailto:mail@khuedoan.com"
