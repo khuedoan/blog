@@ -8,5 +8,12 @@ run:
 build:
 	hugo
 
-post:
-	hugo new --kind default content/posts/$(name).md
+new:
+	hugo new --kind default posts/$(name).md
+	nvim content/posts/$(name).md
+
+edit:
+	nvim $(shell ls content/posts/*.md | fzf)
+
+clean:
+	git clean -xdf
