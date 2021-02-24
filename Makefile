@@ -1,6 +1,9 @@
 .POSIX:
 
-default: run
+default: build
 
 run:
 	hugo server --buildDrafts
+
+build:
+	hugo

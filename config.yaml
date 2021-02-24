@@ -1,3 +1,21 @@
 baseURL: https://khuedoan.com/
 languageCode: en-us
 title: Khue Doan
+copyRight: aksdjfakdsfj
+
+theme: "PaperMod"
+
+params:
+  homeInfoParams:
+    Title: "Hi, I'm Khue \U0001F44B"
+    Content: Welcome to my website, where I write tutorials, thoughts and rants about technology
+  socialIcons:
+    - name: github
+      url: "https://github.com/khuedoan"
+    - name: linkedin
+      url: "https://linkedin.com/in/khuedoan"
+
+menu:
+  main:
+    - name: about
+      url: /about/
