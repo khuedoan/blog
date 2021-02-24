@@ -13,7 +13,7 @@ build: init
 
 deploy: build
 	mv public /tmp
-	git checkout gh-pages
+	git switch gh-pages
 	rm -rf *
 	mv /tmp/public/* .
 	git add --all
