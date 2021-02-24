@@ -9,6 +9,8 @@ params:
     Title: "Hi, I'm Khue \U0001F44B"
     Content: Welcome to my website, where I write tutorials, thoughts and rants about technology
   socialIcons:
+    - name: email
+      url: "mailto:mail@khuedoan.com"
     - name: github
       url: "https://github.com/khuedoan"
     - name: linkedin
