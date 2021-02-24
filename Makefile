@@ -8,10 +8,10 @@ init:
 run:
 	hugo server --buildDrafts
 
-build: init
-	hugo
+build:
+	hugo --minify
 
-deploy: build
+deploy:
 	mv public /tmp
 	git switch gh-pages
 	rm -rf *

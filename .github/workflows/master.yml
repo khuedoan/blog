@@ -5,25 +5,24 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  deploy:
+    runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
 
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: 'latest'
+      - name: Build
+        run: make build
 
-    - name: Build
-      run: make build
-
-    - name: Deploy
-      run: |
-        git remote set-url origin https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git
-        git config --global user.name 'Khue Doan'
-        git config --global user.email 'mail@khuedoan.com'
-        make deploy
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
