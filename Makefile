@@ -1,9 +1,6 @@
 .POSIX:
 
-default: init run
-
-init:
-	npm install
+default: run
 
 run:
-	npm start
+	hugo server --buildDrafts
