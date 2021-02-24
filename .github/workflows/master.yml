@@ -13,31 +13,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Cache node modules
-      uses: actions/cache@v2
-      env:
-        cache-name: node
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-${{ env.cache-name }}-
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-
-    - name: Install modules
-      run: npm install
-
-    - name: Test
-      run: npm run test
-
     - name: Build
-      run: npm run build
+      run: make build
 
     - name: Deploy
       run: |
         git remote set-url origin https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git
         git config --global user.name 'Khue Doan'
         git config --global user.email 'mail@khuedoan.com'
-        npm run deploy
+        make deploy
