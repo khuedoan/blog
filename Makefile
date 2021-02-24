@@ -7,3 +7,6 @@ run:
 
 build:
 	hugo
+
+post:
+	hugo new --kind default content/posts/$(name).md
