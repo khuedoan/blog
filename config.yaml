@@ -9,8 +9,8 @@ module:
 params:
   env: production
   homeInfoParams:
-    Title: "Hi, I'm Khue \U0001F44B"
-    Content: More content coming soon!
+    title: "Hi there, I'm Khue \U0001F44B"
+    content: More content coming soon!
   socialIcons:
     - name: email
       url: "mailto:mail@khuedoan.com"
@@ -18,8 +18,8 @@ params:
       url: "https://github.com/khuedoan"
     - name: linkedin
       url: "https://linkedin.com/in/khuedoan"
-  ShowReadingTime: true
-  ShowToc: true
+  showReadingTime: true
+  showToc: true
 
 outputs:
   home:
@@ -32,8 +32,8 @@ menu:
     - name: Search
       url: /search/
       weight: 1
-    - name: Posts
-      url: /posts/
+    - name: Archives
+      url: /archives/
       weight: 2
     - name: About
       url: /about/
