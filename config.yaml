@@ -4,7 +4,7 @@ title: Khue Doan
 
 module:
   imports:
-    path: "github.com/khuedoan/hugo-paper-mod"
+    path: "github.com/adityatelange/hugo-PaperMod"
 
 params:
   homeInfoParams:
