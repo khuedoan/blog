@@ -1,6 +1,8 @@
 ---
 title: "Automate OS installation on bare metal servers with PXE boot and Ansible"
 date: 2021-02-25T11:55:21+07:00
+cover:
+  image: "https://user-images.githubusercontent.com/27996771/98970963-25137200-2543-11eb-8f2d-f9a2d45756ef.JPG"
 tags:
   - ansible
   - automation
