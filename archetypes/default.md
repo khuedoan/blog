@@ -1,10 +1,10 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: {{ replace .Name "-" " " | title }}
 date: {{ .Date }}
 cover:
-  image: ""
+  image: TODO
 tags:
-  -
+  - TODO
 draft: true
 ---
 
