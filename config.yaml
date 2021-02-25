@@ -18,6 +18,8 @@ params:
       url: "https://github.com/khuedoan"
     - name: linkedin
       url: "https://linkedin.com/in/khuedoan"
+  ShowReadingTime: true
+  ShowToc: true
 
 outputs:
   home:
@@ -36,3 +38,5 @@ menu:
     - name: About
       url: /about/
       weight: 3
+
+enableEmoji: true
