@@ -2,7 +2,9 @@ baseURL: https://khuedoan.com/
 languageCode: en-us
 title: Khue Doan
 
-theme: "github.com/adityatelange/hugo-PaperMod"
+module:
+  imports:
+    path: "github.com/khuedoan/hugo-paper-mod"
 
 params:
   homeInfoParams:
