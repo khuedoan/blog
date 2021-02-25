@@ -7,6 +7,7 @@ module:
     path: "github.com/adityatelange/hugo-PaperMod"
 
 params:
+  env: production
   homeInfoParams:
     Title: "Hi, I'm Khue \U0001F44B"
     Content: More content coming soon!
@@ -18,7 +19,20 @@ params:
     - name: linkedin
       url: "https://linkedin.com/in/khuedoan"
 
+outputs:
+  home:
+    - HTML
+    - JSON
+    - RSS
+
 menu:
   main:
-    - name: about
+    - name: Search
+      url: /search/
+      weight: 1
+    - name: Posts
+      url: /posts/
+      weight: 2
+    - name: About
       url: /about/
+      weight: 3
