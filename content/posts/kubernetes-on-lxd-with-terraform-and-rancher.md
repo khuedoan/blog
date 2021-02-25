@@ -1,6 +1,6 @@
 ---
 title: Build a Kubernetes cluster on LXD using Terraform and Rancher
-date: 2021-02-25T15:16:27+07:00
+date: 2021-02-25T15:28:27+07:00
 cover:
   image: TODO
 tags:
