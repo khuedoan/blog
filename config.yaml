@@ -10,7 +10,7 @@ params:
   env: production
   homeInfoParams:
     title: "Hi there, I'm Khue \U0001F44B"
-    content: More content coming soon!
+    content: "Welcome to my website, where I write about Linux, DevOps, homelab, workflow optimization, and more!"
   socialIcons:
     - name: email
       url: "mailto:mail@khuedoan.com"
@@ -35,8 +35,5 @@ menu:
     - name: Archives
       url: /archives/
       weight: 2
-    - name: About
-      url: /about/
-      weight: 3
 
 enableEmoji: true
