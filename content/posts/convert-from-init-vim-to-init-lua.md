@@ -5,7 +5,6 @@ cover:
   image: https://user-images.githubusercontent.com/27996771/110966944-69473f80-8388-11eb-9773-9594cbf662f4.png
 tags:
   - vim
-draft: true
 ---
 
 Only a few days left until Neovim 0.5 release, with support `init.lua` as default user config.
