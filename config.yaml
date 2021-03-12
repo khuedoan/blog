@@ -8,6 +8,7 @@ module:
 
 params:
   env: production
+  description: "Khue Doan's personal website"
   homeInfoParams:
     title: "Hi there, I'm Khue \U0001F44B"
     content: "Welcome to my website, where I write about Linux, DevOps, homelab, workflow optimization, and more!"
