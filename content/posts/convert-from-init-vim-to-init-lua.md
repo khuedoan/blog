@@ -8,7 +8,7 @@ tags:
   - vim
 ---
 
-Only a few days left until Neovim 0.5 stable release, with the support of `init.lua` as default user config.
+Only a few ~~days~~ months left until Neovim 0.5 stable release, with the support of `init.lua` as default user config.
 Here's a quick guide (more like a cheat sheet) to help someone with no Lua experience like me to save a few hours :moon:
 
 ## Config path
