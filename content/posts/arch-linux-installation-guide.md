@@ -14,7 +14,7 @@ The [ArchWiki](https://wiki.archlinux.org/) is one of the best (if not the best)
 But it can be confusing for new users because of how much informantion it provides.
 In this tutorial, I'll show you how I install Arch Linux, without showing you too many choices.
 
-## Prerequisite
+## Prerequisites
 
 - You desktop/laptop
 - A USB key
