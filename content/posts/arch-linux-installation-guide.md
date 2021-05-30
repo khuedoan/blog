@@ -145,9 +145,9 @@ And some packages for my personal config:
 
 As an alternative to creating an entire swap partition, a swap file offers the ability to vary its size on-the-fly, and is more easily removed altogether.
 
-Create a 32 GB (depend on your RAM) swap file:
+Create a 32GiB (adjust the number depending on your RAM, I recommend a number equal to the amount of RAM) swap file:
 
-`fallocate -l 32G /swapfile`
+`fallocate -l 32GiB /swapfile`
 
 Set the right permissions:
 
