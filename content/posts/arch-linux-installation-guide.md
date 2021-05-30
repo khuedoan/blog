@@ -7,7 +7,6 @@ cover:
 tags:
   - arch
   - linux
-draft: true
 ---
 
 The [ArchWiki](https://wiki.archlinux.org/) is one of the best (if not the best) wiki for Linux.
