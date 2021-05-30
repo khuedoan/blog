@@ -216,7 +216,6 @@ Edit `systemd-boot` options:
 ```
 default arch
 timeout 0
-editor  0
 ```
 
 Add Arch boot entry:
@@ -228,7 +227,7 @@ title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /intel-ucode.img
 initrd  /initramfs-linux.img
-options root=/dev/nvme0n1p2 rw quiet
+options root=/dev/nvme0n1p2 rw
 ```
 
 ### Enable network services
