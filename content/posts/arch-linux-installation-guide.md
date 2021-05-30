@@ -181,9 +181,11 @@ Generate `/etc/adjtime`:
 
 ### Configure locale
 
-Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen`, then generate it:
+Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen` (or just overwrite the file like below), then generate locale:
 
-`sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen && locale-gen`
+`echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen`
+
+`locale-gen`
 
 Set LANG variable in `/etc/locale.conf`:
 
