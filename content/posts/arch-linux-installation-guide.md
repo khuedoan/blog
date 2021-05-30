@@ -248,7 +248,7 @@ Establish `nvim` as the **visudo** editor:
 
 `EDITOR=nvim visudo`
 
-Then uncomment `%wheel ALL=(ALL) ALL` to allow members of group `wheel` sudo access, uncomment `Defaults targetpw` and change it to `Defaults rootpw` to ask for the root password instead of the user password (then change the comment beside it accordingly).
+Then uncomment `%wheel ALL=(ALL) ALL` to allow members of group `wheel` sudo access.
 
 ### Reboot to the new system
 
