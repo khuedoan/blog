@@ -262,12 +262,21 @@ Restart the machine:
 
 ### Login
 
-Login with your user account after the machine has rebooted.
+Login with your user account after the machine has rebooted. Use `nmtui` to connect to the Internet if you're using wifi.
 
 ## Graphical user interface
 
-You'll have a lot of choices when it comes to Linux user interface, but for the sake of tutorial, I'll choose GNOME because it's the simplest on to install and use.
+You'll have a lot of choices when it comes to Linux user interface, but for the sake of tutorial, I'll choose [GNOME](https://wiki.archlinux.org/title/GNOME) because it's the simplest one to install and use.
 
-![GNOME](https://www.gnome.org/wp-content/uploads/2021/03/wgo-splash-40.png)
+`sudo pacman -S gnome`
+
+`sudo systemctl enable --now gnome`
+
+Personally I don't like GNOME, here's some of my recommendation:
+
+- [KDE](https://wiki.archlinux.org/title/KDE): Fast, looks nice by default, tons of feature
+- Build your own desktop environment with a window manager:
+  - [bspwm](https://wiki.archlinux.org/title/Bspwm): Minimal and fast
+  - [dwm](https://dwm.suckless.org): hackable, designed to add your own feature to the code base, written in C
 
 Checkout this sub Reddit for much more eye candy screenshot of Linux [r/unixporn](https://reddit.com/r/unixporn/), you can check the comment for their set up.
