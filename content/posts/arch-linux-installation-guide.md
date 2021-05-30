@@ -36,13 +36,17 @@ You don't need to do anything.
 
 #### Wifi
 
-Connect to Wi-Fi network:
+Get your device name:
 
-`wifi-menu`
+`iwctl station list`
 
-Check if internet connectivity is available:
+Scan for networks:
 
-`ping -c 3 archlinux.org`
+`iwctl station wlan0 get-networks`
+
+Connect to your network:
+
+`iwctl station wlan0 connect MYWIFI`
 
 ### Update the system clock
 
