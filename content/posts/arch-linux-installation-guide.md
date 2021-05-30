@@ -279,4 +279,4 @@ Personally I don't like GNOME, here's some of my recommendation:
   - [bspwm](https://wiki.archlinux.org/title/Bspwm): Minimal and fast
   - [dwm](https://dwm.suckless.org): hackable, designed to add your own feature to the code base, written in C
 
-Checkout this sub Reddit for much more eye candy screenshot of Linux [r/unixporn](https://reddit.com/r/unixporn/), you can check the comment for their set up.
+Checkout the [r/unixporn](https://reddit.com/r/unixporn/) subreddit for much more eye candy screenshot of Linux.
