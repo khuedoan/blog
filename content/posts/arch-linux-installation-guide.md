@@ -269,7 +269,7 @@ You'll have a lot of choices when it comes to Linux user interface, but for the 
 
 `sudo pacman -S gnome`
 
-`sudo systemctl enable --now gnome`
+`sudo systemctl enable --now gdm`
 
 Personally I don't like GNOME, here's some of my recommendation:
 
