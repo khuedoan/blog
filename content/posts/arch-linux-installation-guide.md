@@ -125,9 +125,19 @@ Change root to the new system:
 
 ### Install some essential packages
 
+Microcode:
+
 `pacman -S intel-ucode` (or `amd-ucode`)
 
+Network manager:
+
 `pacman -S networkmanager`
+
+Your text editor of choice:
+
+`pacman -S neovim` (or `nano` or `micro`)
+
+And some packages for my personal config:
 
 `pacman -S git neovim zsh`
 
