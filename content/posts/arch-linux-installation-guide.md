@@ -138,7 +138,7 @@ Your text editor of choice:
 
 And some packages for my personal config:
 
-`pacman -S git zsh`
+`pacman -S ansible git zsh`
 
 ### Create swap file
 
