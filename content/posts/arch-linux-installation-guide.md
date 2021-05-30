@@ -105,34 +105,6 @@ Then create mount point for boot partition and mount it accordingly:
 
 `mount /dev/nvme0n1p1 /mnt/boot`
 
-### Select the mirrors
-
-Make a list of mirrors sorted by their speed then remove those from the list that are out of sync according to their [status](https://www.archlinux.org/mirrors/status/).
-
-Backup the existing mirrorlist:
-
-`cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup`
-
-Edit the mirror list, bring the fastest mirrors to the top (you can use `nano` instead of `vim` or `nvim`).
-For example this is my top 3 mirrors:
-
-`vim /etc/pacman.d/mirrorlist`
-
-```
-###
-### Arch Linux repository mirrorlist
-### Filtered by mirror score from mirror status page
-### Generated on 2019-03-01
-###
-
-### Singapore
-Server = http://mirror.0x.sg/archlinux/$repo/os/$arch
-### Vietnam
-Server = http://f.archlinuxvn.org/archlinux/$repo/os/$arch
-### Netherlands
-Server = http://archlinux.mirror.pcextreme.nl/$repo/os/$arch
-```
-
 ### Install the base and base-devel packages
 
 Use the **pacstrap** script:
