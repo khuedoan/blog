@@ -34,36 +34,15 @@ Here's a quick guide (more like a cheat sheet) to help someone with no Lua exper
 set mouse=a
 set tabstop=4
 set number
+set shortmess+=c
 ```
 
 ```lua
 -- init.lua
-vim.o.mouse = 'a'     -- o:  global option
-vim.bo.tabstop = 4    -- bo: buffer option
-vim.wo.number = true  -- wo: window option
-```
-
-To see which scope to use, check the help page for that option
-
-`:help mouse`
-
-```help
-'mouse'         string  (default "")
-                global             <-- use vim.o
-```
-
-`:help tabstop`
-
-```help
-'tabstop' 'ts'  number  (default 8)
-                local to buffer    <-- use vim.bo
-```
-
-`:help number`
-
-```help
-'number' 'nu'   boolean (default off)
-                local to window    <-- use vim.wo
+vim.opt.mouse = 'a'
+vim.opt.tabstop = 4
+vim.opt.number = true
+vim.opt.shortmess = vim.opt.shortmess + 'c'
 ```
 
 ## Global variables
