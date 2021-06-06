@@ -1,13 +1,11 @@
 .POSIX:
 
+TAG=khuedoan/khuedoan.com
+
 default: build
 
-run:
-	hugo server --buildDrafts
-
 build:
-	hugo --minify
+	docker build . -t ${TAG}
 
-new:
-	hugo new --kind default posts/$(name).md
-	nvim content/posts/$(name).md
+run: build
+	docker run --publish 1313:80 --rm ${TAG}
