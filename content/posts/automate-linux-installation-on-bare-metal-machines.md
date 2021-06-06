@@ -9,6 +9,7 @@ tags:
   - automation
   - docker
   - homelab
+draft: true
 ---
 
 If you're like me, you have a homelab with multiple bare-metal machines.
