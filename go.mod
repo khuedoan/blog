@@ -1,4 +1,4 @@
-module github.com/khuedoan/khuedoan.com
+module github.com/khuedoan/blog
 
 go 1.15
 
