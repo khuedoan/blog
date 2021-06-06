@@ -3,7 +3,7 @@ title: Arch Linux Installation Guide
 summary: Opinionated installation guide and basic configurations for Arch Linux
 date: 2021-05-22T14:29:40+07:00
 cover:
-  image: https://user-images.githubusercontent.com/27996771/120096217-5a388800-c154-11eb-89cb-6b1773cd9ea5.png
+  image: https://ia601405.us.archive.org/29/items/khuedoan-blog-images/arch-linux-installation-guide-cover.png
 tags:
   - arch
   - linux

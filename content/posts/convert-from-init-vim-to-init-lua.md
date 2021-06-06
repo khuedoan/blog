@@ -3,7 +3,7 @@ title: How to convert Neovim config from init.vim to init.lua
 summary: Only a few days left until Neovim 0.5 stable release, with the support of `init.lua` as default user config
 date: 2021-03-12T11:59:12+07:00
 cover:
-  image: https://user-images.githubusercontent.com/27996771/110966944-69473f80-8388-11eb-9773-9594cbf662f4.png
+  image: https://ia601405.us.archive.org/29/items/khuedoan-blog-images/convert-from-init-vim-to-init-lua-cover.png
 tags:
   - vim
 ---

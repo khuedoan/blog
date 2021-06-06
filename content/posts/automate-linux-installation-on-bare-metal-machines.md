@@ -1,8 +1,8 @@
 ---
 title: "How to automate Linux installation on bare-metal machines with Docker and Ansible"
-date: 2021-06-11T11:55:21+07:00
+date: 2021-06-05T11:55:21+07:00
 cover:
-  image: https://user-images.githubusercontent.com/27996771/98970963-25137200-2543-11eb-8f2d-f9a2d45756ef.JPG
+  image: https://ia601405.us.archive.org/29/items/khuedoan-blog-images/automate-linux-installation-on-bare-metal-machines-cover.jpg
 tags:
   - ansible
   - automation
