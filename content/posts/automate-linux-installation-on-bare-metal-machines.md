@@ -38,22 +38,22 @@ My laptop has 3 small servers inside Docker containers:
 It connected to the same network with my bare-metal machines using host network:
 
 ```txt
-┌───────────┐ ┌───────────┐ ┌───────────┐       ┌───────────┐
-│ machine 0 │ │ machine 1 │ │ machine 2 │  ...  │ machine N │
-└─────┬─────┘ └─────┬─────┘ └─────┬─────┘       └─────┬─────┘
-      │             │             │                   │
-      │             │             │                   │
-      └────────────┬┴───────┬─────┴──┬────────────────┘
-                   │        │        │
-                   │        │        │
-                   │        │        │
-                   │        │        │
-             ┌─────┼────────┼────────┼────┐
-             │ ┌───┴──┐ ┌───┴──┐ ┌───┴──┐ │
-             │ │ DHCP │ │ TFTP │ │ HTTP │ │
-             │ └──────┘ └──────┘ └──────┘ │
-             │  laptop (docker-compose)   │
-             └────────────────────────────┘
+┌-----------┐ ┌-----------┐ ┌-----------┐       ┌-----------┐
+| machine 0 | | machine 1 | | machine 2 |  ...  | machine N |
+└-----┬-----┘ └-----┬-----┘ └-----┬-----┘       └-----┬-----┘
+      |             |             |                   |
+      |             |             |                   |
+      └------------┬┴-------┬-----┴--┬----------------┘
+                   |        |        |
+                   |        |        |
+                   |        |        |
+                   |        |        |
+             ┌-----┼--------┼--------┼----┐
+             | ┌---┴--┐ ┌---┴--┐ ┌---┴--┐ |
+             | | DHCP | | TFTP | | HTTP | |
+             | └------┘ └------┘ └------┘ |
+             |  laptop (docker-compose)   |
+             └----------------------------┘
 ```
 
 The laptop will send a magic packet to wake the servers up (Wake-on-LAN), then the servers start booting in network mode.
@@ -68,30 +68,30 @@ You can map the installation process from the network to the installation proces
 The diagram below show the network boot process
 
 ```txt
-┌───────────┐               DHCP request                 ┌────────┐
-│ machine N │ ─────────────────────────────────────────► │        │
-│           │    send next server IP and boot file name  │  DHCP  │
-│           │ ◄───────────────────────────────────────── │        │
-│           │                                            └────────┘
-│           │                                      
-│           │     request boot file and boot config      ┌────────┐
-│           │ ─────────────────────────────────────────► │        │
-│           │     send boot file and boot config         │  TFTP  │
-│           │ ◄───────────────────────────────────────── │        │
-│           │                                            └────────┘
-│           │                                      
-│           │  request automated install instruction     ┌────────┐
-│           │ ─────────────────────────────────────────► │        │
-│           │     send automated install instruction     │        │
-│           │ ◄───────────────────────────────────────── │        │
-│           │                                            │  HTTP  │
-│           │     request packages, config files...      │        │
-│           │ ─────────────────────────────────────────► │        │
-│           │       send packages, config files...       │        │
-│           │ ◄───────────────────────────────────────── │        │
-│           │                                            └────────┘
-│  reboot   │
-└───────────┘
+┌-----------┐               DHCP request                 ┌--------┐
+| machine N | -----------------------------------------► |        |
+|           |    send next server IP and boot file name  |  DHCP  |
+|           | ◄----------------------------------------- |        |
+|           |                                            └--------┘
+|           |                                      
+|           |     request boot file and boot config      ┌--------┐
+|           | -----------------------------------------► |        |
+|           |     send boot file and boot config         |  TFTP  |
+|           | ◄----------------------------------------- |        |
+|           |                                            └--------┘
+|           |                                      
+|           |  request automated install instruction     ┌--------┐
+|           | -----------------------------------------► |        |
+|           |     send automated install instruction     |        |
+|           | ◄----------------------------------------- |        |
+|           |                                            |  HTTP  |
+|           |     request packages, config files...      |        |
+|           | -----------------------------------------► |        |
+|           |       send packages, config files...       |        |
+|           | ◄----------------------------------------- |        |
+|           |                                            └--------┘
+|  reboot   |
+└-----------┘
 ```
 
 The automated install config file depends on the distro you're using:
@@ -123,20 +123,20 @@ We will use `docker-compose` to create the PXE server (which contains 3 small se
 Create a project as follow (just `touch` the empty files):
 
 ```
-├── docker-compose.yml
-├── images/
-├── mnt/
-├── dhcp/
-│   ├── dhcpd.conf
-│   └── Dockerfile
-├── tftp/
-│   ├── Dockerfile
-│   └── tftpboot/
-│       └── grub.cfg
-└── http/
-    ├── Dockerfile
-    └── kickstart/
-        └── fedora.ks
+├-- docker-compose.yml
+├-- images/
+├-- mnt/
+├-- dhcp/
+|   ├-- dhcpd.conf
+|   └-- Dockerfile
+├-- tftp/
+|   ├-- Dockerfile
+|   └-- tftpboot/
+|       └-- grub.cfg
+└-- http/
+    ├-- Dockerfile
+    └-- kickstart/
+        └-- fedora.ks
 ```
 
 ## Generate the configuration dynamically with Ansible
