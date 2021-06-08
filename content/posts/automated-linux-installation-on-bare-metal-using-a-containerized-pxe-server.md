@@ -1,6 +1,6 @@
 ---
-title: "How to automate Linux installation on bare-metal machines"
-summary: Install OS (like CentOS, Fedora, Debian, Ubuntu...) on all of your bare-metal machines in under 5 minutes
+title: "Automated Linux installation on bare metal using a containerized PXE server"
+summary: Install Linux (CentOS, Fedora, Debian, Ubuntu...) on all of your bare-metal machines in under 5 minutes without even touching them
 date: 2021-06-05T11:55:21+07:00
 cover:
   image: https://ia601405.us.archive.org/29/items/khuedoan-blog-images/automate-linux-installation-on-bare-metal-machines-cover.jpg
@@ -28,7 +28,7 @@ TODO demo video here
 
 ## How it works
 
-We will create a stateless PXE server in Docker containers on our laptop, turn the nodes on with wake on LAN, boot them through the network, and install Linux using unattended install config file, and get host sepecific settings based on the MAC address.
+We will create a stateless PXE server in Docker containers on our laptop, turn the nodes on with wake on LAN, boot them through the network, and install Linux using unattended install config file, and get host sepecific settings based on the MAC address. We can shut down the PXE server after everything is installed.
 
 My laptop has 3 small servers inside Docker containers:
 
