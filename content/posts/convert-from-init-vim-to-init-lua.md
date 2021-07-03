@@ -127,4 +127,4 @@ The commands is very similar too:
 
 ## Result
 
-You can compare my old [`init.vim`](https://github.com/khuedoan/dotfiles/blob/76c88283c86e822672f02e9e0e73344a69a91dc1/.config/nvim/init.vim) and the new [`init.lua`](https://github.com/khuedoan/dotfiles/tree/master/.config/nvim/init.lua).
+You can compare my old [`init.vim`](https://github.com/khuedoan/dotfiles/blob/76c88283c86e822672f02e9e0e73344a69a91dc1/.config/nvim/init.vim) and the new [`init.lua`](https://github.com/khuedoan/dotfiles/blob/4184714a881b70e479ccf3a3bfd221a0b1796d60/.config/nvim/init.lua).
