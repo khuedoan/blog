@@ -8,9 +8,10 @@ run:
 build:
 	hugo --minify
 
-deploy: build
+deploy:
 	git worktree add ./public gh-pages || true
 	cd public \
+		&& git add . \
 		&& git commit --message "Updates" \
 		&& git push
 
