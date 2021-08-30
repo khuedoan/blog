@@ -16,4 +16,4 @@ deploy: build
 
 new:
 	hugo new --kind default posts/$(name).md
-	nvim content/posts/$(name).md
+	${EDITOR} content/posts/$(name).md
