@@ -21,6 +21,7 @@ params:
       url: "https://linkedin.com/in/khuedoan"
   showReadingTime: true
   showToc: true
+  showCodeCopyButtons: true
   hideFooter: true
 
 outputs:
