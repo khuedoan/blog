@@ -1,5 +1,5 @@
 module github.com/khuedoan/blog
 
-go 1.15
+go 1.16
 
-require github.com/adityatelange/hugo-PaperMod v0.0.0-20210905125817-8021be2ddb53
+require github.com/adityatelange/hugo-PaperMod v0.0.0-20210325092053-b6af9eddee7f
