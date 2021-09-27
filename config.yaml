@@ -19,6 +19,9 @@ params:
       url: "https://github.com/khuedoan"
     - name: linkedin
       url: "https://linkedin.com/in/khuedoan"
+  editPost:
+    URL: https://github.com/khuedoan/blog/tree/master/content
+    appendFilePath: true
   showReadingTime: true
   showToc: true
   showCodeCopyButtons: true
