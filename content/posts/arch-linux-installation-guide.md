@@ -15,7 +15,7 @@ In this tutorial, I'll show you how I install Arch Linux, without showing you to
 
 ## Prerequisites
 
-- You desktop/laptop
+- Your desktop/laptop
 - A USB key
 - Some basic knowledge of Linux
 
