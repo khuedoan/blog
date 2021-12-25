@@ -1,0 +1,54 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: blog
+spec:
+  workspaces:
+    - name: shared-data
+    # - name: dockerconfig
+  tasks:
+    - name: fetch-repo
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-data
+      params:
+        - name: url
+          value: http://gitea-http.gitea:3000/khuedoan/blog
+        - name: revision
+          value: master
+    - name: docker
+      runAfter:
+        - fetch-repo
+      workspaces:
+        - name: source
+          workspace: shared-data
+        # - name: dockerconfig
+        #   workspace: dockerconfig
+      taskRef:
+        name: kaniko
+      params:
+        - name: IMAGE
+          value: registry.khuedoan.com/blog:latest
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: blog-run
+spec:
+  pipelineRef:
+    name: blog
+  workspaces:
+    - name: shared-data
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 128Mi
+    # - name: dockerconfig
+    #   secret:
+    #     secretName: docker-config
