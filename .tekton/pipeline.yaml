@@ -15,7 +15,7 @@ spec:
           workspace: shared-data
       params:
         - name: url
-          value: http://gitea-http.gitea:3000/khuedoan/blog
+          value: https://github.com/khuedoan/blog
         - name: revision
           value: master
     - name: docker
