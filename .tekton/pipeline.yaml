@@ -35,7 +35,7 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: blog-run
+  name: blog
 spec:
   pipelineRef:
     name: blog
