@@ -1,9 +1,7 @@
 languageCode: en-us
 title: Khue Doan
 
-module:
-  imports:
-    path: "github.com/adityatelange/hugo-PaperMod"
+theme: "PaperMod"
 
 params:
   env: production
