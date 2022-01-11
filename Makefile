@@ -9,5 +9,5 @@ build:
 	hugo --minify
 
 new:
-	hugo new --kind default posts/$(name).md
-	${EDITOR} content/posts/$(name).md
+	hugo new --kind default posts/$(name)/index.md
+	${EDITOR} content/posts/$(name)/index.md
