@@ -80,8 +80,8 @@ nnoremap <C-s> :write<CR>
 
 ```lua
 -- init.lua
---                       <mode>  <keys>    <actions>       <options>
-vim.api.nvim_set_keymap( 'n',   '<C-s>', ':write<CR>', {noremap = true})
+--              <mode>  <keys>    <actions>       <options>
+vim.keymap.set( 'n',   '<C-s>', ':write<CR>', {noremap = true})
 ```
 
 ## Plugin manager
