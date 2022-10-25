@@ -42,7 +42,7 @@ set shortmess+=c
 vim.opt.mouse = 'a'
 vim.opt.tabstop = 4
 vim.opt.number = true
-vim.opt.shortmess = vim.opt.shortmess + 'c'
+vim.opt.shortmess:append('c')
 ```
 
 ## Global variables
