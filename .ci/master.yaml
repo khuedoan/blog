@@ -32,7 +32,14 @@ spec:
     tasks:
       - name: clone
         taskRef:
-          name: git-clone
+          resolver: hub
+          params:
+            - name: kind
+              value: task
+            - name: name
+              value: git-clone
+            - name: version
+              value: "0.7"
         params:
           - name: url
             value: $(params.git_url)
@@ -45,7 +52,14 @@ spec:
         runAfter:
           - clone
         taskRef:
-          name: kaniko
+          resolver: hub
+          params:
+            - name: kind
+              value: task
+            - name: name
+              value: kaniko
+            - name: version
+              value: "0.6"
         params:
           - name: IMAGE
             value: registry.khuedoan.com/blog:latest
