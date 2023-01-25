@@ -1,0 +1,64 @@
+apiVersion: workflows.tekton.dev/v1alpha1
+kind: Workflow
+metadata:
+  name: blog-master
+spec:
+  triggers:
+    - event:
+        type: push
+        secret:
+          secretName: webhook-secret
+          secretKey: token
+      filters:
+        # TODO Gitea doesn't have refs/head/ prefix, use gitRef after this is fixed
+        # https://github.com/tektoncd/experimental/blob/3644c43377239bb639ec4191acc04fcf3aafb3f2/workflows/pkg/filters/filters.go#L44-L46
+        # gitRef:
+        #   regex: '^master$'
+        custom:
+          - cel: "body.ref.matches('^master$')"
+      bindings:
+        - name: git_url
+          value: $(body.repository.clone_url)
+        - name: git_revision
+          value: $(body.after)
+  params:
+    - name: git_url
+      default: https://git.khuedoan.com/khuedoan/blog
+    - name: git_revision
+      default: master
+  pipelineSpec:
+    workspaces:
+      - name: shared-data
+    tasks:
+      - name: clone
+        taskRef:
+          name: git-clone
+        params:
+          - name: url
+            value: $(params.git_url)
+          - name: revision
+            value: $(params.git_revision)
+        workspaces:
+          - name: output
+            workspace: shared-data
+      - name: docker
+        runAfter:
+          - clone
+        taskRef:
+          name: kaniko
+        params:
+          - name: IMAGE
+            value: registry.khuedoan.com/blog:latest
+        workspaces:
+          - name: source
+            workspace: shared-data
+  workspaces:
+    - name: shared-data
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 128Mi
