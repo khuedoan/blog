@@ -2,12 +2,13 @@
 
 default: build
 
-run:
-	hugo server --buildDrafts
+.PHONY:
+dev: node_modules/
+	npm run dev
 
-build:
-	hugo --minify
+.PHONY:
+build: node_modules/
+	npm run build
 
-new:
-	hugo new --kind default posts/$(name)/index.md
-	${EDITOR} content/posts/$(name)/index.md
+node_modules/: package.json package-lock.json
+	npm install
