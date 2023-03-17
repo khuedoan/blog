@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# TODO https://github.com/vercel/next.js/blob/6a603464e4feedf9d4f5828a9365b8030d055eab/packages/next/src/lib/verifyTypeScriptSetup.ts#L139-L141
+.vscode/
