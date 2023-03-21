@@ -1,7 +1,11 @@
 export default function Header() {
   return (
     <header>
-      <p>Khue Doan</p>
+      <nav>
+        <ul>
+          <li>Khue Doan</li>
+        </ul>
+      </nav>
     </header>
   );
 }
