@@ -9,6 +9,10 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            code: {
+              backgroundColor: "#eff1f3",
+              "border-radius": "0.25rem",
+            },
             'code::before': {
               content: '""',
             },
