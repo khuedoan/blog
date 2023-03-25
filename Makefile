@@ -2,6 +2,9 @@
 
 default: build
 
+node_modules/: package.json
+	npm install
+
 .PHONY:
 dev: node_modules/
 	npm run dev
@@ -10,5 +13,7 @@ dev: node_modules/
 build: node_modules/
 	npm run build
 
-node_modules/: package.json package-lock.json
-	npm install
+.PHONY:
+lint: node_modules/
+	npx prettier --check .
+	npm run lint
