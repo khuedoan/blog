@@ -20,7 +20,7 @@ async function getPost(slug: string) {
 }
 
 export async function generateStaticParams() {
-  return getAllPosts(["slug"])
+  return getAllPosts(["slug"]);
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {

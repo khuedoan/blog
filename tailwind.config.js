@@ -13,18 +13,18 @@ module.exports = {
               backgroundColor: "#eff1f3",
               "border-radius": "0.25rem",
             },
-            'code::before': {
+            "code::before": {
               content: '""',
             },
-            'code::after': {
+            "code::after": {
               content: '""',
             },
-          }
-        }
-      }
+          },
+        },
+      },
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    require("@tailwindcss/typography"),
   ],
 };
