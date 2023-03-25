@@ -1,8 +1,7 @@
 ---
 title: Introduction to kmonad - a software alternative to QMK firmware
 date: 2021-09-13T12:36:53+07:00
-cover:
-  image: TODO
+coverImage: TODO
 tags:
   - kmonad
   - keyboard
