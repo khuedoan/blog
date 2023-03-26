@@ -7,6 +7,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 const navigation = [
   { name: "About", href: "/about" },
   { name: "Posts", href: "/posts" },
+  { name: "Projects", href: "/projects" },
 ];
 
 export default function Header() {
@@ -47,7 +48,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="/contact"
+            href="mailto:mail@khuedoan.com"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Contact <span aria-hidden="true">&rarr;</span>
@@ -95,7 +96,7 @@ export default function Header() {
               </div>
               <div className="py-6">
                 <a
-                  href="/contact"
+                  href="mailto:mail@khuedoan.com"
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Contact
