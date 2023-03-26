@@ -41,6 +41,7 @@ export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
+    .filter((post) => !post.draft) // TODO auto show draft posts in dev mode
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 
