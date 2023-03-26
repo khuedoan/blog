@@ -1,9 +1,14 @@
 import PostBody from "@/components/post-body";
+import PostHeader from "@/components/post-header";
 import { getPostBySlug, getAllPosts } from "@/lib/post";
 import markdownToHtml from "@/lib/markdown";
 
-async function getPost(slug: string) {
-  const post = getPostBySlug(slug, [
+export async function generateStaticParams() {
+  return getAllPosts(["slug"]);
+}
+
+export default async function Post({ params }: { params: { slug: string } }) {
+  const post = getPostBySlug(params.slug, [
     "content",
     "date",
     "draft",
@@ -12,21 +17,10 @@ async function getPost(slug: string) {
     "tags",
   ]);
 
-  const content = await markdownToHtml(post.content);
-  return {
-    ...post,
-    content,
-  };
-}
-
-export async function generateStaticParams() {
-  return getAllPosts(["slug"]);
-}
-
-export default async function Post({ params }: { params: { slug: string } }) {
   return (
     <>
-      <PostBody body={(await getPost(params.slug)).content} />
+      <PostHeader title={post.title} date={post.date} />
+      <PostBody body={await markdownToHtml(post.content)} />
     </>
   );
 }
