@@ -1,6 +1,6 @@
 ---
 title: Nix on Mac computers with Apple silicon
-date: 2022-11-14T23:14:24+07:00
+date: '2022-11-14'
 coverImage: TODO
 tags:
   - TODO

@@ -1,7 +1,7 @@
 ---
 title: "Automated Linux installation on bare metal using a containerized PXE server"
 summary: Install Linux (CentOS, Fedora, Debian, Ubuntu...) on all of your bare-metal machines in under 5 minutes without even touching them
-date: 2021-06-05T11:55:21+07:00
+date: '2021-06-05'
 coverImage: https://ia601405.us.archive.org/29/items/khuedoan-blog-images/automate-linux-installation-on-bare-metal-machines-cover.jpg
 tags:
   - ansible

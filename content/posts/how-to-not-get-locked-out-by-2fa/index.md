@@ -1,6 +1,6 @@
 ---
 title: How to Not Get Locked Out by 2fa
-date: 2022-12-13T14:33:44+07:00
+date: '2022-12-13'
 coverImage: TODO
 tags:
   - TODO
