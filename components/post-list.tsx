@@ -13,7 +13,7 @@ export default function PostList() {
               key={post.slug}
               title={post.title}
               slug={post.slug}
-              date={post.date.toLocaleString()}
+              date={post.date}
               summary={post.summary}
               coverImage={post.coverImage}
               tags={post.tags}

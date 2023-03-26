@@ -1,3 +1,5 @@
+import Date from "./date";
+
 export default function PostHeader({
   title,
   date,
@@ -7,8 +9,12 @@ export default function PostHeader({
 }) {
   return (
     <>
-      <h1>{title}</h1>
-      <p>{date}</p>
+      <p className="text-base font-semibold leading-7 text-indigo-600">
+        <Date dateString={date} />
+      </p>
+      <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        {title}
+      </h1>
     </>
   );
 }
