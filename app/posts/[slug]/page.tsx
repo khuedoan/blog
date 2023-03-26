@@ -4,18 +4,11 @@ import { getPostBySlug, getAllPosts } from "@/lib/post";
 import markdownToHtml from "@/lib/markdown";
 
 export async function generateStaticParams() {
-  return getAllPosts(["slug"]);
+  return getAllPosts();
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug, [
-    "content",
-    "date",
-    "draft",
-    "summary",
-    "title",
-    "tags",
-  ]);
+  const post = getPostBySlug(params.slug);
 
   return (
     <>

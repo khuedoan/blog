@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/post";
 import PostPreview from "./post-preview";
 
 export default function PostList() {
-  const posts = getAllPosts(["slug", "title", "date"]);
+  const posts = getAllPosts();
 
   return (
     <>
