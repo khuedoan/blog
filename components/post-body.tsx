@@ -1,7 +1,8 @@
-export default function PostBody({ body }: { body: string }) {
+import ReactMarkdown from "react-markdown";
+export default function PostBody({ content }: { content: string }) {
   return (
     <article className="prose max-w-none">
-      <div dangerouslySetInnerHTML={{ __html: body }} />
+      <ReactMarkdown children={content} />
     </article>
   );
 }
