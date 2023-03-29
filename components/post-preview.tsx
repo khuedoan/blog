@@ -23,14 +23,16 @@ export default function PostPreview({
       className="relative isolate flex flex-col gap-8 lg:flex-row"
     >
       <div className="relative aspect-[16/9] lg:w-64 lg:shrink-0">
-        <Image
-          className="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
-          src={`/images/${slug}/${coverImage}`}
-          alt=""
-          width="720"
-          height="1280"
-        />
-        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+        <Link href={`/posts/${slug}`}>
+          <Image
+            className="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
+            src={coverImage}
+            alt=""
+            width="720"
+            height="1280"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+        </Link>
       </div>
       <div>
         <div className="flex items-center gap-x-4 text-xs">
