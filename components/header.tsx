@@ -7,6 +7,7 @@ import { HiBars3, HiXMark } from "react-icons/hi2";
 const navigation = [
   { name: "About", href: "/about" },
   { name: "Posts", href: "/posts" },
+  { name: "Tags", href: "/tags" },
 ];
 
 export default function Header() {

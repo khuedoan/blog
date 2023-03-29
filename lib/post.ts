@@ -38,3 +38,21 @@ export function getAllPosts(): Post[] {
 
   return posts;
 }
+
+export function getAllTags() {
+  const tags = getAllPosts()
+    .map((post) => post.tags)
+    .flat();
+
+  return tags;
+}
+
+export function getPostsByTag(tag: string): Post[] {
+  const posts = getAllPosts()
+    .filter((post) => post.tags.includes(tag))
+    .filter((post) => !post.draft) // TODO auto show draft posts in dev mode
+    // sort posts by date in descending order
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+
+  return posts;
+}

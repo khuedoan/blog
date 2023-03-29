@@ -8,7 +8,7 @@ export default function PostHeader({
   date: string;
 }) {
   return (
-    <div className="py-6">
+    <div className="py-20 text-center">
       <p className="text-base font-semibold leading-7 text-indigo-600">
         <Date dateString={date} />
       </p>
