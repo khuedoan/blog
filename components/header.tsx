@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { HiBars3, HiXMark } from "react-icons/hi2";
+import Image from "next/image";
 
 const navigation = [
   { name: "About", href: "/about" },
@@ -21,10 +22,12 @@ export default function Header() {
       >
         <a href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">Khue Doan</span>
-          <img
+          <Image
             className="h-8 w-auto rounded-full"
-            src="https://avatars.githubusercontent.com/u/27996771?v=4" // TODO
+            src="/avatar.jpeg"
             alt=""
+            width="64"
+            height="64"
           />
         </a>
         <div className="flex lg:hidden">
@@ -66,10 +69,12 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Khue Doan</span>
-              <img
+              <Image
                 className="h-8 w-auto rounded-full"
-                src="https://avatars.githubusercontent.com/u/27996771?v=4" // TODO
+                src="/avatar.jpeg"
                 alt=""
+                width="64"
+                height="64"
               />
             </a>
             <button
