@@ -12,6 +12,7 @@ module.exports = {
             code: {
               backgroundColor: "#eff1f3",
               "border-radius": "0.25rem",
+              fontWeight: 400,
             },
             "code::before": {
               content: '""',
@@ -19,6 +20,10 @@ module.exports = {
             "code::after": {
               content: '""',
             },
+            "pre": null,
+            "pre code": null,
+            "pre code::before": null,
+            "pre code::after": null,
           },
         },
       },

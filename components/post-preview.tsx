@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Date from "./date";
+import ReactMarkdown from "react-markdown";
 
 export default function PostPreview({
   slug,
@@ -54,7 +55,9 @@ export default function PostPreview({
               {title}
             </Link>
           </h2>
-          <p className="mt-5 text-sm leading-6 text-gray-600">{summary}</p>
+          <div className="prose mt-5 text-sm leading-6 text-gray-600">
+            <ReactMarkdown>{summary}</ReactMarkdown>
+          </div>
         </div>
       </div>
     </article>
