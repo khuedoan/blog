@@ -88,6 +88,10 @@ vim.keymap.set( 'n',   '<C-s>', ':write<CR>', {noremap = true})
 
 I've switched to [paq-nvim](https://github.com/savq/paq-nvim), written in Lua, very similar to [vim-plug](https://github.com/junegunn/vim-plug).
 
+> ~~**September 2021 update:** I've switched to [packer.nvim](https://github.com/wbthomason/packer.nvim) for more features.~~
+>
+> **May 2023 update:** I've switched to [lazy.nvim](https://github.com/folke/lazy.nvim) for better lazy loading and performance (even [the author of packer.nvim switched](https://github.com/wbthomason/dotfiles/blob/ed714d76eb77fcbc76c0fcea5154cf9c0346c5da/dot_config/nvim/init.lua#L12)), you can view my lastest configuration [here](https://github.com/khuedoan/dotfiles/blob/master/.config/nvim/lua/plugins.lua).
+
 Install the plugin manager:
 
 ```lua
@@ -128,5 +132,3 @@ The commands is very similar too:
 ## Result
 
 You can compare my old [`init.vim`](https://github.com/khuedoan/dotfiles/blob/76c88283c86e822672f02e9e0e73344a69a91dc1/.config/nvim/init.vim) and the new [`init.lua`](https://github.com/khuedoan/dotfiles/blob/4184714a881b70e479ccf3a3bfd221a0b1796d60/.config/nvim/init.lua).
-
-**September 2021 update:** I've switched to [packer.nvim](https://github.com/wbthomason/packer.nvim), you can checkout my lastest config [here](https://github.com/khuedoan/dotfiles/blob/master/.config/nvim/init.lua)
