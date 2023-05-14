@@ -2,7 +2,7 @@
 
 default: build
 
-run:
+dev:
 	hugo server --buildDrafts
 
 build:
