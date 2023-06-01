@@ -5,6 +5,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    unoptimized: true, // TODO configure automatic optimization
     remotePatterns: [
       {
         protocol: "https",
