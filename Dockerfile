@@ -1,18 +1,13 @@
-FROM alpine as build
+FROM node:20-alpine as builder
 
-WORKDIR /usr/local/src/
-
-RUN apk add \
-    git \
-    go \
-    hugo
+WORKDIR /app
 
 COPY . .
 
-RUN hugo --minify
+RUN npm install
 
-FROM nginx:alpine
+RUN npm run build
 
-COPY --from=build /usr/local/src/public /usr/share/nginx/html
+FROM nginx:alpine-slim
 
-EXPOSE 80
+COPY --from=builder /app/build /usr/share/nginx/html
