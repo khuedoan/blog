@@ -3,11 +3,10 @@
 default: build
 
 dev:
-	hugo server --buildDrafts
+	trunk serve
 
-build:
-	hugo --minify
+build: styles/output.css
+	cargo build --release
 
-new:
-	hugo new --kind default posts/$(name)/index.md
-	${EDITOR} content/posts/$(name)/index.md
+styles/output.css: styles/globals.css
+	npx tailwindcss -i ./styles/globals.css -o ./styles/output.css
