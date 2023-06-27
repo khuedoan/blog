@@ -1,10 +1,10 @@
 use leptos::*;
 
 #[component]
-pub fn PostList(cx: Scope) -> impl IntoView {
+pub fn PostContent(cx: Scope) -> impl IntoView {
     view! { cx,
         <p>
-            "TODO post list"
+            "TODO post"
         </p>
     }
 }
