@@ -1,15 +1,29 @@
 use include_dir::{include_dir, Dir};
 use std::collections::HashMap;
 
+use gray_matter::engine::YAML;
+use gray_matter::Matter;
+use serde::Deserialize;
+
+#[derive(Deserialize, Clone)]
+pub struct PostMetadata {
+    #[serde(default)]
+    pub date: String,
+    #[serde(default)]
+    pub draft: bool,
+    #[serde(default)]
+    pub summary: String,
+    #[serde(default)]
+    pub tags: Vec<String>,
+    #[serde(default)]
+    pub title: String,
+}
+
 #[derive(Clone)]
 pub struct PostData {
-    pub content: String,
-    pub date: String,
-    pub draft: bool,
     pub path: String,
-    pub summary: String,
-    pub tags: Vec<String>,
-    pub title: String,
+    pub content: String,
+    pub metadata: PostMetadata,
 }
 
 pub fn get_all_posts() -> HashMap<String, PostData> {
@@ -19,16 +33,15 @@ pub fn get_all_posts() -> HashMap<String, PostData> {
     POST_DIR
         .files()
         .map(|post| {
+            let matter = Matter::<YAML>::new();
+            let markdown = matter.parse(post.contents_utf8().unwrap());
+            let front_matter: PostMetadata = markdown.data.unwrap().deserialize().unwrap();
             (
                 post.path().to_str().unwrap().to_string(),
                 PostData {
-                    content: post.contents_utf8().unwrap().to_string(),
-                    date: "".to_string(),
-                    draft: false,
                     path: post.path().to_str().unwrap().to_string(),
-                    summary: "".to_string(),
-                    tags: Vec::new(),
-                    title: post.path().to_str().unwrap().to_string(), // TODO
+                    metadata: front_matter,
+                    content: markdown.content,
                 },
             )
         })

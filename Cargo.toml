@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+gray_matter = "0.2.6"
 include_dir = "0.7.3"
 leptos = "0.3.1"
 leptos_router = { version = "0.3.1", features = ["hydrate"] }
-# TODO switch to release tag when ENABLE_YAML_STYLE_METADATA_BLOCKS is released
-# pulldown-cmark = "x.x.x"
-pulldown-cmark = { git = "https://github.com/raphlinus/pulldown-cmark.git", branch = "master" }
+pulldown-cmark = "0.9.3"
+serde = "1.0.164"

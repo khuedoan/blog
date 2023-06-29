@@ -8,7 +8,7 @@ pub fn PostList(cx: Scope, posts: HashMap<String, PostData>) -> impl IntoView {
         <ul>
             {posts.iter().map(|(id, post)| {
                 view! { cx,
-                    <li><a href=format!("/posts/{}", id)>{post.title.to_string()}</a></li>
+                    <li><a href=format!("/posts/{}", id)>{post.metadata.title.to_string()}</a></li>
                 }
             }).collect_view(cx)}
         </ul>

@@ -5,16 +5,16 @@ pub fn Header(cx: Scope) -> impl IntoView {
     view! { cx,
         <header>
             <nav>
-                <a>
+                <a href="/">
                     "Khue Doan"
                 </a>
-                <a>
+                <a href="/about">
                     "About"
                 </a>
-                <a>
+                <a href="/posts">
                     "Posts"
                 </a>
-                <a>
+                <a href="/tags">
                     "Tags"
                 </a>
             </nav>
