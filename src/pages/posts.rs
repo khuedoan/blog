@@ -12,6 +12,18 @@ pub fn Posts(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Post(cx: Scope) -> impl IntoView {
     view! { cx,
-        <PostContent />
+        <PostContent content="
+# Post title
+
+## Subtitle
+
+asdfkjasdkjfasjdf
+
+content
+
+```
+code
+````
+".to_string()/>
     }
 }

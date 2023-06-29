@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 leptos = "0.3.1"
 leptos_router = { version = "0.3.1", features = ["hydrate"] }
+pulldown-cmark = "0.9.3"
