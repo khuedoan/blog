@@ -1,35 +1,22 @@
-use leptos::*;
-use crate::components::post_list::*;
 use crate::components::post_content::*;
-use include_dir::{include_dir, Dir};
-
-pub struct PostData {
-    path: String,
-    content: String,
-}
+use crate::components::post_list::*;
+use blog::{get_all_posts, get_post};
+use leptos::*;
+use leptos_router::*;
 
 #[component]
 pub fn Posts(cx: Scope) -> impl IntoView {
     view! { cx,
-        <PostList />
+        <PostList posts=get_all_posts()/>
     }
 }
 
 #[component]
 pub fn Post(cx: Scope) -> impl IntoView {
-    static POST_DIR: Dir = include_dir!("/home/khuedoan/Documents/worktree/blog/leptos/content/posts");
-    let mut posts: Vec<PostData> = Vec::new();
-
-    for file in POST_DIR.files() {
-        let post = PostData {
-            path: file.path().to_str().unwrap().to_string(),
-            content: file.contents_utf8().unwrap().to_string(),
-        };
-
-        posts.push(post);
-    };
+    let params = use_params_map(cx);
+    let id = move || params.with(|params| params.get("id").cloned().unwrap_or_default());
 
     view! { cx,
-        <PostContent content=posts[0].content.to_string()/>
+        <PostContent content=get_post(id()).content.to_string()/>
     }
 }

@@ -7,6 +7,6 @@ use crate::components::post_list::*;
 pub fn Home(cx: Scope) -> impl IntoView {
     view! { cx,
         <Intro />
-        <PostList />
+        // <PostList />
     }
 }
