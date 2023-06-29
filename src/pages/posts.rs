@@ -18,7 +18,11 @@ pub fn Post(cx: Scope) -> impl IntoView {
     let post = get_post(id());
 
     view! { cx,
-        <h1>{post.metadata.title}</h1>
-        <PostContent content=post.content.to_string()/>
+        <div class="mx-auto max-w-3xl px-6 lg:px-8">
+            <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                {post.metadata.title}
+            </h1>
+            <PostContent content=post.content.to_string()/>
+        </div>
     }
 }

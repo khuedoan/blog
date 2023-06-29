@@ -5,8 +5,11 @@ default: build
 dev:
 	trunk serve
 
-build: styles/output.css
+build: src/styles/output.css
 	cargo build --release
 
-styles/output.css: styles/globals.css
-	npx tailwindcss -i ./styles/globals.css -o ./styles/output.css
+# TODO build Tailwind with cargo-leptos
+# Need to install dependencies manually for now:
+# npm i -D tailwindcss @tailwindcss/typography
+src/styles/output.css: src/styles/globals.css
+	npx tailwindcss -p @tailwindcss/typography -i src/styles/globals.css -o src/styles/output.css

@@ -14,6 +14,6 @@ pub fn PostContent(cx: Scope, content: String) -> impl IntoView {
     html::push_html(&mut html, parser);
 
     view! { cx,
-        <div inner_html=html/>
+        <div class="prose max-w-none" inner_html=html/>
     }
 }
