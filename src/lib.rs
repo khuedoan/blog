@@ -27,6 +27,7 @@ pub struct PostData {
 }
 
 pub fn get_all_posts() -> HashMap<String, PostData> {
+    // TODO do not hard code
     static POST_DIR: Dir =
         include_dir!("/home/khuedoan/Documents/worktree/blog/leptos/content/posts");
 
