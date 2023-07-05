@@ -20,7 +20,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
                         href="/"
                     />
                 </a>
-                <div class="lg:flex lg:gap-x-12">
+                <div class="flex gap-x-6 lg:gap-x-12">
                     <a class="text-sm font-semibold leading-6 text-gray-900" href="/about">
                         "About"
                     </a>
