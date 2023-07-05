@@ -35,11 +35,10 @@ fn TagLabel(cx: Scope, tag: String) -> impl IntoView {
 #[component]
 fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
     view! { cx,
-        <article key=id class="relative isolate flex flex-col gap-8 lg:flex-row">
+        <article key=id.clone() class="relative isolate flex flex-col gap-8 lg:flex-row">
             <div class="relative aspect-[16/9] lg:w-64 lg:shrink-0">
                 <PostCover
-                    // TODO do not hard code
-                    href=format!("/posts/TODO")
+                    href=format!("/posts/{}", id.clone())
                     //www.khuedoan.com/posts/moving-around-efficiently-in-neovim/images/cover.png"
                     //www.khuedoan.com/posts/moving-around-efficiently-in-neovim/images/cover.png"
                     src="https://www.khuedoan.com/posts/moving-around-efficiently-in-neovim/images/cover.png"
@@ -61,13 +60,8 @@ fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
                 </div>
                 <div class="group relative max-w-xl">
                     <h2 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                        // TODO do not hard code
-                        // <a href={format!("/posts/{post.path}")}>
-                        <a href="/">
+                        <a href=format!("/posts/{}", id.clone())>
                             <span class="absolute inset-0"></span>
-
-                            // TODO
-
                             {post.metadata.title}
                         </a>
                     </h2>
