@@ -30,7 +30,8 @@ pub fn About(cx: Scope) -> impl IntoView {
                 <p>
                     "If you're interested in checking out some of the projects
                     I've been working on, be sure to take a look at my GitHub
-                    find something that scratches your itch!" // TODO add link here
+                    find something that scratches your itch!"
+                    // TODO add link here
                 </p>
             </article>
         </div>

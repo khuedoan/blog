@@ -10,7 +10,7 @@ Built with:
 ## Project structure
 
 <!-- TODO clean this up -->
-- `content/`: Content of the blog, the structure of this directory was insprired by Hugo.
-- `src/`: Source code for the blog, written in Rust using Leptos, the structure of this directory was insprired by Next.js. 
+- `content/`: Content of the blog, the structure of this directory was insprired by Hugo
+- `src/`: Source code for the blog, written in Rust using Leptos, the structure of this directory was insprired by Next.js
 - `public/`: Static assets
 - `.ci/`: CI pipelines for my custom CI system based on Tekton.

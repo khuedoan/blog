@@ -16,25 +16,24 @@ fn App(cx: Scope) -> impl IntoView {
 
     view! { cx,
         <Router>
-            <Header />
+            <Header/>
             <main>
                 <Routes>
-                    <Route path="/" view=|cx| view! { cx, <Home /> }/>
-                    <Route path="/about" view=|cx| view! { cx, <About /> }/>
-                    <Route path="/posts" view=|cx| view! { cx, <Posts /> }/>
-                    <Route path="/posts/:id" view=|cx| view! { cx, <Post /> }/>
-                    <Route path="/tags" view=|cx| view! { cx, <Tags /> }/>
+                    <Route path="/" view=|cx| view! { cx, <Home/> }/>
+                    <Route path="/about" view=|cx| view! { cx, <About/> }/>
+                    <Route path="/posts" view=|cx| view! { cx, <Posts/> }/>
+                    <Route path="/posts/:id" view=|cx| view! { cx, <Post/> }/>
+                    <Route path="/tags" view=|cx| view! { cx, <Tags/> }/>
+                    <Route path="/tags/:id" view=|cx| view! { cx, <Tag/> }/>
                 </Routes>
             </main>
-            <Footer />
+            <Footer/>
         </Router>
     }
 }
 
 fn main() {
     mount_to_body(|cx| {
-        view! { cx,
-            <App />
-        }
+        view! { cx, <App/> }
     })
 }

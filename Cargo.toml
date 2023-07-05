@@ -7,6 +7,14 @@ edition = "2021"
 gray_matter = "0.2.6"
 include_dir = "0.7.3"
 leptos = "0.3.1"
+leptos_icons = { version = "0.0.14", features = [
+    "macros",
+    "AiGithubFilled",
+    "AiMailFilled",
+    "AiLinkedinFilled",
+    "AiTwitterOutlined",
+    "BiTelegram"
+] }
 leptos_router = { version = "0.3.1", features = ["hydrate"] }
 pulldown-cmark = "0.9.3"
 serde = "1.0.164"

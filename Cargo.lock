@@ -118,6 +118,7 @@ dependencies = [
  "gray_matter",
  "include_dir",
  "leptos",
+ "leptos_icons",
  "leptos_router",
  "pulldown-cmark",
  "serde",
@@ -607,6 +608,48 @@ dependencies = [
 ]
 
 [[package]]
+name = "icondata"
+version = "0.0.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7ab665a9ed65487af466b3622223459628e9b296a2b743c3ff9bfe0a409baa3f"
+dependencies = [
+ "icondata_ai",
+ "icondata_bi",
+ "icondata_core",
+ "icondata_macros",
+]
+
+[[package]]
+name = "icondata_ai"
+version = "0.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f591cfcd5dfe3f073977334c12f8b169556d5144647b1829d5f66426cfe80670"
+dependencies = [
+ "icondata_core",
+]
+
+[[package]]
+name = "icondata_bi"
+version = "0.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c37ffd3ba6047f45af80f4ffaedb8f952c4032c006132b069942e63d8e53558e"
+dependencies = [
+ "icondata_core",
+]
+
+[[package]]
+name = "icondata_core"
+version = "0.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1640a4c1d5ddd08ab1d9854ffa7a2fa3dc52339492676b6d3031e77ca579f434"
+
+[[package]]
+name = "icondata_macros"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "764e3608a0f21fa9f43f9d9237c524a9e10316d97d89b413a9c45e5dddb9b162"
+
+[[package]]
 name = "idna"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -772,6 +815,17 @@ dependencies = [
  "syn 1.0.109",
  "syn-rsx",
  "walkdir",
+]
+
+[[package]]
+name = "leptos_icons"
+version = "0.0.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2a5b746ec3a34e85a5a70fa04a51f771a9f54d559754f988e05d53b0c4b0be97"
+dependencies = [
+ "icondata",
+ "leptos",
+ "tracing",
 ]
 
 [[package]]

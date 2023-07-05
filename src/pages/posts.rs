@@ -7,6 +7,11 @@ use leptos_router::*;
 #[component]
 pub fn Posts(cx: Scope) -> impl IntoView {
     view! { cx,
+        <div class="text-center">
+            <h1 class="mt-2 py-20 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                "Posts"
+            </h1>
+        </div>
         <PostList posts=get_all_posts()/>
     }
 }
@@ -22,7 +27,7 @@ pub fn Post(cx: Scope) -> impl IntoView {
             <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 {post.metadata.title}
             </h1>
-            <PostContent content=post.content.to_string()/>
+            <PostContent content=post.content/>
         </div>
     }
 }

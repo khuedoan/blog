@@ -44,6 +44,7 @@ pub fn get_all_posts() -> HashMap<String, PostData> {
                 },
             )
         })
+        .filter(|(_k, v)| !v.metadata.draft) // TODO make this configurable
         .collect()
 }
 
