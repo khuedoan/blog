@@ -1,16 +1,30 @@
-# My personal website - [khuedoan.com](https://khuedoan.com)
+# [khuedoan.com](https://khuedoan.com) ![status](https://img.shields.io/website?label=status&style=flat-square&url=https%3A%2F%2Fkhuedoan.com)
 
-![status](https://img.shields.io/website?label=status&style=flat-square&url=https%3A%2F%2Fkhuedoan.com)
-
-Built with:
-
-- [Rust](https://www.rust-lang.org) using the [Leptos](https://leptos.dev) framework
-- [Tailwind CSS](https://tailwindcss.com) for styling
+The source code of my personal website, written in [Rust](https://www.rust-lang.org) using the [Leptos](https://leptos.dev) framework,
+and styled with [Tailwind CSS](https://tailwindcss.com).
 
 ## Project structure
 
-<!-- TODO clean this up -->
-- `content/`: Content of the blog, the structure of this directory was insprired by Hugo
-- `src/`: Source code for the blog, written in Rust using Leptos, the structure of this directory was insprired by Next.js
-- `public/`: Static assets
-- `.ci/`: CI pipelines for my custom CI system based on Tekton.
+- `content/`: content written in Markdown
+- `src/`: pages and components, inspired by [Next.js](http://nextjs.org)
+- `public/`: static assets
+
+## Development
+
+Open a shell that provides the build environment (requires Nix):
+
+```
+nix develop
+```
+
+Run the development server:
+
+```
+make dev
+```
+
+Then open <http://localhost:8080>.
+
+## Deployment
+
+TBD

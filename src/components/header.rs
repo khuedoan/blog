@@ -13,6 +13,8 @@ pub fn Header(cx: Scope) -> impl IntoView {
                     <img
                         class="h-8 w-auto rounded-full"
                         // TODO remove external hosting
+                        //avatars.githubusercontent.com/u/27996771?v=4"
+                        //avatars.githubusercontent.com/u/27996771?v=4"
                         src="https://avatars.githubusercontent.com/u/27996771?v=4"
                         alt="avatar"
                         width="64"

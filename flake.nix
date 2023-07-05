@@ -19,6 +19,7 @@
         default = pkgs.${system}.mkShellNoCC {
           packages = with pkgs.${system}; [
             cargo-leptos
+            gnumake
             libiconv
             rustup
             trunk

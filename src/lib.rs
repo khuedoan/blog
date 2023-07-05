@@ -21,7 +21,6 @@ pub struct PostMetadata {
 
 #[derive(Clone)]
 pub struct PostData {
-    pub path: String,
     pub content: String,
     pub metadata: PostMetadata,
 }
@@ -38,13 +37,12 @@ pub fn get_all_posts() -> HashMap<String, PostData> {
             (
                 post.path().to_str().unwrap().to_string(),
                 PostData {
-                    path: post.path().to_str().unwrap().to_string(),
                     metadata: front_matter,
                     content: markdown.content,
                 },
             )
         })
-        .filter(|(_k, v)| !v.metadata.draft) // TODO make this configurable
+        .filter(|(_id, post)| !post.metadata.draft) // TODO make this configurable
         .collect()
 }
 

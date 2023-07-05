@@ -33,13 +33,15 @@ fn TagLabel(cx: Scope, tag: String) -> impl IntoView {
 }
 
 #[component]
-fn PostPreview(cx: Scope, post: PostData) -> impl IntoView {
+fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
     view! { cx,
-        <article key=post.path class="relative isolate flex flex-col gap-8 lg:flex-row">
+        <article key=id class="relative isolate flex flex-col gap-8 lg:flex-row">
             <div class="relative aspect-[16/9] lg:w-64 lg:shrink-0">
                 <PostCover
                     // TODO do not hard code
                     href=format!("/posts/TODO")
+                    //www.khuedoan.com/posts/moving-around-efficiently-in-neovim/images/cover.png"
+                    //www.khuedoan.com/posts/moving-around-efficiently-in-neovim/images/cover.png"
                     src="https://www.khuedoan.com/posts/moving-around-efficiently-in-neovim/images/cover.png"
                         .to_string()
                 />
@@ -86,7 +88,9 @@ pub fn PostList(cx: Scope, posts: HashMap<String, PostData>) -> impl IntoView {
             <div class="mt-16 space-y-10 lg:mt-10 lg:space-y-10">
                 {posts
                     .iter()
-                    .map(|(_id, post)| view! { cx, <PostPreview post=post.clone()/> })
+                    .map(|(id, post)| {
+                        view! { cx, <PostPreview id=id.to_string() post=post.clone()/> }
+                    })
                     .collect_view(cx)}
             </div>
         </div>
