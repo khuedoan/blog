@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+chrono = "0.4.26"
 gray_matter = "0.2.6"
 include_dir = "0.7.3"
 leptos = "0.3.1"
