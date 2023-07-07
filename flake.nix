@@ -23,6 +23,12 @@
             libiconv
             rustup
             trunk
+
+            (nodePackages.tailwindcss.overrideAttrs (oldAttrs: {
+               plugins = [
+                 nodePackages."@tailwindcss/typography"
+               ];
+            }))
           ];
         };
       });

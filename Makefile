@@ -1,18 +1,18 @@
 .POSIX:
 
+.PHONY: default
 default: build
 
+.PHONY: dev
 dev:
 	trunk serve
 
+.PHONY: build
 build: src/styles/output.css
-	cargo build --release
+	trunk build --release
 
-# TODO build Tailwind with cargo-leptos
-# Need to install dependencies manually for now:
-# npm i -D tailwindcss @tailwindcss/typography
 src/styles/output.css: src/styles/globals.css
-	npx tailwindcss -p @tailwindcss/typography -i src/styles/globals.css -o src/styles/output.css
+	tailwindcss --minify --input src/styles/globals.css --output src/styles/output.css
 
 .PHONY: format
 format:
