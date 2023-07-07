@@ -8,11 +8,8 @@ dev:
 	trunk serve
 
 .PHONY: build
-build: src/styles/output.css
+build:
 	trunk build --release
-
-src/styles/output.css: src/styles/globals.css
-	tailwindcss --minify --input src/styles/globals.css --output src/styles/output.css
 
 .PHONY: format
 format:
