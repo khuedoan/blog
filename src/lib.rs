@@ -35,7 +35,12 @@ pub fn get_all_posts() -> HashMap<String, PostData> {
             let markdown = matter.parse(post.contents_utf8().unwrap());
             let front_matter: PostMetadata = markdown.data.unwrap().deserialize().unwrap();
             (
-                post.path().file_stem().unwrap().to_str().unwrap().to_string(),
+                post.path()
+                    .file_stem()
+                    .unwrap()
+                    .to_str()
+                    .unwrap()
+                    .to_string(),
                 PostData {
                     metadata: front_matter,
                     content: markdown.content,

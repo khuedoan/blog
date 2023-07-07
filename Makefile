@@ -13,3 +13,8 @@ build: src/styles/output.css
 # npm i -D tailwindcss @tailwindcss/typography
 src/styles/output.css: src/styles/globals.css
 	npx tailwindcss -p @tailwindcss/typography -i src/styles/globals.css -o src/styles/output.css
+
+.PHONY: format
+format:
+	cargo fmt
+	leptosfmt .

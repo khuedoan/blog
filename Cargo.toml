@@ -19,3 +19,7 @@ leptos_icons = { version = "0.0.14", features = [
 leptos_router = { version = "0.3.1", features = ["hydrate"] }
 pulldown-cmark = "0.9.3"
 serde = "1.0.164"
+
+# TODO optimize WASM binary size
+# https://leptos-rs.github.io/leptos/appendix_binary_size.html
+# [profile.release]

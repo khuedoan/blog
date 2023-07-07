@@ -1,5 +1,5 @@
+use chrono::{Datelike, Utc};
 use leptos::*;
-use chrono::prelude::*;
 
 #[component]
 pub fn Footer(cx: Scope) -> impl IntoView {
