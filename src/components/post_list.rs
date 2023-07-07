@@ -24,8 +24,8 @@ fn PostCover(cx: Scope, href: String, src: String) -> impl IntoView {
 fn TagLabel(cx: Scope, tag: String) -> impl IntoView {
     view! { cx,
         <a
+            class="inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium text-gray-900 ring-1 ring-inset ring-gray-200"
             href=format!("/tags/{tag}")
-            class="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
         >
             {tag}
         </a>

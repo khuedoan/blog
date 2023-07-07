@@ -14,10 +14,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
                     <span class="sr-only">"Khue Doan"</span>
                     <img
                         class="h-8 w-auto rounded-full"
-                        // TODO remove external hosting
-                        //avatars.githubusercontent.com/u/27996771?v=4"
-                        //avatars.githubusercontent.com/u/27996771?v=4"
-                        src="https://avatars.githubusercontent.com/u/27996771?v=4"
+                        src="/public/avatar.jpg"
                         alt="avatar"
                         width="64"
                         height="64"
