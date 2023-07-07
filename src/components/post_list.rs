@@ -1,4 +1,4 @@
-use blog::PostData;
+use crate::content::{markdown_to_html, PostData};
 use leptos::*;
 use std::collections::HashMap;
 
@@ -64,10 +64,10 @@ fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
                             {post.metadata.title}
                         </a>
                     </h2>
-                    <div class="prose mt-5 text-sm leading-6 text-gray-600">
-                        // TODO render Markdown
-                        <p>{post.metadata.summary}</p>
-                    </div>
+                    <div
+                        class="prose mt-5 text-sm leading-6 text-gray-600"
+                        inner_html=markdown_to_html(post.metadata.summary)
+                    ></div>
                 </div>
             </div>
         </article>
