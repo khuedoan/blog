@@ -1,8 +1,7 @@
 ---
 title: Moving Around Efficiently in Neovim
 date: 2023-06-04T00:02:28+07:00
-cover:
-  image: images/cover.png
+cover: images/cover.png
 summary: Some quick tips to help you move around faster in Neovim
 tags:
   - vim

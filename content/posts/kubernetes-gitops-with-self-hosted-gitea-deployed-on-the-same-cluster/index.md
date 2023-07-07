@@ -2,8 +2,6 @@
 title: GitOps with ArgoCD and self-hosted Gitea deployed on the same Kubernetes cluster
 date: 2022-01-01T09:46:26+07:00
 summary: How to solve the chicken and egg problem in GitOps when you self-host your own Git service
-cover:
-  image: TODO
 tags:
   - kubernetes
   - gitops

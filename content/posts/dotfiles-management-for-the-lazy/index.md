@@ -1,8 +1,6 @@
 ---
 title: Dotfiles Management for the Lazy
 date: 2023-04-06T09:20:04+07:00
-cover:
-  image: TODO
 tags:
   - dotfiles
 draft: true

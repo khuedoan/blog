@@ -1,8 +1,6 @@
 ---
 title: Backup Your Otp
 date: 2023-05-13T14:15:45+07:00
-cover:
-  image: TODO
 tags:
   - TODO
 draft: true

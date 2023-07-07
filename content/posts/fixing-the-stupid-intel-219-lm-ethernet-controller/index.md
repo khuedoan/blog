@@ -1,8 +1,6 @@
 ---
 title: Fixing the Stupid Intel 219-LM Ethernet Controller in Linux
 date: 2023-03-07T10:57:41+07:00
-cover:
-  image: TODO
 tags:
   - TODO
 draft: true

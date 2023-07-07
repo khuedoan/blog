@@ -1,8 +1,6 @@
 ---
 title: How I Deployed My Blog on Kubernetes
 date: 2021-09-13T14:06:25+07:00
-cover:
-  image: TODO
 tags:
   - TODO
 draft: true

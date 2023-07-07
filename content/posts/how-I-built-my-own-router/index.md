@@ -1,8 +1,6 @@
 ---
 title: How I Built My Own Router
 date: 2022-10-16T10:44:25+07:00
-cover:
-  image: TODO
 tags:
   - TODO
 draft: true

@@ -1,8 +1,6 @@
 ---
 title: Should You Learn Vim?
 date: 2023-05-10T08:27:36+07:00
-cover:
-  image: TODO
 tags:
   - vim
   - neovim

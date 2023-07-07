@@ -2,8 +2,6 @@
 title: Tiny but mighty PC build amidst the GPU crisis (late 2021)
 summary: A tiny 5 liters PC with great performance for $1100 with some compromises due to the GPU sortage
 date: 2021-10-23T20:47:06+07:00
-cover:
-  image: TODO
 tags:
   - benchmark
   - gaming
