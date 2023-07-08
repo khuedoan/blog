@@ -20,8 +20,8 @@ pub fn Tags(cx: Scope) -> impl IntoView {
 pub fn Tag(cx: Scope) -> impl IntoView {
     let params = use_params_map(cx);
     let tag = move || params().get("id").cloned().unwrap();
-    let post_list = move || view! { cx,
-        <PostList posts=get_posts_by_tag(tag())/>
+    let post_list = move || {
+        view! { cx, <PostList posts=get_posts_by_tag(tag())/> }
     };
 
     view! { cx,

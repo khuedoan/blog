@@ -43,8 +43,11 @@ fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
             <div>
                 <div class="flex items-center gap-x-4 text-xs">
                     <p>
-                        // TODO parse date
-                        {post.metadata.date}
+                        // TODO DRY
+                        {chrono::DateTime::parse_from_rfc3339(&post.metadata.date)
+                            .unwrap()
+                            .format("%e %b %Y")
+                            .to_string()}
                     </p>
                     {post
                         .metadata
