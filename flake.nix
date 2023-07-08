@@ -18,8 +18,8 @@
       devShells = forAllSystems (system: {
         default = pkgs.${system}.mkShellNoCC {
           packages = with pkgs.${system}; [
-            cargo-leptos
-            gcc
+            # TODO wait for v0.1.11
+            # cargo-leptos
             gnumake
             libiconv
             rustup

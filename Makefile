@@ -5,11 +5,11 @@ default: build
 
 .PHONY: dev
 dev:
-	trunk serve
+	cargo leptos watch
 
 .PHONY: build
 build:
-	trunk build --release
+	cargo leptos build --release
 
 .PHONY: format
 format:

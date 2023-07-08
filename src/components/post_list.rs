@@ -1,7 +1,7 @@
 use crate::content::{markdown_to_html, PostData};
+use itertools::Itertools;
 use leptos::*;
 use std::collections::HashMap;
-use itertools::Itertools;
 
 #[component]
 fn PostCover(cx: Scope, href: String, src: String) -> impl IntoView {
@@ -38,10 +38,7 @@ fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
     view! { cx,
         <article key=id.clone() class="relative isolate flex flex-col gap-8 lg:flex-row">
             <div class="relative aspect-[16/9] lg:w-64 lg:shrink-0">
-                <PostCover
-                    href=format!("/posts/{}", id.clone())
-                    src=post.metadata.cover
-                />
+                <PostCover href=format!("/posts/{}", id.clone()) src=post.metadata.cover/>
             </div>
             <div>
                 <div class="flex items-center gap-x-4 text-xs">

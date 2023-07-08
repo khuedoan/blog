@@ -3,13 +3,20 @@ name = "blog"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
+axum = { version = "0.6.18", optional = true }
+cfg-if = "1.0.0"
 chrono = "0.4.26"
 gray_matter = "0.2.6"
 include_dir = "0.7.3"
-leptos = "0.3.1"
-leptos_icons = { version = "0.0.14", features = [
 itertools = "0.11.0"
+leptos = { version = "0.4.0", features = ["nightly"] }
+leptos_axum = { version = "0.4.1", optional = true }
+# TODO pin version
+leptos_icons = { git = "https://github.com/Carlosted/leptos-icons", features = [
     "macros",
     "AiGithubFilled",
     "AiMailFilled",
@@ -17,9 +24,24 @@ itertools = "0.11.0"
     "AiTwitterOutlined",
     "BiTelegram"
 ] }
-leptos_router = { version = "0.3.1", features = ["hydrate"] }
+leptos_meta = { version = "0.4.1", features = ["nightly"]}
+leptos_router = { version = "0.4.1", features = ["nightly"] }
 pulldown-cmark = "0.9.3"
 serde = "1.0.164"
+tokio = { version = "1.29.1", optional = true }
+tower = { version = "0.4.13", optional = true }
+tower-http = { version = "0.4.1", features = ["fs"], optional = true }
+wasm-bindgen = "0.2.87"
+
+[features]
+ssr = ["dep:axum", "dep:leptos_axum", "dep:tokio", "dep:tower", "dep:tower-http", "leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr"]
+hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
+
+[package.metadata.leptos]
+assets-dir = "public"
+bin-features = ["ssr"]
+lib-features = ["hydrate"]
+tailwind-input-file = "src/styles/globals.css"
 
 # TODO optimize WASM binary size
 # https://leptos-rs.github.io/leptos/appendix_binary_size.html

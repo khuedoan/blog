@@ -1,9 +1,9 @@
 use gray_matter::engine::YAML;
 use gray_matter::Matter;
+use include_dir::*;
 use pulldown_cmark::{html, Options, Parser};
 use serde::Deserialize;
 use std::collections::HashMap;
-use include_dir::*;
 
 #[derive(Deserialize, Clone)]
 pub struct PostMetadata {
