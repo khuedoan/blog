@@ -1,18 +1,25 @@
-FROM alpine as build
+FROM rust as builder
 
-WORKDIR /usr/local/src/
+WORKDIR /app
 
-RUN apk add \
-    git \
-    go \
-    hugo
+RUN apt-get update && apt-get install -y pkg-config openssl libssl-dev
 
+RUN cargo install --git https://github.com/leptos-rs/cargo-leptos cargo-leptos
+
+# TODO optimize build speed and image size
 COPY . .
 
-RUN hugo --minify
+RUN cargo leptos build --release
 
-FROM nginx:alpine
+FROM debian:12-slim
 
-COPY --from=build /usr/local/src/public /usr/share/nginx/html
+COPY --from=builder /app/target/server/release/blog /app/target/server/release/blog
+COPY --from=builder /app/target/site /app/target/site
 
-EXPOSE 80
+WORKDIR /app
+
+ENV LEPTOS_SITE_ADDR="0.0.0.0:3000"
+
+EXPOSE 3000
+
+CMD ["./target/server/release/blog"]

@@ -1,13 +1,17 @@
 .POSIX:
 
+.PHONY: default
 default: build
 
+.PHONY: dev
 dev:
-	hugo server --buildDrafts
+	cargo leptos watch
 
+.PHONY: build
 build:
-	hugo --minify
+	cargo leptos build --release
 
-new:
-	hugo new --kind default posts/$(name)/index.md
-	${EDITOR} content/posts/$(name)/index.md
+.PHONY: format
+format:
+	cargo fmt
+	leptosfmt .
