@@ -1,17 +1,7 @@
+use crate::content::markdown_to_html;
 use leptos::*;
-use pulldown_cmark::{html, Options, Parser};
 
 #[component]
 pub fn PostContent(cx: Scope, content: String) -> impl IntoView {
-    let mut options = Options::empty();
-    options.insert(Options::ENABLE_TABLES);
-    options.insert(Options::ENABLE_FOOTNOTES);
-    options.insert(Options::ENABLE_STRIKETHROUGH);
-    options.insert(Options::ENABLE_TASKLISTS);
-
-    let parser = Parser::new_ext(&content, options);
-    let mut html = String::new();
-    html::push_html(&mut html, parser);
-
-    view! { cx, <div class="prose max-w-none" inner_html=html></div> }
+    view! { cx, <div class="prose max-w-none" inner_html=markdown_to_html(content)></div> }
 }

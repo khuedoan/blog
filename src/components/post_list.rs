@@ -40,9 +40,7 @@ fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
             <div class="relative aspect-[16/9] lg:w-64 lg:shrink-0">
                 <PostCover
                     href=format!("/posts/{}", id.clone())
-                    // TODO use static images
-                    src="https://www.khuedoan.com/posts/moving-around-efficiently-in-neovim/images/cover.png"
-                        .to_string()
+                    src=post.metadata.cover
                 />
             </div>
             <div>

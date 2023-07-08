@@ -1,6 +1,6 @@
 use crate::components::post_content::*;
 use crate::components::post_list::*;
-use blog::{get_all_posts, get_post};
+use crate::content::{get_all_posts, get_post};
 use leptos::*;
 use leptos_router::*;
 

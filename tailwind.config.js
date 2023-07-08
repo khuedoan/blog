@@ -4,30 +4,7 @@ module.exports = {
     "./src/**/*.rs",
   ],
   theme: {
-    extend: {
-      typography: {
-        DEFAULT: {
-          css: {
-            // TODO make the in-line code look better
-            code: {
-              backgroundColor: "#eff1f3",
-              "border-radius": "0.25rem",
-              fontWeight: 400,
-            },
-            "code::before": {
-              content: '""',
-            },
-            "code::after": {
-              content: '""',
-            },
-            "pre": null,
-            "pre code": null,
-            "pre code::before": null,
-            "pre code::after": null,
-          },
-        },
-      },
-    },
+    // TODO make code looks better
   },
   plugins: [
     require("@tailwindcss/typography"),

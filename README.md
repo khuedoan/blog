@@ -1,13 +1,49 @@
 # [khuedoan.com](https://khuedoan.com) ![status](https://img.shields.io/website?label=status&style=flat-square&url=https%3A%2F%2Fkhuedoan.com)
 
-The source code of my personal website, written in [Rust](https://www.rust-lang.org) using the [Leptos](https://leptos.dev) framework,
-and styled with [Tailwind CSS](https://tailwindcss.com).
+This is the source code of my personal website at <https://khuedoan.com>, written in [Rust](https://www.rust-lang.org)
+using the [Leptos](https://leptos.dev) framework, and styled with [Tailwind CSS](https://tailwindcss.com).
 
 ## Project structure
 
 - `content/`: content written in Markdown
 - `src/`: pages and components, inspired by [Next.js](http://nextjs.org)
 - `public/`: static assets
+
+## Content convention
+
+```
+content
+├── about.md
+└── posts
+    └── example-post.md
+public
+├── any-static-file-here.txt
+└── images
+    ├── avatar.jpg
+    ├── cat-picture.jpg
+    └── example-post-cover.png
+```
+
+Posts are placed in `content/posts`, each post is a Markdown file with a YAML front matter block:
+
+```
+---
+title: Example post
+summary: This is an example post
+date: 2023-01-01T00:00:00+07:00
+cover: /images/example-post-cover.png
+tags:
+  - foo
+  - bar
+---
+
+## Example heading
+
+![Files inside `./public` can be referenced by your code starting from the base URL](/images/cat-picture.jpg)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+```
 
 ## Development
 
@@ -23,7 +59,7 @@ Run the development server:
 make dev
 ```
 
-Then open <http://localhost:8080>.
+Then open <http://localhost:3000>.
 
 ## Deployment
 
