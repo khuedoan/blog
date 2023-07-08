@@ -77,7 +77,6 @@ pub fn PostList(cx: Scope, posts: HashMap<String, PostData>) -> impl IntoView {
             <div class="mt-16 space-y-10 lg:mt-10 lg:space-y-10">
                 {posts
                     .iter()
-                    // TODO clean this up, use proper DateTime type
                     .sorted_by(|(_, a), (_, b)| b.metadata.date.cmp(&a.metadata.date))
                     .map(|(id, post)| {
                         view! { cx, <PostPreview id=id.to_string() post=post.clone()/> }

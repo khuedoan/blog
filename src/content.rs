@@ -81,6 +81,22 @@ pub fn get_all_posts() -> HashMap<String, PostData> {
         .collect()
 }
 
+pub fn get_all_tags() -> Vec<String> {
+    let mut tags: Vec<String> = Vec::new();
+
+    get_all_posts().values().for_each(|post| {
+        post.metadata.tags.iter().for_each(|tag| {
+            if !tags.contains(tag) {
+                tags.push(tag.clone());
+            }
+        })
+    });
+
+    tags.sort();
+
+    tags
+}
+
 pub fn get_post(id: String) -> PostData {
     get_all_posts().get(&id).cloned().unwrap()
 }
