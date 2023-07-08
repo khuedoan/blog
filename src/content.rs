@@ -5,7 +5,7 @@ use pulldown_cmark::{html, Options, Parser};
 use serde::Deserialize;
 use std::collections::HashMap;
 
-#[derive(Deserialize, Clone)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct PostMetadata {
     #[serde(default)]
     pub date: String,
@@ -21,7 +21,7 @@ pub struct PostMetadata {
     pub cover: String,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct PostData {
     pub metadata: PostMetadata,
     pub content: String,
@@ -95,6 +95,13 @@ pub fn get_all_tags() -> Vec<String> {
     tags.sort();
 
     tags
+}
+
+pub fn get_posts_by_tag(tag: String) -> HashMap<String, PostData> {
+    get_all_posts()
+        .into_iter()
+        .filter(|(_id, post)| post.metadata.tags.contains(&tag))
+        .collect()
 }
 
 pub fn get_post(id: String) -> PostData {

@@ -2,6 +2,7 @@ use crate::components::post_content::*;
 use crate::components::post_list::*;
 use crate::content::{get_all_posts, get_post};
 use leptos::*;
+use leptos_meta::*;
 use leptos_router::*;
 
 #[component]
@@ -23,6 +24,8 @@ pub fn Post(cx: Scope) -> impl IntoView {
     let post = get_post(id());
 
     view! { cx,
+        <Title text=post.metadata.title.clone()/>
+
         <div class="mx-auto max-w-3xl px-6 lg:px-8">
             <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 {post.metadata.title}

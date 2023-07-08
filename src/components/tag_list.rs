@@ -6,9 +6,7 @@ fn Tag(cx: Scope, tag: String) -> impl IntoView {
         <a href=format!("/tags/{tag}")>
             <div class="flex flex-1 items-center justify-between truncate rounded-md border border-gray-200 bg-white">
                 <div class="flex-1 truncate px-4 py-2 text-sm">
-                    <p class="font-medium text-gray-900 hover:text-gray-600">
-                        <code>{tag}</code>
-                    </p>
+                    <code class="font-medium text-gray-900 hover:text-gray-600">{tag}</code>
                 </div>
             </div>
         </a>
