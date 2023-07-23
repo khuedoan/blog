@@ -1,37 +1,42 @@
 {
+  description = "Khue Doan's Blog";
+
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
   };
 
-  outputs = { self, nixpkgs }:
-    let
-      supportedSystems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      pkgs = forAllSystems (system: nixpkgs.legacyPackages.${system});
-    in
-    {
-      devShells = forAllSystems (system: {
-        default = pkgs.${system}.mkShellNoCC {
-          packages = with pkgs.${system}; [
-            # TODO wait for v0.1.11
-            # cargo-leptos
+  outputs = { self, nixpkgs, flake-utils, rust-overlay }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs =  import nixpkgs {
+          inherit system;
+          overlays = [
+            (import rust-overlay)
+          ];
+        };
+      in
+      with pkgs;
+      {
+        devShells.default = mkShell {
+          packages = [
+            cargo-leptos
             gnumake
-            libiconv
-            rustup
-            trunk
-
-            (nodePackages.tailwindcss.overrideAttrs (oldAttrs: {
-               plugins = [
-                 nodePackages."@tailwindcss/typography"
-               ];
+            (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+            (nodePackages.tailwindcss.overrideAttrs (attrs: {
+              plugins = [
+                nodePackages."@tailwindcss/typography"
+              ];
             }))
           ];
         };
-      });
-    };
+      }
+    );
 }

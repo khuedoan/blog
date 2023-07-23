@@ -73,3 +73,4 @@ Then open <http://localhost:3000>.
 - [leptos-rs/start-axum](https://github.com/leptos-rs/start-axum): code examples
 - [leptos-rs/leptos-website](https://github.com/leptos-rs/leptos-website): code examples, Nix and Docker config
 - [Tailwind UI](https://tailwindui.com): styled components (highly recommended, but it is not free; you can get lifetime access for a one-time fee)
+- [Making a dev shell with nix flakes](https://fasterthanli.me/series/building-a-rust-service-with-nix/part-10): Nix flake
