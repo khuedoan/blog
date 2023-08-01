@@ -2,6 +2,8 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
+use crate::error_template::{AppError, ErrorTemplate};
+
 use crate::pages::about::*;
 use crate::pages::home::*;
 use crate::pages::posts::*;
@@ -18,7 +20,14 @@ pub fn App(cx: Scope) -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/blog.css"/>
         <Title text="Khue Doan"/>
 
-        <Router>
+        <Router fallback=|cx| {
+            let mut outside_errors = Errors::default();
+            outside_errors.insert_with_default_key(AppError::NotFound);
+            view! { cx,
+                <ErrorTemplate outside_errors/>
+            }
+            .into_view(cx)
+        }>
             <Header/>
             <main>
                 <Routes>

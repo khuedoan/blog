@@ -1,9 +1,11 @@
+use cfg_if::cfg_if;
+
 pub mod app;
 pub mod components;
 pub mod content;
+pub mod error_template;
+pub mod file_serve;
 pub mod pages;
-
-use cfg_if::cfg_if;
 
 cfg_if! { if #[cfg(feature = "hydrate")] {
     use leptos::*;
@@ -12,6 +14,9 @@ cfg_if! { if #[cfg(feature = "hydrate")] {
 
     #[wasm_bindgen]
     pub fn hydrate() {
+        _ = console_log::init_with_level(log::Level::Debug);
+        console_error_panic_hook::set_once();
+
         leptos::mount_to_body(move |cx| {
             view! { cx, <App/> }
         });

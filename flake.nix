@@ -27,6 +27,7 @@
       {
         devShells.default = mkShell {
           packages = [
+            binaryen
             cargo-leptos
             gnumake
             (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)

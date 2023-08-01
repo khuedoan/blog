@@ -7,42 +7,41 @@ edition = "2021"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-axum = { version = "0.6.18", optional = true }
-cfg-if = "1.0.0"
-chrono = "0.4.26"
-gray_matter = "0.2.6"
-include_dir = "0.7.3"
-itertools = "0.11.0"
-leptos = { version = "0.4.0", features = ["nightly"] }
-leptos_axum = { version = "0.4.1", optional = true }
-# TODO pin version
-leptos_icons = { git = "https://github.com/Carlosted/leptos-icons", features = [
-    "macros",
-    "AiGithubFilled",
-    "AiMailFilled",
-    "AiLinkedinFilled",
-    "AiTwitterOutlined",
-    "BiTelegram"
-] }
-leptos_meta = { version = "0.4.1", features = ["nightly"]}
-leptos_router = { version = "0.4.1", features = ["nightly"] }
-pulldown-cmark = "0.9.3"
-serde = "1.0.164"
-tokio = { version = "1.29.1", optional = true }
+axum = { version = "0.6.4", optional = true }
+console_error_panic_hook = "0.1"
+console_log = "1"
+cfg-if = "1"
+leptos = { version = "0.4", features = ["nightly"] }
+leptos_axum = { version = "0.4", optional = true }
+leptos_meta = { version = "0.4", features = ["nightly"] }
+leptos_router = { version = "0.4", features = ["nightly"] }
+log = "0.4"
+simple_logger = "4"
+tokio = { version = "1.25.0", optional = true }
 tower = { version = "0.4.13", optional = true }
-tower-http = { version = "0.4.1", features = ["fs"], optional = true }
-wasm-bindgen = "0.2.87"
+tower-http = { version = "0.4", features = ["fs"], optional = true }
+wasm-bindgen = "=0.2.87"
+thiserror = "1.0.38"
+tracing = { version = "0.1.37", optional = true }
+http = "0.2.8"
+itertools = "0.11.0"
+leptos_icons = { version = "0.0.15", features = ["macros", "AiGithubFilled", "AiMailFilled", "AiLinkedinFilled", "AiTwitterOutlined", "BiTelegram"] }
+chrono = "0.4.26"
+serde = "1.0.174"
+include_dir = "0.7.3"
+pulldown-cmark = "0.9.3"
+gray_matter = "0.2.6"
 
 [features]
-ssr = ["dep:axum", "dep:leptos_axum", "dep:tokio", "dep:tower", "dep:tower-http", "leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr"]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
+ssr = ["dep:axum", "dep:tokio", "dep:tower", "dep:tower-http", "dep:leptos_axum", "leptos/ssr", "leptos_meta/ssr", "leptos_router/ssr", "dep:tracing"]
+
+[package.metadata.cargo-all-features]
+denylist = ["axum", "tokio", "tower", "tower-http", "leptos_axum"]
+skip_feature_sets = [["ssr", "hydrate"]]
 
 [package.metadata.leptos]
 assets-dir = "public"
 bin-features = ["ssr"]
 lib-features = ["hydrate"]
 tailwind-input-file = "src/styles/globals.css"
-
-# TODO optimize WASM binary size
-# https://leptos-rs.github.io/leptos/appendix_binary_size.html
-# [profile.release]
