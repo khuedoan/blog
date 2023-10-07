@@ -3,7 +3,7 @@ title: Minimal, no-nonsense Neovim setup from scratch
 summary: Turn Neovim from zero to IDE in half an hour
 date: 2023-10-07T21:51:00+07:00
 tags:
-  - neovim
+  - vim
 draft: true
 ---
 
@@ -58,13 +58,6 @@ We also want the ability to undo after we exit and reopen the file:
 
 ```lua
 vim.opt.undofile = true
-```
-
-Many times I find myself editing the same file in multiple Neovim instances.
-Adjusting some backup config should avoid multiple instances from stepping on each other's toes:
-
-```sh
-TODO
 ```
 
 Better window splitting behaviour (the default is fine, but most people will find this more natural since it mimics how they read a normal document - top to bottom, left to right):
@@ -239,34 +232,52 @@ I recommend [lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim) for be
         },
         config = function()
             local lsp_zero = require('lsp-zero')
-            
+
             lsp_zero.on_attach(function(client, bufnr)
-              -- see :help lsp-zero-keybindings
-              lsp_zero.default_keymaps({buffer = bufnr})
+                lsp_zero.default_keymaps({buffer = bufnr})
             end)
-            
-            -- see :help lsp-zero-guide:integrate-with-mason-nvim
-            require('mason').setup({})
-            require('mason-lspconfig').setup({
-              handlers = {
-                lsp_zero.default_setup,
-              }
+
+            require("mason").setup()
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+                    "gopls", -- Go
+                    "pyright", -- Python
+                    "rust_analyzer", -- Rust
+                },
+                handlers = {
+                    lsp_zero.default_setup,
+                },
             })
         end,
-    }
+    },
 ```
 
-This should be enough for you to get started. Then you can remove `lsp-zero.nvim` and build a custom LSP setup once you need it.
-There's a lot going on in the above config, so I'll explain it a bit:
+There's a lot going on in the above config, so I'll explain it a bit.
+Several plugins work together to handle the installation, configuration, and integration of language servers with Neovim:
 
-```
-TODO ADD EXPLAINATION HERE
-```
+- `mason`: simplifies the management and installation of LSP servers (you can easily add more servers to the `ensure_installed` list)
+- `lspconfig`: the official Neovim plugin for configuring LSP servers
+- `cmp`: a completion plugin that integrates with LSP servers to provide intelligent code suggestions and autocompletions
 
-There's also treesitter for better syntax highlighting and additional text objects. It's not essential so I won't cover it in this tutorial,
-but it's still worth look into.
+Some basic keybindings:
 
-At this point, it should be enough for daily use. Keep reading if you want more!
+- `<C-n>`: next item in the completion menu
+- `<C-p>`: previous item in the completion menu
+- `<C-y>`: confirms selection
+- `<C-e>`: cancel the completion
+- `gd`: go to definition
+- `gi`: go to implementation
+- See [here](https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/lsp.md) for the full list and how to customize your keymaps
+
+This should be sufficient to get you started. After you've mastered the basics, consider the following suggestions:
+
+- [Add more snippets](https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/autocomplete.md#add-an-external-collection-of-snippets)
+- Consider [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for better syntax highlighting and additional text objects
+- When you require more customization, you can remove `lsp-zero.nvim` and build a custom LSP setup
+
+At this stage, your Neovim configuration should be sufficient for daily use.
+Keep reading if you want more!
 
 ## Quality of life improvements
 
@@ -331,7 +342,6 @@ While you don't need these plugins to edit effectively, they can certainly make 
     },
 ```
 
-
 ## Eye candy
 
 Last but not least, it's pretty hard to resist a nice theme!
@@ -364,7 +374,7 @@ After building the essential pieces of your config, just keep using Neovim and g
 The most important part is to try to note the inefficiencies in your day-to-day workflow and find a way to improve it, either with built-in features or additional plugins.
 There are some extremely valuable videos on that subject:
 
-- [7 Habits For Effective Text Editing](https://www.youtube.com/watch?v=eX9m3g5J-XA) by Bram Moolenaar (the creator of Vim)
+- [7 Habits For Effective Text Editing](https://www.youtube.com/watch?v=eX9m3g5J-XA) by Bram Moolenaar - the creator of Vim (great respect, RIP)
 - [How to Do 90% of What Plugins Do](https://www.youtube.com/watch?v=XA2WjJbmmoM) by Max Cantor
 
 Trust the process, keep improving, and I promise you will be faster in Neovim than any other IDE could ever dream of.
