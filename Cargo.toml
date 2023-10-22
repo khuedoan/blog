@@ -45,3 +45,4 @@ assets-dir = "public"
 bin-features = ["ssr"]
 lib-features = ["hydrate"]
 tailwind-input-file = "src/styles/globals.css"
+watch-additional-files = ["content/"]
