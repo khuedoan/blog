@@ -1,4 +1,6 @@
 use leptos::*;
+use leptos_icons::AiIcon::*;
+use leptos_icons::BiIcon::*;
 use leptos_icons::*;
 
 struct Social<'a> {
@@ -8,41 +10,41 @@ struct Social<'a> {
 }
 
 #[component]
-fn SocialIcons(cx: Scope) -> impl IntoView {
+fn SocialIcons() -> impl IntoView {
     let socials = [
         Social {
             name: "Mail",
             url: "mailto:mail@khuedoan.com",
-            icon: icon!(AiMailFilled),
+            icon: Icon::from(AiMailFilled),
         },
         Social {
             name: "GitHub",
             url: "https://github.com/khuedoan",
-            icon: icon!(AiGithubFilled),
+            icon: Icon::from(AiGithubFilled),
         },
         Social {
             name: "LinkedIn",
             url: "https://linkedin.com/in/khuedoan",
-            icon: icon!(AiLinkedinFilled),
+            icon: Icon::from(AiLinkedinFilled),
         },
         Social {
             name: "Twitter",
             url: "https://twitter.com/KhueDoanID",
-            icon: icon!(AiTwitterOutlined),
+            icon: Icon::from(AiTwitterOutlined),
         },
         Social {
             name: "Telegram",
             url: "https://t.me/khuedoan",
-            icon: icon!(BiTelegram),
+            icon: Icon::from(BiTelegram),
         },
     ];
 
-    view! { cx,
+    view! {
         <div class="mt-10 flex justify-center space-x-5">
             {socials
                 .iter()
                 .map(|social| {
-                    view! { cx,
+                    view! {
                         <a
                             key=social.name
                             href=social.url
@@ -54,14 +56,14 @@ fn SocialIcons(cx: Scope) -> impl IntoView {
                         </a>
                     }
                 })
-                .collect_view(cx)}
+                .collect_view()}
         </div>
     }
 }
 
 #[component]
-fn Gradient(cx: Scope) -> impl IntoView {
-    view! { cx,
+fn Gradient() -> impl IntoView {
+    view! {
         <div
             class="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 transform-gpu justify-center overflow-hidden blur-3xl sm:bottom-0 sm:right-[calc(50%-6rem)] sm:top-auto sm:translate-y-0 sm:transform-gpu sm:justify-end"
             aria-hidden="true"
@@ -84,8 +86,8 @@ fn Gradient(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-pub fn Intro(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn Intro() -> impl IntoView {
+    view! {
         <div class="relative isolate px-6 pt-14 lg:px-8">
             <Gradient/>
             <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:py-28">

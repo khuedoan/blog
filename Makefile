@@ -11,7 +11,7 @@ dev:
 build:
 	cargo leptos build --release
 
-.PHONY: format
-format:
+.PHONY: fmt
+fmt:
 	cargo fmt
 	leptosfmt .

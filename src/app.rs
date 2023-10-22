@@ -13,30 +13,27 @@ use crate::components::footer::*;
 use crate::components::header::*;
 
 #[component]
-pub fn App(cx: Scope) -> impl IntoView {
-    provide_meta_context(cx);
+pub fn App() -> impl IntoView {
+    provide_meta_context();
 
-    view! { cx,
+    view! {
         <Stylesheet id="leptos" href="/pkg/blog.css"/>
         <Title text="Khue Doan"/>
 
-        <Router fallback=|cx| {
+        <Router fallback=|| {
             let mut outside_errors = Errors::default();
             outside_errors.insert_with_default_key(AppError::NotFound);
-            view! { cx,
-                <ErrorTemplate outside_errors/>
-            }
-            .into_view(cx)
+            view! { <ErrorTemplate outside_errors/> }.into_view()
         }>
             <Header/>
             <main>
                 <Routes>
-                    <Route path="/" view=|cx| view! { cx, <Home/> }/>
-                    <Route path="/about" view=|cx| view! { cx, <About/> }/>
-                    <Route path="/posts" view=|cx| view! { cx, <Posts/> }/>
-                    <Route path="/posts/:id" view=|cx| view! { cx, <Post/> }/>
-                    <Route path="/tags" view=|cx| view! { cx, <Tags/> }/>
-                    <Route path="/tags/:id" view=|cx| view! { cx, <Tag/> }/>
+                    <Route path="/" view=|| view! { <Home/> }/>
+                    <Route path="/about" view=|| view! { <About/> }/>
+                    <Route path="/posts" view=|| view! { <Posts/> }/>
+                    <Route path="/posts/:id" view=|| view! { <Post/> }/>
+                    <Route path="/tags" view=|| view! { <Tags/> }/>
+                    <Route path="/tags/:id" view=|| view! { <Tag/> }/>
                 </Routes>
             </main>
             <Footer/>

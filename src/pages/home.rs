@@ -5,8 +5,8 @@ use crate::components::post_list::*;
 use crate::content::get_all_posts;
 
 #[component]
-pub fn Home(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn Home() -> impl IntoView {
+    view! {
         <Intro/>
         <PostList posts=get_all_posts()/>
     }

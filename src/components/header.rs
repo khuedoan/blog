@@ -1,10 +1,10 @@
 use leptos::*;
 
 #[component]
-pub fn Header(cx: Scope) -> impl IntoView {
+pub fn Header() -> impl IntoView {
     let nav_items = [("About", "/about"), ("Posts", "/posts"), ("Tags", "/tags")];
 
-    view! { cx,
+    view! {
         <header class="relative z-50">
             <nav
                 class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
@@ -25,7 +25,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
                     {nav_items
                         .iter()
                         .map(|(name, href)| {
-                            view! { cx,
+                            view! {
                                 <a
                                     class="text-sm font-semibold leading-6 text-gray-900"
                                     href=href.to_string()
@@ -34,7 +34,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
                                 </a>
                             }
                         })
-                        .collect_view(cx)}
+                        .collect_view()}
                 </div>
             </nav>
         </header>

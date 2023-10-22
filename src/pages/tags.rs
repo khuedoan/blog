@@ -5,8 +5,8 @@ use leptos::*;
 use leptos_router::*;
 
 #[component]
-pub fn Tags(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn Tags() -> impl IntoView {
+    view! {
         <div class="mx-auto max-w-3xl px-6 lg:px-8">
             <h1 class="mt-2 py-20 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 "Tags"
@@ -17,14 +17,14 @@ pub fn Tags(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-pub fn Tag(cx: Scope) -> impl IntoView {
-    let params = use_params_map(cx);
+pub fn Tag() -> impl IntoView {
+    let params = use_params_map();
     let tag = move || params().get("id").cloned().unwrap();
     let post_list = move || {
-        view! { cx, <PostList posts=get_posts_by_tag(tag())/> }
+        view! { <PostList posts=get_posts_by_tag(tag())/> }
     };
 
-    view! { cx,
+    view! {
         <h1 class="mt-2 py-20 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             <code>{tag}</code>
         </h1>

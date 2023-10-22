@@ -4,8 +4,8 @@ use leptos::*;
 use std::collections::HashMap;
 
 #[component]
-fn PostCover(cx: Scope, href: String, src: String) -> impl IntoView {
-    view! { cx,
+fn PostCover(href: String, src: String) -> impl IntoView {
+    view! {
         <a href=href>
             <img
                 class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
@@ -22,8 +22,8 @@ fn PostCover(cx: Scope, href: String, src: String) -> impl IntoView {
 }
 
 #[component]
-fn TagLabel(cx: Scope, tag: String) -> impl IntoView {
-    view! { cx,
+fn TagLabel(tag: String) -> impl IntoView {
+    view! {
         <a
             class="inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium text-gray-900 ring-1 ring-inset ring-gray-200"
             href=format!("/tags/{tag}")
@@ -34,8 +34,8 @@ fn TagLabel(cx: Scope, tag: String) -> impl IntoView {
 }
 
 #[component]
-fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
-    view! { cx,
+fn PostPreview(id: String, post: PostData) -> impl IntoView {
+    view! {
         <article key=id.clone() class="relative isolate flex flex-col gap-8 lg:flex-row">
             <div class="relative aspect-[16/9] lg:w-64 lg:shrink-0">
                 <PostCover href=format!("/posts/{}", id.clone()) src=post.metadata.cover/>
@@ -53,8 +53,8 @@ fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
                         .metadata
                         .tags
                         .iter()
-                        .map(|tag| view! { cx, <TagLabel tag=tag.clone()/> })
-                        .collect_view(cx)}
+                        .map(|tag| view! { <TagLabel tag=tag.clone()/> })
+                        .collect_view()}
                 </div>
                 <div class="group relative max-w-xl">
                     <h2 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
@@ -74,17 +74,17 @@ fn PostPreview(cx: Scope, id: String, post: PostData) -> impl IntoView {
 }
 
 #[component]
-pub fn PostList(cx: Scope, posts: HashMap<String, PostData>) -> impl IntoView {
-    view! { cx,
+pub fn PostList(posts: HashMap<String, PostData>) -> impl IntoView {
+    view! {
         <div class="mx-auto max-w-3xl px-6 lg:px-8">
             <div class="mt-16 space-y-10 lg:mt-10 lg:space-y-10">
                 {posts
                     .iter()
                     .sorted_by(|(_, a), (_, b)| b.metadata.date.cmp(&a.metadata.date))
                     .map(|(id, post)| {
-                        view! { cx, <PostPreview id=id.to_string() post=post.clone()/> }
+                        view! { <PostPreview id=id.to_string() post=post.clone()/> }
                     })
-                    .collect_view(cx)}
+                    .collect_view()}
             </div>
         </div>
     }
