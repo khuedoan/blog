@@ -30,6 +30,7 @@
             binaryen
             cargo-leptos
             gnumake
+            imagemagick
             (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
             (nodePackages.tailwindcss.overrideAttrs (attrs: {
               plugins = [

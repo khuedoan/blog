@@ -14,7 +14,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
                     <span class="sr-only">"Khue Doan"</span>
                     <img
                         class="h-8 w-auto rounded-full"
-                        src="/images/avatar.jpg"
+                        src="/images/avatar.webp"
                         alt="avatar"
                         width="64"
                         height="64"

@@ -24,14 +24,17 @@ public
     └── example-post-cover.png
 ```
 
-Posts are placed in `content/posts`, each post is a Markdown file with a YAML front matter block:
+Posts are placed in `content/posts`, each post is a Markdown file with a YAML front matter block.
+All images are automatically optimized at build time by resizing and converting to the more efficient WebP format (remember to update the image format in your content to `.webp`).
+
+Here's an example post:
 
 ```
 ---
 title: Example post
 summary: This is an example post
 date: 2023-01-01T00:00:00+07:00
-cover: /images/example-post-cover.png
+cover: /images/example-post-cover.webp
 tags:
   - foo
   - bar
@@ -39,7 +42,7 @@ tags:
 
 ## Example heading
 
-![Files inside `./public` can be referenced by your code starting from the base URL](/images/cat-picture.jpg)
+![Files inside `./public` can be referenced by your code starting from the base URL](/images/cat-picture.webp)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
