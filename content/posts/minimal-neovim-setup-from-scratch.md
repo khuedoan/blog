@@ -11,10 +11,6 @@ I am writing this tutorial for some of my friends who are learning Neovim.
 Most beginners need a usable configuration to be effective at their job, but it also should not be too complex so they can understand and extend it.
 It also serves as an exercise for me to filter out what is truly important in my setup.
 
-There's also a demo video if you want to follow along visually:
-
-![Demo](TODO)
-
 For reference, a skeleton for this blog post is available [here](https://github.com/khuedoan/nvim-minimal),
 and you can also view my full config [here](https://github.com/khuedoan/dotfiles/tree/master/.config/nvim).
 
@@ -292,14 +288,14 @@ While you don't need these plugins to edit effectively, they can certainly make 
     },
 ```
 
-- Selecting search results by label to move much faster using [flash.nvim](https://github.com/folke/flash.nvim) (and many more optional features):
+- "Sneak" to any position on the screen with `s`/`S` to move much faster using [leap.nvim](https://github.com/ggandor/leap.nvim):
 
 ```lua
     {
-        "https://github.com/folke/flash.nvim",
+        "https://github.com/ggandor/leap.nvim",
         event = "VeryLazy",
         config = function()
-            require("flash").setup()
+            require("leap").set_default_keymaps()
         end,
     },
 ```
