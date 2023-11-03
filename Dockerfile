@@ -13,7 +13,7 @@ RUN cargo leptos build --release
 
 FROM debian:12-slim
 
-COPY --from=builder /app/target/server/release/blog /app/target/server/release/blog
+COPY --from=builder /app/target/release/blog /app/target/release/blog
 COPY --from=builder /app/target/site /app/target/site
 
 WORKDIR /app
@@ -22,4 +22,4 @@ ENV LEPTOS_SITE_ADDR="0.0.0.0:3000"
 
 EXPOSE 3000
 
-CMD ["./target/server/release/blog"]
+CMD ["./target/release/blog"]
