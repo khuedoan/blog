@@ -67,8 +67,8 @@ Then open <http://localhost:3000>.
 ## Deployment
 
 - Docker image: `Dockerfile`
-- Build pipeline: `.ci/master.yaml`
-- Kubernetes manifests: see <https://github.com/khuedoan/homelab/tree/master/apps/blog>
+- Pipelines: `.woodpecker/`
+- Kubernetes configuration: see <https://github.com/khuedoan/homelab/tree/master/apps/blog>
 
 ## Acknowledgements
 
