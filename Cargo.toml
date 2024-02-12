@@ -46,3 +46,10 @@ bin-features = ["ssr"]
 lib-features = ["hydrate"]
 tailwind-input-file = "src/styles/globals.css"
 watch-additional-files = ["content/"]
+lib-profile-release = "wasm-release"
+
+[profile.wasm-release]
+inherits = "release"
+opt-level = 'z'
+lto = true
+codegen-units = 1
