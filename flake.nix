@@ -2,7 +2,7 @@
   description = "Khue Doan's Blog";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -32,6 +32,8 @@
             gnumake
             imagemagick
             leptosfmt
+            rust-analyzer
+
             (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
             (nodePackages.tailwindcss.overrideAttrs (attrs: {
               plugins = [
