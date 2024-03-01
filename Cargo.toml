@@ -31,7 +31,6 @@ serde = "1.0"
 include_dir = "0.7"
 pulldown-cmark = "0.9"
 gray_matter = "0.2"
-highlight-pulldown = { git = "https://github.com/khuedoan/highlight-pulldown", version = "0.2.2" }
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]

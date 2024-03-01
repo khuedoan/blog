@@ -1,6 +1,5 @@
 use gray_matter::engine::YAML;
 use gray_matter::Matter;
-use highlight_pulldown::highlight_with_theme;
 use include_dir::*;
 use pulldown_cmark::{html, Options, Parser};
 use serde::Deserialize;
@@ -46,12 +45,9 @@ pub fn markdown_to_html(content: String) -> String {
     options.insert(Options::ENABLE_STRIKETHROUGH);
     options.insert(Options::ENABLE_TASKLISTS);
 
-    let events = highlight_with_theme(Parser::new_ext(&content, options), "base16-ocean.dark")
-        .unwrap()
-        .into_iter();
-
+    let parser = Parser::new_ext(&content, options);
     let mut html = String::new();
-    html::push_html(&mut html, events);
+    html::push_html(&mut html, parser);
 
     html
 }
