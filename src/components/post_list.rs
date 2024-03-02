@@ -1,4 +1,4 @@
-use crate::content::{markdown_to_html, PostData};
+use crate::content::PostData;
 use itertools::Itertools;
 use leptos::*;
 use std::collections::HashMap;
@@ -65,7 +65,7 @@ fn PostPreview(id: String, post: PostData) -> impl IntoView {
                     </h2>
                     <div
                         class="prose mt-5 text-sm leading-6 text-gray-600"
-                        inner_html=markdown_to_html(post.metadata.summary)
+                        inner_html=post.metadata.summary
                     ></div>
                 </div>
             </div>

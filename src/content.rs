@@ -1,6 +1,5 @@
 use gray_matter::engine::YAML;
 use gray_matter::Matter;
-use include_dir::*;
 use pulldown_cmark::{html, Options, Parser};
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -27,18 +26,7 @@ pub struct PostData {
     pub content: String,
 }
 
-pub fn parse_content(post: &str) -> PostData {
-    let matter = Matter::<YAML>::new();
-    let markdown = matter.parse(post);
-    let front_matter: PostMetadata = markdown.data.unwrap().deserialize().unwrap();
-
-    PostData {
-        metadata: front_matter,
-        content: markdown.content,
-    }
-}
-
-pub fn markdown_to_html(content: String) -> String {
+fn markdown_to_html(content: String) -> String {
     let mut options = Options::empty();
     options.insert(Options::ENABLE_TABLES);
     options.insert(Options::ENABLE_FOOTNOTES);
@@ -55,6 +43,7 @@ pub fn markdown_to_html(content: String) -> String {
 pub fn get_all_posts() -> HashMap<String, PostData> {
     // TODO make this more efficient
     // currently it includes all files in the posts directory at compile time
+    use include_dir::*;
     static POST_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/content/posts");
 
     POST_DIR
@@ -73,7 +62,7 @@ pub fn get_all_posts() -> HashMap<String, PostData> {
                     .to_string(),
                 PostData {
                     metadata: front_matter,
-                    content: markdown.content,
+                    content: markdown_to_html(markdown.content),
                 },
             )
         })
