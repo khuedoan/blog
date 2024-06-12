@@ -1,12 +1,11 @@
+use icondata;
 use leptos::*;
-use leptos_icons::AiIcon::*;
-use leptos_icons::BiIcon::*;
 use leptos_icons::*;
 
 struct Social<'a> {
     name: &'a str,
     url: &'a str,
-    icon: Icon,
+    icon: icondata::Icon,
 }
 
 #[component]
@@ -15,27 +14,27 @@ fn SocialIcons() -> impl IntoView {
         Social {
             name: "Mail",
             url: "mailto:mail@khuedoan.com",
-            icon: Icon::from(AiMailFilled),
+            icon: icondata::AiMailFilled,
         },
         Social {
             name: "GitHub",
             url: "https://github.com/khuedoan",
-            icon: Icon::from(AiGithubFilled),
+            icon: icondata::AiGithubFilled,
         },
         Social {
             name: "LinkedIn",
             url: "https://linkedin.com/in/khuedoan",
-            icon: Icon::from(AiLinkedinFilled),
+            icon: icondata::AiLinkedinFilled,
         },
         Social {
             name: "Twitter",
             url: "https://twitter.com/KhueDoanID",
-            icon: Icon::from(AiTwitterOutlined),
+            icon: icondata::AiTwitterOutlined,
         },
         Social {
             name: "Telegram",
             url: "https://t.me/khuedoan",
-            icon: Icon::from(BiTelegram),
+            icon: icondata::BiTelegram,
         },
     ];
 
