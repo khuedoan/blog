@@ -5,13 +5,12 @@ default: build
 
 .PHONY: dev
 dev:
-	cargo leptos watch
+	cargo run .
 
 .PHONY: build
 build:
-	cargo leptos build --release
+	cargo build --release
 
 .PHONY: fmt
 fmt:
 	cargo fmt
-	leptosfmt .

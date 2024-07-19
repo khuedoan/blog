@@ -1,8 +1,0 @@
-*
-!/src
-!/content
-!/public
-!build.rs
-!rust-toolchain.toml
-!tailwind.config.js
-!Cargo.*

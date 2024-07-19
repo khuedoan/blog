@@ -3,9 +3,7 @@ module.exports = {
   content: [
     "./src/**/*.rs",
   ],
-  theme: {
-    // TODO make code looks better
-  },
+  theme: {},
   plugins: [
     require("@tailwindcss/typography"),
   ],
