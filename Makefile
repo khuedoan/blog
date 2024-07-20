@@ -1,16 +1,16 @@
 .POSIX:
+.PHONY: default build dev lint fmt
 
-.PHONY: default
 default: build
 
-.PHONY: dev
 dev:
 	cargo run .
 
-.PHONY: build
 build:
 	cargo build --release
 
-.PHONY: fmt
+lint:
+	cargo clippy
+
 fmt:
 	cargo fmt

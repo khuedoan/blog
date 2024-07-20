@@ -13,12 +13,9 @@
         devShells.default = mkShell {
           packages = [
             cargo
+            clippy
             gnumake
-            (nodePackages.tailwindcss.overrideAttrs (attrs: {
-              plugins = [
-                nodePackages."@tailwindcss/typography"
-              ];
-            }))
+            rustfmt
           ];
         };
       }
