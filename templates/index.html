@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Khue Doan{% endblock title %}
+
+{% block main %}
+    <div class="grid">
+        <h1>
+            Hi there, I'm Khue!
+        </h1>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Namespace</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <th scope="row">
+                    <a href="/posts/{{ post.id }}">
+                        {{ post.title }}
+                    </a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock main %}

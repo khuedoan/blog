@@ -3,6 +3,7 @@
 use axum::{routing::get, Router};
 
 mod index;
+mod posts;
 mod public;
 
 #[tokio::main]
@@ -17,5 +18,6 @@ async fn main() {
 fn app() -> Router {
     Router::new()
         .route("/", get(index::page))
-        .route("/public/:file", get(public::file))
+        .route("/posts/:id", get(posts::page))
+        .route("/:file", get(public::file))
 }
