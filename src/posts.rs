@@ -83,6 +83,7 @@ mod tests {
         .unwrap();
 
         assert!(body.contains("<h1>Convert Neovim config from init.vim to init.lua</h1>"));
+        assert!(body.contains("<p>Only a few <del>days</del> months left"));
         assert!(body.contains("<h2>Config path</h2>"));
         assert!(body.contains("<p>You can compare my old <a href="));
     }

@@ -77,3 +77,4 @@ Then open <http://localhost:3000>.
 - [leptos-rs/leptos-website](https://github.com/leptos-rs/leptos-website): code examples, Nix and Docker config
 - [Tailwind UI](https://tailwindui.com): styled components (highly recommended, but it is not free; you can get lifetime access for a one-time fee)
 - [Making a dev shell with nix flakes](https://fasterthanli.me/series/building-a-rust-service-with-nix/part-10): Nix flake
+- [Comment by ScottAbbey in pulldown-cmark#167](https://github.com/pulldown-cmark/pulldown-cmark/issues/167#issuecomment-448491422) and [eguiraud/highlight-pulldown](https://gitlab.com/eguiraud/highlight-pulldown): Syntax highlighting for Markdown using `pulldown-cmark` and `syntect`.
