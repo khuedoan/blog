@@ -1,7 +1,19 @@
 # [khuedoan.com](https://khuedoan.com) ![status](https://img.shields.io/website?label=status&style=flat-square&url=https%3A%2F%2Fkhuedoan.com)
 
-This is the source code of my personal website at <https://khuedoan.com>, written in [Rust](https://www.rust-lang.org)
-using the [Leptos](https://leptos.dev) framework, and styled with [Tailwind CSS](https://tailwindcss.com).
+This is the source code of my personal website at [khuedoan.com](https://khuedoan.com), built with:
+
+- [Rust](https://www.rust-lang.org)
+- [Axum](https://github.com/tokio-rs/axum)
+- [Askama](https://github.com/djc/askama)
+- [Pico CSS](https://picocss.com)
+- [HTMX](https://htmx.org)
+
+You can check out older branches for previous implementations:
+
+- [Rust/Axum/Leptos/WASM/Tailwind CSS)](https://github.com/khuedoan/blog/tree/leptos) (2023)
+- [NextJS/Tailwind CSS](https://github.com/khuedoan/blog/tree/nextjs) (2023)
+- [Hugo/PaperMod](https://github.com/khuedoan/blog/tree/hugo) (2021)
+- Plain HTML (2020)
 
 ## Project structure
 
@@ -13,7 +25,6 @@ using the [Leptos](https://leptos.dev) framework, and styled with [Tailwind CSS]
 
 ```
 content
-├── about.md
 └── posts
     └── example-post.md
 public
@@ -24,22 +35,9 @@ public
     └── example-post-cover.png
 ```
 
-Posts are placed in `content/posts`, each post is a Markdown file with a YAML front matter block.
-All images are automatically optimized at build time by resizing and converting to the more efficient WebP format (remember to update the image format in your content to `.webp`).
-
-Here's an example post:
+Posts are placed in `content/posts`, each post is a Markdown file. Here's an example post:
 
 ```
----
-title: Example post
-summary: This is an example post
-date: 2023-01-01T00:00:00+07:00
-cover: /images/example-post-cover.webp
-tags:
-  - foo
-  - bar
----
-
 ## Example heading
 
 ![Files inside `./public` can be referenced by your code starting from the base URL](/images/cat-picture.webp)
