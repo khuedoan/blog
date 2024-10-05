@@ -8,9 +8,12 @@ askama = "0.12"
 askama_axum = "0.4"
 axum = "0.7"
 include_dir = "0.7"
-pulldown-cmark = { version = "0.12", default-features = false, features = ["html"] }
 serde = { version = "1.0.210", features = ["derive"] }
 tokio = { version = "1.40", features = ["macros", "rt-multi-thread", "signal"] }
+
+[build-dependencies]
+pulldown-cmark = { version = "0.12", default-features = false, features = ["html"] }
+# TODO highlight-pulldown = "0.2"
 
 [dev-dependencies]
 http-body-util = "0.1"
