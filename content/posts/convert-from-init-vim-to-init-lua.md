@@ -1,12 +1,3 @@
----
-title: Convert Neovim config from init.vim to init.lua
-summary: Only a few days left until Neovim 0.5 stable release, with the support of `init.lua` as default user config
-date: 2021-03-12T11:59:12+07:00
-cover: /images/convert-from-init-vim-to-init-lua-cover.webp
-tags:
-  - vim
----
-
 Only a few ~~days~~ months left until Neovim 0.5 stable release, with the support of `init.lua` as default user config.
 Here's a quick guide (more like a cheat sheet) to help someone with no Lua experience like me to save a few hours :moon:
 

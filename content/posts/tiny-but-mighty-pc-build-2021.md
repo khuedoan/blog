@@ -1,15 +1,3 @@
----
-title: Tiny but mighty PC build amidst the GPU crisis (late 2021)
-summary: A tiny 5 liters PC with great performance for $1100 with some compromises due to the GPU sortage
-date: 2021-10-23T20:47:06+07:00
-tags:
-  - benchmark
-  - gaming
-  - hardware
-  - pc
-draft: true
----
-
 Build a super compact $1100 PC with very respectable CPU performance and good enough GPU performance for high refresh rate e-sport gaming, with Linux as a first class citizen.
 
 TLDR: Get an AMD R9 Nano for about $200, the performance should be a little bit better than the NVIDIA GTX 1060 or AMD RX 580.

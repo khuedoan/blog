@@ -1,13 +1,3 @@
----
-title: Moving Around Efficiently in Neovim
-date: 2023-06-04T00:02:28+07:00
-cover: /images/moving-around-efficiently-in-neovim-cover.webp
-summary: Some quick tips to help you move around faster in Neovim
-tags:
-  - vim
-  - neovim
----
-
 Hey friends, today I have some quick tips to help you move around faster in Neovim.
 If you're already familiar with the basics of NeoVim and want to improve your speed, this article is for you.
 Let's dive right in!

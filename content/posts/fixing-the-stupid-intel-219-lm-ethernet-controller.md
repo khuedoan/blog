@@ -1,11 +1,3 @@
----
-title: Fixing the Stupid Intel 219-LM Ethernet Controller in Linux
-date: 2023-03-07T10:57:41+07:00
-tags:
-  - TODO
-draft: true
----
-
 I ordered a ThinkCentre M710q for the staging environment in my homelab
 
 Plugged in my Ethernet cable but no internet

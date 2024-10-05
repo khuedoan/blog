@@ -1,11 +1,3 @@
----
-title: How I Built My Own Router
-date: 2022-10-16T10:44:25+07:00
-tags:
-  - TODO
-draft: true
----
-
 Download OPNsense: https://opnsense.org/download
 
 Get a USB key and write the image:

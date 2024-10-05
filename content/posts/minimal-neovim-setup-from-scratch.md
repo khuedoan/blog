@@ -1,12 +1,3 @@
----
-title: Minimal, no-nonsense Neovim setup from scratch
-summary: Turn Neovim from zero to IDE in half an hour
-date: 2023-10-07T21:51:00+07:00
-tags:
-  - vim
-draft: true
----
-
 I am writing this tutorial for some of my friends who are learning Neovim.
 Most beginners need a usable configuration to be effective at their job, but it also should not be too complex so they can understand and extend it.
 It also serves as an exercise for me to filter out what is truly important in my setup.

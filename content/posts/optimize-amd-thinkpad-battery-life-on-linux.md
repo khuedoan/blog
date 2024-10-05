@@ -1,12 +1,3 @@
----
-title: Optimize AMD Thinkpad battery life on Linux
-summary: Here's how I bring the battery life of my ThinkPad Z13 on Linux to the same level with Windows.
-date: 2023-11-01T17:19:00+07:00
-tags:
-  - linux
-draft: true
----
-
 Test environment:
 
 - Brightness 25% (light -S 25)

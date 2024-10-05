@@ -1,12 +1,3 @@
----
-title: Should You Learn Vim?
-date: 2023-05-10T08:27:36+07:00
-tags:
-  - vim
-  - neovim
-draft: true
----
-
 Vim is a non-conventional text editor and will take a lot of time to learn.
 But is it worth learning?
 

@@ -1,13 +1,3 @@
----
-title: Alternatives to HashiCorp products
-summary: HashiCorp rug pulled you, where should you move?
-date: 2024-04-26T20:11:00+07:00
-cover: /images/alternatives-to-hashicorp-products-cover.webp
-tags:
-  - devops
-draft: false
----
-
 HashiCorp has [changed their license to a source-available one](https://www.hashicorp.com/blog/hashicorp-adopts-business-source-license).
 If you care about free software or are worried about the future of these projects,
 here are some alternatives.

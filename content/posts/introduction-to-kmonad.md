@@ -1,12 +1,3 @@
----
-title: Introduction to kmonad - a software alternative to QMK firmware
-date: 2021-09-13T12:36:53+07:00
-tags:
-  - kmonad
-  - keyboard
-draft: true
----
-
 QMK (Quantum Mechanical Keyboard) is an awesome keyboard firmware, but not all keyboards are supported.
 In my case, none of my keyboards is supported by QMK
 

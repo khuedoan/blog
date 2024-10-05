@@ -1,11 +1,3 @@
----
-title: Backup Your Otp
-date: 2023-05-13T14:15:45+07:00
-tags:
-  - TODO
-draft: true
----
-
 My setup to have a secure online experience, while preventing blocking myself out of my own accounts
 
 ## General rule of thumb

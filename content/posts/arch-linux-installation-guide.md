@@ -1,14 +1,3 @@
----
-title: Arch Linux Installation Guide
-summary: Opinionated installation guide and basic configurations for Arch Linux
-date: 2021-05-22T14:29:40+07:00
-cover: /images/arch-linux-installation-guide-cover.webp
-tags:
-  - arch
-  - linux
----
-
-The [ArchWiki](https://wiki.archlinux.org/) is one of the best (if not the best) wiki for Linux.
 But it can be confusing for new users because of how much information it provides.
 In this tutorial, I'll show you how I install Arch Linux, without showing you too many choices.
 
