@@ -3,6 +3,8 @@
 use axum::{routing::get, Router};
 use tokio::signal;
 
+mod about;
+mod contact;
 mod index;
 mod posts;
 mod public;
@@ -23,6 +25,8 @@ fn app() -> Router {
     Router::new()
         .route("/", get(index::page))
         .route("/posts/:id", get(posts::page))
+        .route("/about", get(about::page))
+        .route("/contact", get(contact::page))
         .route("/*path", get(public::file))
 }
 
