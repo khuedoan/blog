@@ -59,3 +59,31 @@ pub async fn page(Path(id): Path<String>) -> Response {
         None => (StatusCode::NOT_FOUND).into_response(),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use axum::http::StatusCode;
+    use http_body_util::BodyExt;
+
+    #[tokio::test]
+    async fn rendered_page() {
+        let response = page(Path("convert-from-init-vim-to-init-lua".to_string())).await;
+        assert_eq!(response.status(), StatusCode::OK);
+
+        let body = String::from_utf8(
+            response
+                .into_body()
+                .collect()
+                .await
+                .unwrap()
+                .to_bytes()
+                .into(),
+        )
+        .unwrap();
+
+        assert!(body.contains("<h1>Convert Neovim config from init.vim to init.lua</h1>"));
+        assert!(body.contains("<h2>Config path</h2>"));
+        assert!(body.contains("<p>You can compare my old <a href="));
+    }
+}
