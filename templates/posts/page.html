@@ -3,8 +3,6 @@
 {% block title %}{{ metadata.title }}{% endblock title %}
 
 {% block main %}
-    <article>
-        <h1>{{ metadata.title }}</h1>
-        {{ content|safe }}
-    </article>
+    <h1>{{ metadata.title }}</h1>
+    {{ content|safe }}
 {% endblock main %}

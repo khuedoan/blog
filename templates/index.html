@@ -3,15 +3,14 @@
 {% block title %}Khue Doan{% endblock title %}
 
 {% block main %}
-    <div class="grid">
-        <h1>
-            Hi there, I’m Khue 👋
-        </h1>
-    </div>
+    <h1>Hi there, I’m Khue 👋</h1>
+    <p>
+        Welcome to my website, where I write about Linux, DevOps, homelab, workflow optimization, and more!
+    </p>
     <table>
         <thead>
             <tr>
-                <th scope="col">Name</th>
+                <th scope="col">Title</th>
                 <th scope="col">Date</th>
             </tr>
         </thead>
@@ -19,7 +18,7 @@
         {% for post in posts %}
             <tr>
                 <th scope="row">
-                    <a href="/posts/{{ post.id }}">
+                    <a href="/posts/{{ post.id }}" class="contrast">
                         {{ post.title }}
                     </a>
                 </th>

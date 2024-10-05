@@ -11,25 +11,25 @@ static POSTS: &[(&str, &str, &str, &str)] = &[
     (
         "alternatives-to-hashicorp-products",
         "Alternatives to HashiCorp products",
-        "2024-04-26T20:11:00+07:00",
+        "2024-04-26",
         include_str!("../content/posts/alternatives-to-hashicorp-products.md"),
     ),
     (
         "moving-around-efficiently-in-neovim",
         "Moving Around Efficiently in Neovim",
-        "2023-06-04T00:02:28+07:00",
+        "2023-06-04",
         include_str!("../content/posts/moving-around-efficiently-in-neovim.md"),
     ),
     (
         "arch-linux-installation-guide",
         "Arch Linux Installation Guide",
-        "2021-05-22T14:29:40+07:00",
+        "2021-05-22",
         include_str!("../content/posts/arch-linux-installation-guide.md"),
     ),
     (
         "convert-from-init-vim-to-init-lua",
         "Convert Neovim config from init.vim to init.lua",
-        "2021-03-12T11:59:12+07:00",
+        "2021-03-12",
         include_str!("../content/posts/convert-from-init-vim-to-init-lua.md"),
     ),
 ];
