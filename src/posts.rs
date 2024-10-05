@@ -4,6 +4,7 @@ use axum::{
     http::StatusCode,
     response::{IntoResponse, Response},
 };
+use pulldown_cmark::{html, Options, Parser};
 use serde::Deserialize;
 
 static POSTS: &[(&str, &str, &str, &str)] = &[
@@ -62,9 +63,23 @@ pub fn get_post(path: String) -> Option<(PostMetadata, String)> {
                     title: title.to_string(),
                     date: date.to_string(),
                 },
-                markdown.to_string(),
+                markdown_to_html(markdown),
             )
         })
+}
+
+fn markdown_to_html(content: &str) -> String {
+    let mut options = Options::empty();
+    options.insert(Options::ENABLE_TABLES);
+    options.insert(Options::ENABLE_FOOTNOTES);
+    options.insert(Options::ENABLE_STRIKETHROUGH);
+    options.insert(Options::ENABLE_TASKLISTS);
+
+    let parser = Parser::new_ext(content, options);
+    let mut html = String::new();
+    html::push_html(&mut html, parser);
+
+    html
 }
 
 #[derive(Template)]

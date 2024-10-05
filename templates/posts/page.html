@@ -5,6 +5,6 @@
 {% block main %}
     <article>
         <h1>{{ metadata.title }}</h1>
-        {{ content }}
+        {{ content|safe }}
     </article>
 {% endblock main %}
