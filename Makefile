@@ -29,5 +29,5 @@ container:
 update:
 	nix flake update
 	cargo update
-	curl --silent --show-error --location 'https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css' --output public/pico.min.css
+	curl --silent --show-error --location 'https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.indigo.min.css' --output public/pico.min.css
 	curl --silent --show-error --location 'https://unpkg.com/htmx.org@2.0.1' --output public/htmx.min.js
