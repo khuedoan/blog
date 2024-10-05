@@ -44,7 +44,7 @@ pub struct PostMetadata {
 pub fn list_posts() -> Vec<PostMetadata> {
     POSTS
         .iter()
-        .map(|&(id, title, date, _)| PostMetadata {
+        .map(|&(id, title, date, _markdown)| PostMetadata {
             id: id.to_string(),
             title: title.to_string(),
             date: date.to_string(),
@@ -55,17 +55,21 @@ pub fn list_posts() -> Vec<PostMetadata> {
 pub fn get_post(path: String) -> Option<(PostMetadata, String)> {
     POSTS
         .iter()
-        .find(|(id, _title, _date, _markdown)| id == &path)
-        .map(|(id, title, date, markdown)| {
-            (
-                PostMetadata {
-                    id: id.to_string(),
-                    title: title.to_string(),
-                    date: date.to_string(),
-                },
-                markdown_to_html(markdown),
-            )
+        .filter_map(|(id, title, date, markdown)| {
+            if id == &path {
+                Some((
+                    PostMetadata {
+                        id: id.to_string(),
+                        title: title.to_string(),
+                        date: date.to_string(),
+                    },
+                    markdown_to_html(markdown),
+                ))
+            } else {
+                None
+            }
         })
+        .next()
 }
 
 fn markdown_to_html(content: &str) -> String {
