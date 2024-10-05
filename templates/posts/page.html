@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}{{ post.metadata.title }}{% endblock title %}
+{% block title %}{{ metadata.title }}{% endblock title %}
 
 {% block main %}
-    <div class="grid">
-        <h1>
-            {{ post.metadata.title }}
-        </h1>
-    </div>
     <article>
-        {{ post.content }}
+        <h1>{{ metadata.title }}</h1>
+        {{ content }}
     </article>
 {% endblock main %}

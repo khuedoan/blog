@@ -5,15 +5,14 @@
 {% block main %}
     <div class="grid">
         <h1>
-            Hi there, I'm Khue!
+            Hi there, I’m Khue 👋
         </h1>
     </div>
     <table>
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Namespace</th>
-                <th scope="col">Status</th>
+                <th scope="col">Date</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +22,9 @@
                     <a href="/posts/{{ post.id }}">
                         {{ post.title }}
                     </a>
+                </th>
+                <th scope="row">
+                    {{ post.date }}
                 </th>
             </tr>
         {% endfor %}

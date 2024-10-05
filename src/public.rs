@@ -37,7 +37,10 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
 
         let content_type = response.headers().get(header::CONTENT_TYPE);
-        assert_eq!(content_type, Some(&header::HeaderValue::from_static("application/javascript")));
+        assert_eq!(
+            content_type,
+            Some(&header::HeaderValue::from_static("application/javascript"))
+        );
 
         assert!(String::from_utf8(
             response
@@ -58,7 +61,10 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
 
         let content_type = response.headers().get(header::CONTENT_TYPE);
-        assert_eq!(content_type, Some(&header::HeaderValue::from_static("text/css")));
+        assert_eq!(
+            content_type,
+            Some(&header::HeaderValue::from_static("text/css"))
+        );
 
         assert!(String::from_utf8(
             response
@@ -97,7 +103,10 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
 
         let content_type = response.headers().get(header::CONTENT_TYPE);
-        assert_eq!(content_type, Some(&header::HeaderValue::from_static("image/jpeg")));
+        assert_eq!(
+            content_type,
+            Some(&header::HeaderValue::from_static("image/jpeg"))
+        );
     }
 
     #[tokio::test]
