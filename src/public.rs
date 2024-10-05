@@ -3,29 +3,24 @@ use axum::{
     http::{header, StatusCode},
     response::{IntoResponse, Response},
 };
+use include_dir::{include_dir, Dir};
 
-// Embed the public files explicitly to avoid adding an extra dependency
-const FILES: &[(&str, &[u8], &str)] = &[
-    (
-        "htmx.min.js",
-        include_bytes!("../public/htmx.min.js"),
-        "application/javascript",
-    ),
-    (
-        "pico.min.css",
-        include_bytes!("../public/pico.min.css"),
-        "text/css",
-    ),
-];
+static PUBLIC_FILES: Dir = include_dir!("public");
 
-pub async fn file(Path(file): Path<String>) -> Response {
-    FILES.iter().find(|(name, _, _)| name == &file).map_or_else(
-        || {
-            // TODO generic error handler?
-            (StatusCode::NOT_FOUND,).into_response()
-        },
-        |&(_, content, content_type)| {
-            ([(header::CONTENT_TYPE, content_type)], content).into_response()
+pub async fn file(Path(path): Path<String>) -> Response {
+    PUBLIC_FILES.get_file(&path).map_or_else(
+        // TODO generic error handler
+        || (StatusCode::NOT_FOUND).into_response(),
+        |file| {
+            let content_type = match path.split('.').last() {
+                // https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types
+                Some("css") => "text/css",
+                Some("js") => "application/javascript",
+                Some("jpg") | Some("jpeg") => "image/jpeg",
+                Some("png") => "image/png",
+                _ => "application/octet-stream",
+            };
+            ([(header::CONTENT_TYPE, content_type)], file.contents()).into_response()
         },
     )
 }
@@ -40,6 +35,10 @@ mod tests {
     async fn file_htmx() {
         let response = file(Path("htmx.min.js".to_string())).await;
         assert_eq!(response.status(), StatusCode::OK);
+
+        let content_type = response.headers().get(header::CONTENT_TYPE);
+        assert_eq!(content_type, Some(&header::HeaderValue::from_static("application/javascript")));
+
         assert!(String::from_utf8(
             response
                 .into_body()
@@ -57,6 +56,10 @@ mod tests {
     async fn file_picocss() {
         let response = file(Path("pico.min.css".to_string())).await;
         assert_eq!(response.status(), StatusCode::OK);
+
+        let content_type = response.headers().get(header::CONTENT_TYPE);
+        assert_eq!(content_type, Some(&header::HeaderValue::from_static("text/css")));
+
         assert!(String::from_utf8(
             response
                 .into_body()
@@ -68,6 +71,33 @@ mod tests {
         )
         .unwrap()
         .contains("Pico CSS"));
+    }
+
+    #[tokio::test]
+    async fn file_gpg() {
+        let response = file(Path("gpg".to_string())).await;
+        assert_eq!(response.status(), StatusCode::OK);
+
+        assert!(String::from_utf8(
+            response
+                .into_body()
+                .collect()
+                .await
+                .unwrap()
+                .to_bytes()
+                .into(),
+        )
+        .unwrap()
+        .contains("BEGIN PGP PUBLIC KEY BLOCK"));
+    }
+
+    #[tokio::test]
+    async fn file_nested_image() {
+        let response = file(Path("images/avatar.jpg".to_string())).await;
+        assert_eq!(response.status(), StatusCode::OK);
+
+        let content_type = response.headers().get(header::CONTENT_TYPE);
+        assert_eq!(content_type, Some(&header::HeaderValue::from_static("image/jpeg")));
     }
 
     #[tokio::test]

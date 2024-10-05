@@ -29,16 +29,15 @@ pub fn list_posts() -> Vec<PostMetadata> {
 }
 
 pub fn get_post(id: String) -> Post {
-    let posts = Post {
+    Post {
         metadata: PostMetadata {
-            id: "postidfoo".to_string(),
+            id,
             title: "posttitle foo".to_string(),
             draft: false,
             cover: "foo".to_string(),
         },
         content: "foocontent".to_string(),
-    };
-    posts
+    }
 }
 
 #[derive(Template)]

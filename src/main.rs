@@ -23,7 +23,7 @@ fn app() -> Router {
     Router::new()
         .route("/", get(index::page))
         .route("/posts/:id", get(posts::page))
-        .route("/:file", get(public::file))
+        .route("/*path", get(public::file))
 }
 
 async fn shutdown_signal() {
