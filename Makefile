@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default dev fmt lint
+.PHONY: default dev fmt lint test test-unit test-load container update
 
 default: fmt lint target/release/blog
 
