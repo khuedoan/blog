@@ -53,7 +53,7 @@ fn main() {
         .iter()
         .map(|(id, title, date, markdown)| {
             format!(
-                "    (\"{}\", \"{}\", \"{}\", r#\"{}\"#),",
+                "    (\"{}\", \"{}\", \"{}\", r###\"{}\"###),",
                 id,
                 title,
                 date,
