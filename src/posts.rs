@@ -1,14 +1,14 @@
-use askama_axum::Template;
+use crate::page::base;
 use axum::{
     extract::Path,
     http::StatusCode,
     response::{IntoResponse, Response},
 };
-use serde::Deserialize;
+use maud::PreEscaped;
 
 include!(concat!(env!("OUT_DIR"), "/posts_data.rs"));
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug)]
 pub struct PostMetadata {
     pub id: String,
     pub title: String,
@@ -46,16 +46,9 @@ pub fn get_post(path: String) -> Option<(PostMetadata, String)> {
         .next()
 }
 
-#[derive(Template)]
-#[template(path = "posts/page.html")]
-pub struct PostPageTemplate {
-    metadata: PostMetadata,
-    content: String,
-}
-
-pub async fn page(Path(id): Path<String>) -> Response {
+pub async fn view(Path(id): Path<String>) -> Response {
     match get_post(id) {
-        Some((metadata, content)) => PostPageTemplate { metadata, content }.into_response(),
+        Some((metadata, content)) => base(&metadata.title, PreEscaped(content)).into_response(),
         None => (StatusCode::NOT_FOUND).into_response(),
     }
 }
@@ -67,8 +60,8 @@ mod tests {
     use http_body_util::BodyExt;
 
     #[tokio::test]
-    async fn rendered_page() {
-        let response = page(Path("convert-from-init-vim-to-init-lua".to_string())).await;
+    async fn rendered_content() {
+        let response = view(Path("convert-from-init-vim-to-init-lua".to_string())).await;
         assert_eq!(response.status(), StatusCode::OK);
 
         let body = String::from_utf8(

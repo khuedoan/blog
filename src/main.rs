@@ -6,6 +6,7 @@ use tokio::signal;
 mod about;
 mod contact;
 mod index;
+mod page;
 mod posts;
 mod public;
 
@@ -23,10 +24,10 @@ async fn main() {
 
 fn app() -> Router {
     Router::new()
-        .route("/", get(index::page))
-        .route("/posts/:id", get(posts::page))
-        .route("/about", get(about::page))
-        .route("/contact", get(contact::page))
+        .route("/", get(index::view))
+        .route("/posts/:id", get(posts::view))
+        .route("/about", get(about::view))
+        .route("/contact", get(contact::view))
         .route("/*path", get(public::file))
 }
 

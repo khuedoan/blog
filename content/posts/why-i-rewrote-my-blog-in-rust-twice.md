@@ -7,7 +7,7 @@ My blog has gone through four major versions:
 2. Hugo static site with the PaperMod theme, also on GitHub Pages.
 3. NextJS with Tailwind CSS, which never published.
 4. First Rust rewrite with Axum, Leptos, Tailwind CSS, on Kubernetes.
-5. Second Rust rewrite with Axum, Askama, Pico CSS, HTMX, on Kubernetes.
+5. Second Rust rewrite with Axum, Maud, Pico CSS, HTMX, on Kubernetes.
 
 ## The stepping stone
 
