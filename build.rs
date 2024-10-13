@@ -11,12 +11,12 @@ use syntect::{
 };
 
 static POSTS: &[(&str, &str, &str, &str)] = &[
-    (
-        "why-i-rewrote-my-blog-in-rust-twice",
-        "Why I Rewrote My Blog in Rust - Twice",
-        "2024-10-06",
-        include_str!("content/posts/why-i-rewrote-my-blog-in-rust-twice.md"),
-    ),
+    // (
+    //     "why-i-rewrote-my-blog-in-rust-twice",
+    //     "Why I Rewrote My Blog in Rust - Twice",
+    //     "2024-10-06",
+    //     include_str!("content/posts/why-i-rewrote-my-blog-in-rust-twice.md"),
+    // ),
     (
         "alternatives-to-hashicorp-products",
         "Alternatives to HashiCorp products",
