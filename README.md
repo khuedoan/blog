@@ -10,16 +10,17 @@ This is the source code of my personal website at [khuedoan.com](https://khuedoa
 
 You can check out older branches for previous implementations:
 
-- [Rust/Axum/Leptos/WASM/Tailwind CSS)](https://github.com/khuedoan/blog/tree/leptos) (2023)
-- [NextJS/Tailwind CSS](https://github.com/khuedoan/blog/tree/nextjs) (2023)
+- [Rust/Axum/Leptos/WASM/Tailwind CSS](https://github.com/khuedoan/blog/tree/leptos) (2023)
+- [Next.js/Tailwind CSS](https://github.com/khuedoan/blog/tree/nextjs) (2023)
 - [Hugo/PaperMod](https://github.com/khuedoan/blog/tree/hugo) (2021)
 - Plain HTML (2020)
 
 ## Project structure
 
 - `content/`: content written in Markdown
-- `src/`: pages and components, inspired by [Next.js](http://nextjs.org)
+- `src/`: pages and components
 - `public/`: static assets
+- `build.rs`: build logic for rendering Markdown to HTML
 
 ## Content convention
 
@@ -31,8 +32,7 @@ public
 ├── any-static-file-here.txt
 └── images
     ├── avatar.jpg
-    ├── cat-picture.jpg
-    └── example-post-cover.png
+    └── cat-picture.jpg
 ```
 
 Posts are placed in `content/posts`, each post is a Markdown file. Here's an example post:
@@ -70,9 +70,6 @@ Then open <http://localhost:3000>.
 
 ## Acknowledgements
 
-- [Leptos documentation](https://leptos-rs.github.io/leptos): code examples
-- [leptos-rs/start-axum](https://github.com/leptos-rs/start-axum): code examples
-- [leptos-rs/leptos-website](https://github.com/leptos-rs/leptos-website): code examples, Nix and Docker config
-- [Tailwind UI](https://tailwindui.com): styled components (highly recommended, but it is not free; you can get lifetime access for a one-time fee)
+- [Axum examples](https://github.com/tokio-rs/axum/blob/main/examples): code examples
 - [Making a dev shell with nix flakes](https://fasterthanli.me/series/building-a-rust-service-with-nix/part-10): Nix flake
-- [Comment by ScottAbbey in pulldown-cmark#167](https://github.com/pulldown-cmark/pulldown-cmark/issues/167#issuecomment-448491422) and [eguiraud/highlight-pulldown](https://gitlab.com/eguiraud/highlight-pulldown): Syntax highlighting for Markdown using `pulldown-cmark` and `syntect`.
+- [Comment by ScottAbbey in pulldown-cmark#167](https://github.com/pulldown-cmark/pulldown-cmark/issues/167#issuecomment-448491422) and [eguiraud/highlight-pulldown](https://gitlab.com/eguiraud/highlight-pulldown): Syntax highlighting for Markdown using `pulldown-cmark` and `syntect`
