@@ -19,7 +19,7 @@ pub fn base(title: &str, body: Markup) -> Markup {
         (DOCTYPE)
         html lang="en" {
             (head(title))
-            body {
+            body hx-boost="true" {
                 header class="container" {
                     nav {
                         ul {
