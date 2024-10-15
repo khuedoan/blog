@@ -29,7 +29,8 @@ fn app() -> Router {
         .route("/posts/:id", get(posts::view))
         .route("/about", get(about::view))
         .route("/contact", get(contact::view))
-        .route("/*path", get(public::file).layer(CompressionLayer::new()))
+        .route("/*path", get(public::file))
+        .layer(CompressionLayer::new())
 }
 
 async fn shutdown_signal() {
