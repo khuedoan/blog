@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default dev fmt lint test test-unit test-load container update
+.PHONY: default dev fmt lint test test-unit test-load container update ci
 
 default: fmt lint target/release/blog
 
@@ -31,3 +31,6 @@ update:
 	cargo update
 	curl --silent --show-error --location 'https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.indigo.min.css' --output public/pico.min.css
 	curl --silent --show-error --location 'https://unpkg.com/htmx.org@2.0.1' --output public/htmx.min.js
+
+ci:
+	make test
