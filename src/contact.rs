@@ -8,7 +8,10 @@ pub async fn view() -> Markup {
             p { "You can reach me via one of the following links:" }
             ul {
                 li { a target="_blank" href="mailto:mail@khuedoan.com" { "Email" } }
-                li { a target="_blank" href="https://github.com/khuedoan" { "GitHub" } }
+                li {
+                    a target="_blank" href="https://github.com/khuedoan" { "GitHub" }
+                    " or my Git server at " a target="_blank" href="https://code.khuedoan.com" { "code.khuedoan.com" }
+                }
                 li { a target="_blank" href="https://linkedin.com/in/khuedoan" { "LinkedIn" } }
                 li { a target="_blank" href="https://twitter.com/KhueDoanID" { "Twitter" } }
             }
