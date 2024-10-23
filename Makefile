@@ -33,6 +33,6 @@ update:
 	curl --silent --show-error --location 'https://unpkg.com/htmx.org@2.0.1' --output public/htmx.min.js
 
 ci:
-	mkdir -p "${CACHE_DIR}/target"
-	ln -s "${CACHE_DIR}/target" "target"
-	make test
+	@mkdir -p "${CACHE_DIR}/target"
+	@ln -s "${CACHE_DIR}/target" "target"
+	@make test
