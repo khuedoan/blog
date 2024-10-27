@@ -17,9 +17,10 @@ pub async fn view() -> Markup {
             }
             p {
                 "If you need to send sensitive information, you can encrypt the message
-                using my"
+                using my "
+                a target="_blank" href="/gpg" { "GPG public key" }
+                "."
             }
-            a target="_blank" href="/gpg" { "GPG public key" }
         },
     )
 }
