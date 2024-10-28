@@ -18,6 +18,12 @@ static POSTS: &[(&str, &str, &str, &str)] = &[
     //     include_str!("content/posts/why-i-rewrote-my-blog-in-rust-twice.md"),
     // ),
     (
+        "nixos-cured-my-ocd",
+        "NixOS cured my OCD",
+        "2024-08-24",
+        include_str!("content/posts/nixos-cured-my-ocd.md"),
+    ),
+    (
         "alternatives-to-hashicorp-products",
         "Alternatives to HashiCorp products",
         "2024-04-26",
