@@ -20,7 +20,14 @@ pub async fn file(Path(path): Path<String>) -> Response {
                 Some("png") => "image/png",
                 _ => "application/octet-stream",
             };
-            ([(header::CONTENT_TYPE, content_type)], file.contents()).into_response()
+            (
+                [
+                    (header::CONTENT_TYPE, content_type),
+                    (header::CACHE_CONTROL, "public, max-age=31536000"),
+                ],
+                file.contents(),
+            )
+                .into_response()
         },
     )
 }
