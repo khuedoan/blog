@@ -7,7 +7,7 @@ target/release/blog: src/ Cargo.toml
 	cargo build --release
 
 dev:
-	cargo watch --exec 'run'
+	cargo watch -L debug --exec 'run'
 
 fmt:
 	cargo fmt

@@ -8,7 +8,9 @@ axum = "0.7"
 include_dir = "0.7"
 maud = { version = "0.26", features = ["axum"] }
 tokio = { version = "1.40", features = ["macros", "rt-multi-thread", "signal"] }
-tower-http = { version = "0.6", features = ["compression-gzip"] }
+tower-http = { version = "0.6", features = ["compression-gzip", "trace"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 
 [build-dependencies]
 pulldown-cmark = { version = "0.12", default-features = false, features = ["html"] }

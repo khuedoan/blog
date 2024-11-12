@@ -2,7 +2,8 @@
 
 use axum::{routing::get, Router};
 use tokio::signal;
-use tower_http::compression::CompressionLayer;
+use tower_http::{compression::CompressionLayer, trace::TraceLayer};
+use tracing::info;
 
 mod about;
 mod contact;
@@ -13,11 +14,11 @@ mod public;
 
 #[tokio::main]
 async fn main() {
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    tracing_subscriber::fmt::init();
 
-    let app = app();
-    println!("listening on {}", listener.local_addr().unwrap());
-    axum::serve(listener, app)
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    info!("listening on {}", listener.local_addr().unwrap());
+    axum::serve(listener, app())
         .with_graceful_shutdown(shutdown_signal())
         .await
         .unwrap();
@@ -30,6 +31,7 @@ fn app() -> Router {
         .route("/about", get(about::view))
         .route("/contact", get(contact::view))
         .route("/*path", get(public::file))
+        .layer(TraceLayer::new_for_http())
         .layer(CompressionLayer::new())
 }
 
