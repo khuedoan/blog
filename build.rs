@@ -24,16 +24,22 @@ static POSTS: &[(&str, &str, &str, &str)] = &[
         include_str!("content/posts/alternatives-to-hashicorp-products.md"),
     ),
     (
-        "moving-around-efficiently-in-neovim",
-        "Moving around efficiently in Neovim",
-        "2023-06-04",
-        include_str!("content/posts/moving-around-efficiently-in-neovim.md"),
+        "optimizing-thinkpad-z13-battery-life-on-linux",
+        "Optimizing ThinkPad Z13 battery life on Linux",
+        "2023-11-01",
+        include_str!("content/posts/optimizing-thinkpad-z13-battery-life-on-linux.md"),
     ),
     (
         "minimal-neovim-setup-from-scratch",
         "Minimal Neovim setup from scratch",
         "2023-10-22",
         include_str!("content/posts/minimal-neovim-setup-from-scratch.md"),
+    ),
+    (
+        "moving-around-efficiently-in-neovim",
+        "Moving around efficiently in Neovim",
+        "2023-06-04",
+        include_str!("content/posts/moving-around-efficiently-in-neovim.md"),
     ),
     (
         "fixing-a-weird-bug-on-the-intel-219-lm-ethernet-controller",
