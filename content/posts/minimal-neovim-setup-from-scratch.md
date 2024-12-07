@@ -1,21 +1,29 @@
-I am writing this tutorial for some of my friends who are learning Neovim.
-Most beginners need a usable configuration to be effective at their job, but it also should not be too complex so they can understand and extend it.
-It also serves as an exercise for me to filter out what is truly important in my setup.
+Some of my friends who want to start using Neovim asked me for pointers to get
+started, so I decided to write a blog post for future reference. Most beginners
+need a usable configuration to be effective at their job, but it should also be
+simple enough to understand and extend. This is also a great opportunity for me
+to filter out what’s truly important in my setup (spoiler: I cut out one-third
+of my plugins after writing this post).
 
-For reference, a skeleton for this blog post is available [here](https://github.com/khuedoan/nvim-minimal),
-and you can also view my full config [here](https://github.com/khuedoan/dotfiles/tree/master/.config/nvim).
+For reference, a skeleton for this blog post is available
+[here](https://github.com/khuedoan/nvim-minimal). Since this post may become
+outdated, also check out my full configuration
+[here](https://github.com/khuedoan/dotfiles/tree/master/.config/nvim) for the
+latest updates.
 
 ## Understand the directory structure
 
-By default, Neovim will look for a configuration file at `~/.config/nvim/init.lua`, you can create it with:
+By default, Neovim will look for a configuration file at
+`~/.config/nvim/init.lua`, create it with:
 
 ```sh
 mkdir -p ~/.config/nvim
 touch ~/.config/nvim/init.lua
 ```
 
-In this tutorial, we will only use a single `init.lua` file.
-However, you should know that you can split your config into multiple modules later by creating a `lua/` subdirectory, for example:
+In this tutorial, we will use a single `init.lua` file. However, you can split
+your configuration into multiple modules later by creating a `lua/`
+subdirectory, for example:
 
 ```
 ~/.config/nvim
@@ -30,37 +38,40 @@ Then you can include them in `init.lua`:
 require("mymodule")
 ```
 
-Again, you only need a single `init.lua` file when you first start, so keep it simple and don't split the config file until you need to.
+Though you only need a single `init.lua` file when starting out, so keep it
+simple and avoid splitting the config file until necessary.
 
 ## Sensible options that (almost) everyone can agree on
 
-Show line numbers and enable relative numbers so you can jump to another line on the screen using relative counts like `5j` or `5k`:
+Enable line numbers and relative numbers to jump to other lines on the screen using relative counts like <kbd>5</kbd> <kbd>j</kbd> or <kbd>5</kbd> <kbd>k</kbd>:
 
 ```lua
 vim.opt.number = true
 vim.opt.relativenumber = true
 ```
 
-We also want the ability to undo after we exit and reopen the file:
+We also want the ability to undo changes after exiting and reopening the file:
 
 ```lua
 vim.opt.undofile = true
 ```
 
-Better window splitting behaviour (the default is fine, but most people will find this more natural since it mimics how they read a normal document - top to bottom, left to right):
+Improved window-splitting behavior - while the default is acceptable, most
+people find this more natural as it mimics reading a document from top to
+bottom and left to right:
 
 ```lua
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 ```
 
-The default leader key is `\`, but using the space bar is way more convenient:
+The default leader key is <kbd>\\</kbd>, but using the <kbd>Space</kbd> bar is way more convenient:
 
 ```lua
 vim.g.mapleader = " "
 ```
 
-This one is a bit controversial, but 4 spaces is the sweet spot for tab size, and we expand the tab key to insert spaces instead:
+This is a bit controversial, but 4 spaces is the sweet spot for tab size, and we configure the tab key to insert spaces instead:
 
 ```lua
 vim.opt.expandtab = true
@@ -68,12 +79,15 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 0 -- set to 0 to default to tabstop value
 ```
 
-Additionally or alternatively, you can use the [vim-sleuth](https://github.com/tpope/vim-sleuth) plugin below to heuristically determine those values based on your project.
+Additionally, you can use the [vim-sleuth](https://github.com/tpope/vim-sleuth)
+plugin below to heuristically determine those values based on your project.
 
 ## A good plugin manager
 
-[lazy.nvim](https://github.com/folke/lazy.nvim) is by far the best plugin manager for Neovim.
-It's fast, easy to use, feature-rich, and unmatched in its ability to lazy-load plugins for much better performance (hence the name).
+[lazy.nvim](https://github.com/folke/lazy.nvim) is by far the best plugin
+manager for Neovim. It's fast, easy to use, feature-rich, and unmatched in its
+ability to lazy-load plugins for significantly better performance (hence the
+name).
 
 Add the following code block to load `lazy.nvim` (and install it if it does not exist):
 
@@ -111,11 +125,15 @@ Now that we have our plugin manager set up, let's install a few essential plugin
 
 ### Fuzzy finder
 
-This is the most important one. If you can only install one plugin, choose this.
+This is arguably the most important one. If you can only install one plugin,
+choose this.
 
-There are two great fuzzy finders for Neovim at the moment: [fzf.vim](https://github.com/junegunn/fzf.vim) and [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
-There are trade-offs between the two. Telescope integrates better with Neovim and other plugins, but fzf is way faster.
-Performance is more important to me, so I choose fzf for this purpose:
+There are two great fuzzy finders for Neovim at the moment:
+[fzf.vim](https://github.com/junegunn/fzf.vim) and
+[telescope.nvim](https://github.com/nvim-telescope/telescope.nvim). There are
+trade-offs between the two. Telescope integrates better with Neovim and other
+plugins, but fzf is way faster. Performance is more important to me, so I
+choose `fzf` for this purpose:
 
 ```lua
     {
@@ -131,21 +149,31 @@ Performance is more important to me, so I choose fzf for this purpose:
     },
 ```
 
-You can see the power of `lazy.nvim` in this very first example.
-The `fzf.vim` plugin only loads if you press the shortcut, so your Neovim startup will always be fast, and your plugin is only loaded when you need it.
+You can see the power of `lazy.nvim` in this very first example. The `fzf.vim`
+plugin only loads if you press the shortcut, so your Neovim startup will always
+be fast, and your plugin is only loaded when you need it.
 
-You can verify this by typing `:Files` when you first start Neovim, then press Space twice to open the file finder, close it with `q`, then type `:Files` again.
-The first time it will error because the plugin is not loaded yet, but the second time it will work.
-There are more lazy loading optimizations in the next sections.
+You can verify this by typing `:Files` when you first start Neovim, then press
+Space twice to open the file finder, close it with <kbd>q</kbd>, then type
+`:Files` again. The first time it will error because the plugin is not loaded
+yet, but the second time it will work. There are more lazy loading
+optimizations in the next sections.
 
 ### File manager
 
-A fuzzy finder is good for opening or searching for existing content, but if you want to create, update, or delete files, a file manager is a better choice.
+A fuzzy finder is good for opening or searching for existing content, but if
+you want to create, update, or delete files, a file manager is a better choice.
 
-There are multiple file managers for Neovim, but the ones that are the most natural to use are the ones that allow you to manipulate the file system as if it's a Vim buffer, so you don't have to remember additional commands when you update the file system.
+There are multiple file managers for Neovim, but the ones that are the most
+natural to use are the ones that allow you to manipulate the file system as if
+it's a Vim buffer, so you don't have to remember additional commands when you
+update the file system.
 
-There are two contenders for this: [oil.nvim](https://github.com/stevearc/oil.nvim) and [mini.files](https://github.com/echasnovski/mini.files).
-Both are viable, but I find the column view of `mini.files` a bit distracting, so I use `oil.nvim`:
+There are two contenders for this:
+[oil.nvim](https://github.com/stevearc/oil.nvim) and
+[mini.files](https://github.com/echasnovski/mini.files). Both are viable, but I
+find the column view of `mini.files` a tiny bit distracting, so I use
+`oil.nvim`:
 
 ```lua
     {
@@ -159,14 +187,20 @@ Both are viable, but I find the column view of `mini.files` a bit distracting, s
     },
 ```
 
-Now when you press the `-` key, it will show you the current directory.
-Keep pressing `-` to go up, or Enter to go down the directory tree.
+Now when you press the <kbd>-</kbd> key, it will show you the current
+directory. Keep pressing <kbd>-</kbd> to go up, or <kbd>Enter</kbd> to go down
+the directory tree.
 
-You can use the normal Vim editing commands to update the file structure (e.g., `ciw` to change the word, `dd` to delete a file, or `p` to paste that file to another location), then save with `:w` to confirm.
+You can use the normal Vim editing commands to update the file structure (e.g.,
+<kbd>c</kbd> <kbd>i</kbd> <kbd>w</kbd> to change in word, <kbd>d</kbd>
+<kbd>d</kbd> to delete a file, or <kbd>p</kbd> to paste that file to another
+location), then save with <kbd>:</kbd> <kbd>w</kbd> to confirm.
 
 ### Common editing features
 
-- Automatically insert closing bracket using [nvim-autopairs](https://github.com/windwp/nvim-autopairs) (optional, some people prefer closing them manually):
+Automatically insert closing bracket using
+[nvim-autopairs](https://github.com/windwp/nvim-autopairs) (optional, some
+people prefer closing them manually):
 
 ```lua
     {
@@ -178,7 +212,10 @@ You can use the normal Vim editing commands to update the file structure (e.g., 
     },
 ```
 
-- Toggle comments with `gc` using [Comment.nvim](https://github.com/numToStr/Comment.nvim) (you can use visual block `<C-v>` to comment multiple lines, but this is more convenient):
+Toggle comments with <kbd>g</kbd> <kbd>c</kbd> using
+[Comment.nvim](https://github.com/numToStr/Comment.nvim) (you can use visual
+block <kbd>Ctrl + v</kbd> to comment multiple lines, but this is more
+convenient):
 
 ```lua
     {
@@ -190,7 +227,9 @@ You can use the normal Vim editing commands to update the file structure (e.g., 
     },
 ```
 
-- Automatically determine indent settings using [vim-sleuth](https://github.com/tpope/vim-sleuth) (useful if you work with multiple languages that have different indent styles, such as Python and Go):
+Automatically determine indent settings using
+[vim-sleuth](https://github.com/tpope/vim-sleuth) (useful if you work with
+multiple languages that have different indent styles, such as Python and Go):
 
 ```lua
     {
@@ -201,10 +240,13 @@ You can use the normal Vim editing commands to update the file structure (e.g., 
 
 ## "IntelliSense"
 
-If you want modern IDE capabilities (autocomplete, go to definition, rename variable, code snippets, etc.), you'll need to set up Language Server Protocol (LSP) integration.
+If you want modern IDE capabilities (autocomplete, go to definition, rename
+variable, code snippets, etc.), you'll need to set up Language Server Protocol
+(LSP) integration.
 
-By far this is the most complex thing to set up, so please bear with me.
-I recommend [lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim) for beginners to avoid a bunch of boilerplate:
+By far this is the most complex thing to set up, so please bear with me. I
+recommend [lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim) for
+beginners to avoid a bunch of boilerplate:
 
 ```lua
     {
@@ -240,37 +282,44 @@ I recommend [lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim) for be
     },
 ```
 
-There's a lot going on in the above config, so I'll explain it a bit.
-Several plugins work together to handle the installation, configuration, and integration of language servers with Neovim:
+There's a lot going on in the above config, so I'll explain it a bit. Several
+plugins work together to handle the installation, configuration, and
+integration of language servers with Neovim:
 
-- `mason`: simplifies the management and installation of LSP servers (you can easily add more servers to the `ensure_installed` list)
+- `mason`: simplifies the management and installation of LSP servers (you can
+  easily add more servers to the `ensure_installed` list)
 - `lspconfig`: the official Neovim plugin for configuring LSP servers
-- `cmp`: a completion plugin that integrates with LSP servers to provide intelligent code suggestions and autocompletions
+- `cmp`: a completion plugin that integrates with LSP servers to provide
+  intelligent code suggestions and autocompletions
 
 Some basic keybindings:
 
-- `<C-n>`: next item in the completion menu
-- `<C-p>`: previous item in the completion menu
-- `<C-y>`: confirms selection
-- `<C-e>`: cancel the completion
-- `gd`: go to definition
-- `gi`: go to implementation
+- <kbd>Ctrl + n</kbd>: next item in the completion menu
+- <kbd>Ctrl + p</kbd>: previous item in the completion menu
+- <kbd>Ctrl + y</kbd>: confirms selection
+- <kbd>Ctrl + e</kbd>: cancel the completion
+- <kbd>g</kbd> <kbd>d</kbd>: go to definition
+- <kbd>g</kbd> <kbd>i</kbd>: go to implementation
 - See [here](https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/lsp.md) for the full list and how to customize your keymaps
 
-This should be sufficient to get you started. After you've mastered the basics, consider the following suggestions:
+This should be sufficient to get you started. After you've mastered the basics,
+consider the following suggestions:
 
-- [Add more snippets](https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/autocomplete.md#add-an-external-collection-of-snippets)
-- Consider [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for better syntax highlighting and additional text objects
-- When you require more customization, you can remove `lsp-zero.nvim` and build a custom LSP setup
+- [Add more
+  snippets](https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/autocomplete.md#add-an-external-collection-of-snippets)
+- Consider
+  [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for
+  better syntax highlighting and additional text objects
+- When you require more customization, you can remove `lsp-zero.nvim` and build
+  a custom LSP setup
 
 At this stage, your Neovim configuration should be sufficient for daily use.
 Keep reading if you want more!
 
 ## Quality of life improvements
 
-While you don't need these plugins to edit effectively, they can certainly make your life easier:
-
-- Reopens files at your last edit position using [vim-lastplace](https://github.com/farmergreg/vim-lastplace):
+Reopens files at your last edit position using
+[vim-lastplace](https://github.com/farmergreg/vim-lastplace):
 
 ```lua
     {
@@ -279,45 +328,43 @@ While you don't need these plugins to edit effectively, they can certainly make 
     },
 ```
 
-- "Sneak" to any position on the screen with `s`/`S` to move much faster using [leap.nvim](https://github.com/ggandor/leap.nvim):
+Flash a label to quickly jump to a search result using
+[flash.nvim](https://github.com/folke/flash.nvim):
 
 ```lua
     {
-        "https://github.com/ggandor/leap.nvim",
+        "https://github.com/folke/flash.nvim",
         event = "VeryLazy",
         config = function()
-            require("leap").set_default_keymaps()
+            require("flash").setup({
+                modes = {
+                    search = {
+                        enabled = true,
+                    },
+                    char = {
+                        enabled = false,
+                    },
+                },
+            })
         end,
     },
 ```
 
-- Show indent level using [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim):
+Show indent level using
+[indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim):
 
 ```lua
     {
         "https://github.com/lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPost", "BufNewFile" },
+        event = { "VeryLazy" },
         config = function()
             require("ibl").setup()
         end,
     },
 ```
 
-- Show changed lines in git and current line blame using [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim):
-
-```lua
-    {
-        "https://github.com/lewis6991/gitsigns.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("gitsigns").setup({
-                current_line_blame = true,
-            })
-        end,
-    },
-```
-
-- Common git operations using [neogit](https://github.com/NeogitOrg/neogit) (very handy for staging partial changes):
+Common git operations using [neogit](https://github.com/NeogitOrg/neogit)
+(very handy for staging partial changes):
 
 ```lua
     {
@@ -329,17 +376,21 @@ While you don't need these plugins to edit effectively, they can certainly make 
     },
 ```
 
-## Eye candy
+## Some eye candies
 
 Last but not least, it's pretty hard to resist a nice theme!
 
-Personally, I use [onedark.nvim](https://github.com/navarasu/onedark.nvim) as my daily driver.
-But color is very subjective, so you can choose whatever you want.
+Personally, I use [onedark.nvim](https://github.com/navarasu/onedark.nvim) as
+my daily driver. But color is very subjective, so you can choose whatever you
+want.
 
-If you don't want to install any additional plugins, this built-in colorscheme is pretty good:
+If you don't want to install any additional plugins, some built-in colorschemes
+looks good too:
 
 ```lua
 -- There's no Lua API to select a colorscheme yet, so we'll call a Vim command
+-- On Neovim 0.10.0 and above, the default colorscheme is quite usable
+vim.cmd("colorscheme default") -- It's already the default, so you don't need to call this
 vim.cmd("colorscheme habamax") -- Available in Neovim >= 0.9.0
 ```
 
@@ -357,11 +408,16 @@ If you're feeling fancy, throw in a nice status line too:
 
 ## What next?
 
-After building the essential pieces of your config, just keep using Neovim and get better.
-The most important part is to try to note the inefficiencies in your day-to-day workflow and find a way to improve it, either with built-in features or additional plugins.
-There are some extremely valuable videos on that subject:
+After building the essential parts of your config, keep using Neovim and get
+better. The key is to identify inefficiencies in your day-to-day workflow and
+find ways to improve them, either with built-in features or additional plugins.
+There are some highly valuable videos on this subject:
 
-- [7 Habits For Effective Text Editing](https://www.youtube.com/watch?v=eX9m3g5J-XA) by Bram Moolenaar - the creator of Vim (great respect, RIP)
-- [How to Do 90% of What Plugins Do](https://www.youtube.com/watch?v=XA2WjJbmmoM) by Max Cantor
+- [7 Habits For Effective Text
+  Editing](https://www.youtube.com/watch?v=eX9m3g5J-XA) by Bram Moolenaar - the
+  creator of Vim (great respect, RIP)
+- [How to Do 90% of What Plugins
+  Do](https://www.youtube.com/watch?v=XA2WjJbmmoM) by Max Cantor
 
-Trust the process, keep improving, and I promise you will be faster in Neovim than any other IDE could ever dream of.
+Trust the process, keep improving, and I promise you'll be faster in Neovim
+than in any other IDE.
