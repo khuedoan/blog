@@ -159,6 +159,10 @@ I'm using Ansible to generate to config files from
 you can checkout my Ansible role for that
 [here](https://github.com/khuedoan/homelab/tree/master/metal/roles/pxe_server).
 
+Initially, I wanted to include many code examples in this post, but I realized
+it would be too long and hard to read. So it's easier to go directly to the
+repository and check the code there. :)
+
 ### Start the machines
 
 Now, we can start the machines. I'm using Wake-on-LAN to power them on, and my
