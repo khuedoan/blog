@@ -12,6 +12,12 @@ use syntect::{
 
 static POSTS: &[(&str, &str, &str, &str)] = &[
     (
+        "nix-and-direnv-a-match-made-in-heaven",
+        "Nix and direnv - a match made in heaven",
+        "2024-12-07",
+        include_str!("content/posts/nix-and-direnv-a-match-made-in-heaven.md"),
+    ),
+    (
         "nixos-cured-my-ocd",
         "NixOS cured my OCD",
         "2024-08-24",
