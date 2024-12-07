@@ -12,12 +12,6 @@ use syntect::{
 
 static POSTS: &[(&str, &str, &str, &str)] = &[
     (
-        "automating-linux-installation-on-bare-metal-with-a-containerized-pxe-server",
-        "Automating Linux installation on bare metal with a containerized PXE server",
-        "2024-12-07",
-        include_str!("content/posts/automating-linux-installation-on-bare-metal-with-a-containerized-pxe-server.md"),
-    ),
-    (
         "nixos-cured-my-ocd",
         "NixOS cured my OCD",
         "2024-08-24",
@@ -31,13 +25,25 @@ static POSTS: &[(&str, &str, &str, &str)] = &[
     ),
     (
         "moving-around-efficiently-in-neovim",
-        "Moving Around Efficiently in Neovim",
+        "Moving around efficiently in Neovim",
         "2023-06-04",
         include_str!("content/posts/moving-around-efficiently-in-neovim.md"),
     ),
     (
+        "fixing-a-weird-bug-on-the-intel-219-lm-ethernet-controller",
+        "Fixing a weird bug on the Intel 219-LM Ethernet controller",
+        "2023-03-07",
+        include_str!("content/posts/fixing-a-weird-bug-on-the-intel-219-lm-ethernet-controller.md"),
+    ),
+    (
+        "automating-linux-installation-on-bare-metal-with-a-containerized-pxe-server",
+        "Automating Linux installation on bare metal with a containerized PXE server",
+        "2021-06-05",
+        include_str!("content/posts/automating-linux-installation-on-bare-metal-with-a-containerized-pxe-server.md"),
+    ),
+    (
         "arch-linux-installation-guide",
-        "Arch Linux Installation Guide",
+        "Arch Linux installation guide",
         "2021-05-22",
         include_str!("content/posts/arch-linux-installation-guide.md"),
     ),
