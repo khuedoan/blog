@@ -48,6 +48,12 @@ something like this:
 }
 ```
 
+And in my `.envrc` file:
+
+```sh
+use flake
+```
+
 You can think of this as a `Cargo.toml` or `package.json` file, but for all CLI
 tools.
 
