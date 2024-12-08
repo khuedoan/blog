@@ -64,9 +64,9 @@ Then open <http://localhost:3000>.
 
 ## Deployment
 
-- Docker image: `Dockerfile`
-- Pipelines: `.woodpecker/`
-- Kubernetes configuration: see <https://github.com/khuedoan/homelab/tree/master/apps/blog>
+- Kubernetes configuration:
+    - <https://github.com/khuedoan/horus/tree/master/apps/blog>
+    - <https://github.com/khuedoan/homelab/tree/master/apps/blog>
 
 ## Acknowledgements
 
