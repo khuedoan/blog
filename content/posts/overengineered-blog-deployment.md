@@ -100,10 +100,10 @@ Heroku-like "PaaS" setup that allows me to deploy with a simple git push:
 git push production
 ```
 
-This will run the "optional" CI script, which is essentially just a git
+This will run an optional CI script, which is essentially just a git
 `pre-receive` hook that runs the `ci` target in the `Makefile`, with caching.
 
-The CI output is printed directly to my terminal, so I don't need to visit a
+The CI logs is printed directly to my terminal, so I don't need to open a
 separate web UI to see the result. It looks something like this:
 
 ```sh
