@@ -32,7 +32,6 @@ The [source code of my blog](https://github.com/khuedoan/blog) looks like this
 │       ├── post-1.md
 │       ├── post-2.md
 │       └── post-3.md
-├── Dockerfile
 ├── flake.nix
 ├── Makefile
 ├── src
@@ -123,22 +122,23 @@ system just uses that to get all required dependencies, exactly the same
 version I have on my local machine (see also [Nix and direnv - a match made in
 heaven](https://www.khuedoan.com/posts/nix-and-direnv-a-match-made-in-heaven)).
 
-The build system sees the `Dockerfile` and builds the image, pushing it to my
-registry, again with caching and output printed to my terminal:
+In my build system, I use [Nixpacks](https://nixpacks.com) to automatically
+detect and build my project into a container image without requiring a
+`Dockerfile` (though I can fall back to a `Dockerfile` for projects that cannot
+be detected by Nixpacks if needed):
 
 ```sh
 # Truncated for brevity
-remote: #15 exporting to image
-remote: #15 exporting layers 0.0s done
-remote: #15 writing image sha256:57e2a535588a54cea961c942e5b3efcd1ef16855b5c9865ca57a03c6203e5e33 done
-remote: #15 naming to docker.io/library/blog:db853a79c495a9f8b88cf3425766e8aea418a5cd done
-remote: #15 DONE 0.1s
-remote: docker.io/khuedoan/blog:db853a79c495a9f8b88cf3425766e8aea418a5cd
+remote: === Successfully Built! ===
+remote: 
+remote: Run:
+remote:   docker run -it e0bfdddf-e414-4749-ba92-6f68b06a8f9c
+remote: docker.io/khuedoan/blog:62872ac3a8fdac2b5dfbafea0421b436ab5bffdb
 ```
 
-In the future, I might add [Buildpacks](https://buildpacks.io) or
-[Nixpacks](https://nixpacks.com) support to the CI system, so I won't have to
-write a `Dockerfile` anymore.
+> Disclaimer: I worked at the company that created Nixpacks, but I’m sharing it
+> because I genuinely think it’s a great tool, not because I’m being paid or
+> sponsored.
 
 Once the image is pushed, the deployment script on the server updates my GitOps
 repository with the new image tag and commits it:
