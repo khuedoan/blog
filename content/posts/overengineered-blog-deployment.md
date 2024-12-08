@@ -7,8 +7,8 @@ because". I'll simply describe my not-so-simple setup.
 
 ## Project structure
 
-My [blog's source code](https://github.com/khuedoan/blog) looks like this (truncated for brevity):
-The [source code of my blog] looks like this (truncated for brevity):
+The [source code of my blog](https://github.com/khuedoan/blog) looks like this
+(truncated for brevity):
 
 ```sh
 .
