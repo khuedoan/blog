@@ -5,6 +5,16 @@ pub async fn view() -> Markup {
     base(
         "Contact",
         html! {
+            pre { r#"
+┌─────email─────┐
+│               │
+│    ┌──website─┐
+│    │          │
+mail@khuedoan.com
+     │      │
+     └──────┘
+github & linkedin"#
+            }
             p { "You can reach me via one of the following links:" }
             ul {
                 li { a target="_blank" href="mailto:mail@khuedoan.com" { "Email" } }
