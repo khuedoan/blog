@@ -11,6 +11,12 @@ use syntect::{
 };
 
 static POSTS: &[(&str, &str, &str, &str)] = &[
+    // (
+    //     "switching-my-self-hosted-git-servers-to-radicle",
+    //     "Switching my self-hosted Git servers to Radicle",
+    //     "2024-12-08",
+    //     include_str!("./content/posts/switching-my-self-hosted-git-servers-to-radicle.md"),
+    // ),
     (
         "overengineered-blog-deployment",
         "Overengineered blog deployment",
