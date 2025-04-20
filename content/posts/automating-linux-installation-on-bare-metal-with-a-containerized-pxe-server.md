@@ -1,3 +1,5 @@
+# Automating Linux installation on bare metal with a containerized PXE server
+
 If you're like me, you have a homelab with multiple bare-metal machines. Maybe
 you've been installing Linux manually on your servers:
 

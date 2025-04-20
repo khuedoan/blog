@@ -1,3 +1,5 @@
+# Minimal Neovim setup from scratch
+
 Some of my friends who want to start using Neovim asked me for pointers to get
 started, so I decided to write a blog post for future reference. Most beginners
 need a usable configuration to be effective at their job, but it should also be

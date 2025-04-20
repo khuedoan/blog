@@ -1,3 +1,5 @@
+# NixOS cured my OCD
+
 Today I noticed I haven't reinstalled my [NixOS](https://nixos.org) system in
 over a year:
 

@@ -32,7 +32,6 @@ pub fn base(title: &str, body: Markup) -> Markup {
                     }
                 }
                 main class="container" {
-                    h1 { (title) }
                     (body)
                 }
             }

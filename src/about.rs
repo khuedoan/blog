@@ -5,6 +5,7 @@ pub async fn view() -> Markup {
     base(
         "About",
         html! {
+            h1 { "About" }
             p {
                 "Hey there, I'm Khue! I'm a Site Reliability Engineer. I have a wide
                 range of interests in technology that I love to explore and tinker

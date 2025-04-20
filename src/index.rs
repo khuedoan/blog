@@ -6,8 +6,9 @@ pub async fn view() -> Markup {
     let posts = list_posts();
 
     base(
-        "Hi there, I’m Khue 👋",
+        "Khue Doan",
         html! {
+            h1 { "Hi there, I’m Khue 👋" }
             p {
                 "Welcome to my website, where I write about Linux, DevOps, homelab, workflow optimization, and more!"
             }

@@ -1,3 +1,5 @@
+# Fixing a weird bug on the Intel 219-LM Ethernet controller
+
 I recently set up a [ThinkCentre
 M710q](https://www.lenovo.com/us/en/p/desktops/thinkcentre/m-series-tiny/thinkcentre-m710q/11tc1mt710q)
 for my homelab staging environment. After plugging in the Ethernet cable, I

@@ -1,3 +1,5 @@
+# Optimizing ThinkPad Z13 battery life on Linux
+
 After fine-tuning my ThinkPad Z13 laptop running Linux, I've significantly
 reduced power consumption, especially with light usage. Below is a breakdown of
 the setup and results, which may help others optimize their systems for better

@@ -1,3 +1,5 @@
+# Arch Linux installation guide
+
 But it can be confusing for new users because of how much information it provides.
 In this tutorial, I'll show you how I install Arch Linux, without showing you too many choices.
 

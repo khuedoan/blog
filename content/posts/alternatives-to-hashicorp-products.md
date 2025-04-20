@@ -1,3 +1,5 @@
+# Alternatives to HashiCorp products
+
 HashiCorp has [changed their license to a source-available one](https://www.hashicorp.com/blog/hashicorp-adopts-business-source-license).
 If you care about free software or are worried about the future of these projects,
 here are some alternatives.

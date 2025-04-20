@@ -5,6 +5,7 @@ pub async fn view() -> Markup {
     base(
         "Contact",
         html! {
+            h1 { "Contact" }
             pre { r#"
 ┌─────email─────┐
 │               │

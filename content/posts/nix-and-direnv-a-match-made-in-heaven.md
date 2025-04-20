@@ -1,3 +1,5 @@
+# Nix and direnv - a match made in heaven
+
 This is just a quick post to praise the combination of [Nix](https://nixos.org)
 and [direnv](https://direnv.net).
 

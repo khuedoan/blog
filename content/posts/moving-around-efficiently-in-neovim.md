@@ -1,3 +1,5 @@
+# Moving around efficiently in Neovim
+
 Today I have some quick tips to help you move around faster in
 Neovim. If you're already familiar with the basics of NeoVim and want to
 improve your speed, this article is for you. Let's dive right in!

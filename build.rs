@@ -10,79 +10,33 @@ use syntect::{
     util::LinesWithEndings,
 };
 
-static POSTS: &[(&str, &str, &str, &str)] = &[
+static POSTS: &[(&str, &str)] = &[
     // (
     //     "switching-my-self-hosted-git-servers-to-radicle",
     //     "Switching my self-hosted Git servers to Radicle",
     //     "2024-12-08",
     //     include_str!("./content/posts/switching-my-self-hosted-git-servers-to-radicle.md"),
     // ),
+    ("2024-12-08", "overengineered-blog-deployment"),
+    ("2024-12-07", "nix-and-direnv-a-match-made-in-heaven"),
+    ("2024-08-24", "nixos-cured-my-ocd"),
+    ("2024-04-26", "alternatives-to-hashicorp-products"),
     (
-        "overengineered-blog-deployment",
-        "Overengineered blog deployment",
-        "2024-12-08",
-        include_str!("./content/posts/overengineered-blog-deployment.md"),
-    ),
-    (
-        "nix-and-direnv-a-match-made-in-heaven",
-        "Nix and direnv - a match made in heaven",
-        "2024-12-07",
-        include_str!("./content/posts/nix-and-direnv-a-match-made-in-heaven.md"),
-    ),
-    (
-        "nixos-cured-my-ocd",
-        "NixOS cured my OCD",
-        "2024-08-24",
-        include_str!("./content/posts/nixos-cured-my-ocd.md"),
-    ),
-    (
-        "alternatives-to-hashicorp-products",
-        "Alternatives to HashiCorp products",
-        "2024-04-26",
-        include_str!("./content/posts/alternatives-to-hashicorp-products.md"),
-    ),
-    (
-        "optimizing-thinkpad-z13-battery-life-on-linux",
-        "Optimizing ThinkPad Z13 battery life on Linux",
         "2023-11-01",
-        include_str!("./content/posts/optimizing-thinkpad-z13-battery-life-on-linux.md"),
+        "optimizing-thinkpad-z13-battery-life-on-linux",
     ),
+    ("2023-10-22", "minimal-neovim-setup-from-scratch"),
+    ("2023-06-04", "moving-around-efficiently-in-neovim"),
     (
-        "minimal-neovim-setup-from-scratch",
-        "Minimal Neovim setup from scratch",
-        "2023-10-22",
-        include_str!("./content/posts/minimal-neovim-setup-from-scratch.md"),
-    ),
-    (
-        "moving-around-efficiently-in-neovim",
-        "Moving around efficiently in Neovim",
-        "2023-06-04",
-        include_str!("./content/posts/moving-around-efficiently-in-neovim.md"),
-    ),
-    (
-        "fixing-a-weird-bug-on-the-intel-219-lm-ethernet-controller",
-        "Fixing a weird bug on the Intel 219-LM Ethernet controller",
         "2023-03-07",
-        include_str!("./content/posts/fixing-a-weird-bug-on-the-intel-219-lm-ethernet-controller.md"),
+        "fixing-a-weird-bug-on-the-intel-219-lm-ethernet-controller",
     ),
     (
-        "automating-linux-installation-on-bare-metal-with-a-containerized-pxe-server",
-        "Automating Linux installation on bare metal with a containerized PXE server",
         "2021-06-05",
-        include_str!("./content/posts/automating-linux-installation-on-bare-metal-with-a-containerized-pxe-server.md"),
+        "automating-linux-installation-on-bare-metal-with-a-containerized-pxe-server",
     ),
-    (
-        "arch-linux-installation-guide",
-        "Arch Linux installation guide",
-        "2021-05-22",
-        include_str!("./content/posts/arch-linux-installation-guide.md"),
-    ),
-    (
-        "convert-from-init-vim-to-init-lua",
-        "Convert Neovim config from init.vim to init.lua",
-        "2021-03-12",
-        include_str!("./content/posts/convert-from-init-vim-to-init-lua.md"),
-    ),
+    ("2021-05-22", "arch-linux-installation-guide"),
+    ("2021-03-12", "convert-from-init-vim-to-init-lua"),
 ];
 
 fn main() {
@@ -93,13 +47,21 @@ fn main() {
 
     let entries: Vec<String> = POSTS
         .iter()
-        .map(|(id, title, date, markdown)| {
+        .map(|(date, id)| {
+            let markdown = fs::read_to_string(format!("./content/posts/{id}.md"))
+                .unwrap_or_else(|_| panic!("Failed to read Markdown file for {id}"));
+            let title = markdown
+                .lines()
+                .next()
+                .and_then(|line| line.strip_prefix("# "))
+                .unwrap_or_else(|| panic!("Title not found for {id}"))
+                .to_string();
             format!(
                 "    (\"{}\", \"{}\", \"{}\", r###\"{}\"###),",
                 id,
                 title,
                 date,
-                markdown_to_html(markdown)
+                markdown_to_html(&markdown)
             )
         })
         .collect();
