@@ -7,7 +7,7 @@ target/release/blog: src/ Cargo.toml
 	cargo build --release
 
 dev:
-	cargo watch -L debug --exec 'run'
+	bacon run
 
 fmt:
 	cargo fmt

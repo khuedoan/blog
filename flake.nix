@@ -1,23 +1,31 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      with nixpkgs.legacyPackages.${system};
-      {
-        devShells.default = mkShell {
-          packages = [
-            cargo
-            cargo-watch
-            clippy
-            k6
-            rustc
-            rustfmt
-          ];
-        };
-      }
-    );
+  outputs = { self, nixpkgs }:
+  let
+    supportedSystems = nixpkgs.lib.genAttrs [
+      "x86_64-linux"
+      "aarch64-linux"
+      "aarch64-darwin"
+    ];
+  in
+  {
+    devShells = supportedSystems (system: {
+      default = with nixpkgs.legacyPackages.${system}; mkShell {
+        packages = [
+          bacon
+          cargo
+          cargo-nextest
+          clippy
+          k6
+          rustc
+          rustfmt
+        ] ++ lib.optional stdenv.isDarwin [
+          libiconv
+        ];
+      };
+    });
+  };
 }
