@@ -33,10 +33,10 @@ async fn main() {
 fn app() -> Router {
     Router::new()
         .route("/", get(index::view))
-        .route("/posts/:id", get(posts::view))
+        .route("/posts/{id}", get(posts::view))
         .route("/about", get(about::view))
         .route("/contact", get(contact::view))
-        .route("/*path", get(public::file))
+        .route("/{*path}", get(public::file))
         .layer(TraceLayer::new_for_http())
         .layer(CompressionLayer::new())
 }
