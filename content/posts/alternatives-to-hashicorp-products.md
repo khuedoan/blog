@@ -26,8 +26,9 @@ They require significant changes to your infrastructure, though.
 There's no clear replacement for these products, but you can compose other tools to achieve similar features.
 Fortunately, these products focus more on local development and developer experience, so there's less risk of breaking production.
 
-- Vagrant: If you only need Ubuntu VMs, [Multipass](https://multipass.run) should suffice.
-  However, most local development setups should move to containers now.
+- Vagrant: [Lima](https://lima-vm.io) is a CNCF sandbox project that lets you
+  run Linux machines using a YAML config instead of `Vagrantfile`. However, most
+  local development setups should now be containerized.
 - Packer: If you're using Kubernetes, it's less likely that you'll need to build VM images.
   However, if you do need to, there's usually a distro-specific tool available to build a custom image for that distro.
   Personally, I use NixOS with [nixos-generators](https://github.com/nix-community/nixos-generators).
