@@ -5,7 +5,6 @@ use leptos_router::{
     StaticSegment,
     components::{Route, Router, Routes},
     hooks::use_params_map,
-    params::Params,
     path,
 };
 
@@ -45,7 +44,7 @@ pub fn App() -> impl IntoView {
                     <Route path=StaticSegment("") view=HomePage />
                     <Route path=StaticSegment("/about") view=About />
                     <Route path=StaticSegment("/contact") view=Contact />
-                    <Route path=path!("/posts/:id") view=Post />
+                    <Route path=path!("/posts/:id") view=PostPage />
                 </Routes>
             </main>
         </Router>
@@ -77,38 +76,12 @@ fn Nav() -> impl IntoView {
 
 #[component]
 fn HomePage() -> impl IntoView {
-    let posts = list_posts();
-
     view! {
         <h1>"Hi there, I’m Khue 👋"</h1>
         <p>
             "Welcome to my website, where I write about Linux, DevOps, homelab, workflow optimization, and more!"
         </p>
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {posts
-                    .into_iter()
-                    .map(|post| {
-                        view! {
-                            <tr>
-                                <th scope="row">
-                                    <a href=format!("/posts/{}", post.id) class="contrast">
-                                        {post.title}
-                                    </a>
-                                </th>
-                                <th scope="row">{post.date}</th>
-                            </tr>
-                        }
-                    })
-                    .collect::<Vec<_>>()}
-            </tbody>
-        </table>
+        <PostList />
     }
 }
 
@@ -198,14 +171,43 @@ fn Contact() -> impl IntoView {
     }
 }
 
-#[derive(Params, PartialEq)]
-struct PostParams {
-    id: Option<String>,
+#[component]
+fn PostList() -> impl IntoView {
+    let posts = list_posts();
+
+    view! {
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {posts
+                    .into_iter()
+                    .map(|post| {
+                        view! {
+                            <tr>
+                                <th scope="row">
+                                    <a href=format!("/posts/{}", post.id) class="contrast">
+                                        {post.title}
+                                    </a>
+                                </th>
+                                <th scope="row">{post.date}</th>
+                            </tr>
+                        }
+                    })
+                    .collect::<Vec<_>>()}
+            </tbody>
+        </table>
+    }
 }
 
 #[component]
-fn Post() -> impl IntoView {
+fn PostPage() -> impl IntoView {
     let params = use_params_map();
+    // TODO avoid unwrap and use type safe params
     let id = move || params.read().get("id").unwrap_or_default();
     let (metadata, html) = get_post(id()).unwrap();
     view! {
