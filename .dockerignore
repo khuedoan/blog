@@ -1,0 +1,11 @@
+.direnv
+.envrc
+.git
+.gitignore
+Dockerfile
+Makefile
+README.md
+flake.lock
+flake.nix
+target
+tests
