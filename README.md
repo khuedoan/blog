@@ -74,3 +74,4 @@ Then open <http://localhost:3000>.
 - [leptos-rs/start-axum](https://github.com/leptos-rs/start-axum): code examples
 - [Making a dev shell with nix flakes](https://fasterthanli.me/series/building-a-rust-service-with-nix/part-10): Nix flake
 - [Comment by ScottAbbey in pulldown-cmark#167](https://github.com/pulldown-cmark/pulldown-cmark/issues/167#issuecomment-448491422) and [eguiraud/highlight-pulldown](https://gitlab.com/eguiraud/highlight-pulldown): Syntax highlighting for Markdown using `pulldown-cmark` and `syntect`
+- [John Carmack's "Act on press" tweet](https://x.com/ID_AA_Carmack/status/1787850053912064005)

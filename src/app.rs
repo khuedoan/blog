@@ -4,7 +4,7 @@ use leptos_meta::{MetaTags, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
     StaticSegment,
     components::{Route, Router, Routes},
-    hooks::use_params_map,
+    hooks::{use_navigate, use_params_map},
     path,
 };
 
@@ -174,6 +174,7 @@ fn Contact() -> impl IntoView {
 #[component]
 fn PostList() -> impl IntoView {
     let posts = list_posts();
+    let navigate = use_navigate();
 
     view! {
         <table>
@@ -187,10 +188,21 @@ fn PostList() -> impl IntoView {
                 {posts
                     .into_iter()
                     .map(|post| {
+                        let path = format!("/posts/{}", post.id);
                         view! {
                             <tr>
                                 <th scope="row">
-                                    <a href=format!("/posts/{}", post.id) class="contrast">
+                                    // TODO split into a separate component
+                                    <a
+                                        href=path.clone()
+                                        class="contrast"
+                                        on:mousedown={
+                                            let value = navigate.clone();
+                                            move |_| {
+                                                value(&path, Default::default());
+                                            }
+                                        }
+                                    >
                                         {post.title}
                                     </a>
                                 </th>
