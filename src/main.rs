@@ -1,62 +1,33 @@
-#![forbid(unsafe_code)]
-
-use axum::{routing::get, Router};
-use tokio::signal;
-use tower_http::{compression::CompressionLayer, trace::TraceLayer};
-use tracing::info;
-use tracing_subscriber::EnvFilter;
-
-mod about;
-mod contact;
-mod index;
-mod page;
-mod posts;
-mod public;
-
+#[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
-    tracing_subscriber::fmt()
-        .with_env_filter(
-            EnvFilter::try_from_env("LOG_LEVEL").unwrap_or_else(|_| EnvFilter::new("info")),
-        )
-        .without_time()
-        .init();
+    use axum::Router;
+    use blog::app::*;
+    use leptos::logging::log;
+    use leptos::prelude::*;
+    use leptos_axum::{LeptosRoutes, generate_route_list};
+
+    let conf = get_configuration(None).unwrap();
+    let leptos_options = conf.leptos_options;
+    let routes = generate_route_list(App);
+
+    let app = Router::new()
+        .leptos_routes(&leptos_options, routes, {
+            let leptos_options = leptos_options.clone();
+            move || shell(leptos_options.clone())
+        })
+        .fallback(leptos_axum::file_and_error_handler(shell))
+        .with_state(leptos_options);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    info!("listening on {}", listener.local_addr().unwrap());
-    axum::serve(listener, app())
-        .with_graceful_shutdown(shutdown_signal())
+    log!("listening on {}", listener.local_addr().unwrap());
+    axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
 }
 
-fn app() -> Router {
-    Router::new()
-        .route("/", get(index::view))
-        .route("/posts/{id}", get(posts::view))
-        .route("/about", get(about::view))
-        .route("/contact", get(contact::view))
-        .route("/{*path}", get(public::file))
-        .layer(TraceLayer::new_for_http())
-        .layer(CompressionLayer::new())
-}
-
-async fn shutdown_signal() {
-    let ctrl_c = async {
-        signal::ctrl_c()
-            .await
-            .expect("failed to install Ctrl+C handler");
-    };
-
-    let terminate = async {
-        signal::unix::signal(signal::unix::SignalKind::terminate())
-            .expect("failed to install signal handler")
-            .recv()
-            .await;
-    };
-
-    tokio::select! {
-        _ = ctrl_c => {},
-        _ = terminate => {},
-    }
+#[cfg(not(feature = "ssr"))]
+pub fn main() {
+    // No client-side main function
+    // See lib.rs for hydration function instead
 }

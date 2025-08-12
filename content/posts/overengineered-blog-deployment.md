@@ -111,7 +111,6 @@ separate web UI to see the result. It looks something like this:
 # Truncated for brevity
 remote: running 6 tests
 remote: test public::tests::file_nested_image ... ok
-remote: test public::tests::file_htmx ... ok
 remote: test posts::tests::rendered_content ... ok
 remote: test public::tests::file_gpg ... ok
 remote: test public::tests::file_not_found ... ok

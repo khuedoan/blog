@@ -1,10 +1,10 @@
-use pulldown_cmark::{html, CodeBlockKind, CowStr, Event, Options, Parser, Tag, TagEnd};
+use pulldown_cmark::{CodeBlockKind, CowStr, Event, Options, Parser, Tag, TagEnd, html};
 use std::{env, fs, path::Path};
 use syntect::{
     easy::HighlightLines,
     highlighting::ThemeSet,
     html::{
-        append_highlighted_html_for_styled_line, start_highlighted_html_snippet, IncludeBackground,
+        IncludeBackground, append_highlighted_html_for_styled_line, start_highlighted_html_snippet,
     },
     parsing::SyntaxSet,
     util::LinesWithEndings,

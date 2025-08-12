@@ -4,9 +4,7 @@ This is the source code of my personal website at [khuedoan.com](https://khuedoa
 
 - [Rust](https://www.rust-lang.org)
 - [Axum](https://github.com/tokio-rs/axum)
-- [Maud](https://maud.lambda.xyz)
 - [Pico CSS](https://picocss.com)
-- [HTMX](https://htmx.org)
 
 You can check out older branches for previous implementations:
 
