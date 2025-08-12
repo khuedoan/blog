@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # TODO rustc in NixOS stable is not new enough
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   outputs = { self, nixpkgs }:
@@ -16,10 +17,14 @@
       default = with nixpkgs.legacyPackages.${system}; mkShell {
         packages = [
           bacon
+          binaryen
           cargo
+          cargo-leptos
           cargo-nextest
           clippy
           k6
+          leptosfmt
+          lld
           rustc
           rustfmt
         ] ++ lib.optional stdenv.isDarwin [

@@ -2,8 +2,7 @@ default_job = "run"
 
 [jobs.run]
 command = [
-    "cargo", "run",
-    "--color", "always",
+    "cargo", "leptos", "watch"
 ]
 need_stdout = true
 allow_warnings = true

@@ -1,19 +1,22 @@
 .POSIX:
 .PHONY: default dev fmt lint test test-unit test-load container update ci
 
-default: fmt lint target/release/blog
+default: fmt lint target/release
 
-target/release/blog: src/ Cargo.toml
-	cargo build --release
+target/release: src/ Cargo.toml Cargo.lock
+	cargo leptos build --release
 
 dev:
 	bacon run
 
 fmt:
 	cargo fmt
+	leptosfmt src/**/*.rs
 
 lint:
 	cargo clippy -- --deny warnings
+	cargo fmt --check
+	leptosfmt src/**/*.rs --check
 
 test: lint test-unit
 
@@ -30,7 +33,6 @@ update:
 	nix flake update
 	cargo update
 	curl --silent --show-error --location 'https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.indigo.min.css' --output public/pico.min.css
-	curl --silent --show-error --location 'https://unpkg.com/htmx.org@2.0.4' --output public/htmx.min.js
 
 ci:
 	@mkdir -p "${CACHE_DIR}/target"
