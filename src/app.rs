@@ -1,9 +1,9 @@
 use crate::posts::{get_post, list_posts};
-use leptos::prelude::*;
+use leptos::{ev::MouseEvent, prelude::*};
 use leptos_meta::{MetaTags, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
     StaticSegment,
-    components::{Route, Router, Routes},
+    components::{Route, Router, Routes, ToHref},
     hooks::{use_navigate, use_params_map},
     path,
 };
@@ -58,16 +58,16 @@ fn Nav() -> impl IntoView {
             <ul>
                 <li>
                     <strong>
-                        <a href="/">"Khue Doan"</a>
+                        <FastA href="/">"Khue Doan"</FastA>
                     </strong>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <a href="/contact">"Contact"</a>
+                    <FastA href="/contact">"Contact"</FastA>
                 </li>
                 <li>
-                    <a href="/about">"About"</a>
+                    <FastA href="/about">"About"</FastA>
                 </li>
             </ul>
         </nav>
@@ -172,9 +172,46 @@ fn Contact() -> impl IntoView {
 }
 
 #[component]
+pub fn FastA<H>(
+    href: H,
+    #[prop(optional)] target: Option<&'static str>,
+    #[prop(optional, into)] class: Option<String>,
+    children: Children,
+) -> impl IntoView
+where
+    H: ToHref + Send + Sync + 'static,
+{
+    let navigate = use_navigate();
+    let path = href.to_href()();
+
+    fn is_left_click(event: &MouseEvent) -> bool {
+        event.button() == 0
+            && !event.meta_key()
+            && !event.ctrl_key()
+            && !event.shift_key()
+            && !event.alt_key()
+    }
+
+    view! {
+        <a
+            href=path.clone()
+            target=target
+            class=class.map(Oco::from)
+            on:mousedown=move |event| {
+                if is_left_click(&event) {
+                    event.prevent_default();
+                    navigate(&path, Default::default());
+                }
+            }
+        >
+            {children()}
+        </a>
+    }
+}
+
+#[component]
 fn PostList() -> impl IntoView {
     let posts = list_posts();
-    let navigate = use_navigate();
 
     view! {
         <table>
@@ -192,19 +229,9 @@ fn PostList() -> impl IntoView {
                         view! {
                             <tr>
                                 <th scope="row">
-                                    // TODO split into a separate component
-                                    <a
-                                        href=path.clone()
-                                        class="contrast"
-                                        on:mousedown={
-                                            let value = navigate.clone();
-                                            move |_| {
-                                                value(&path, Default::default());
-                                            }
-                                        }
-                                    >
+                                    <FastA href=path.clone() class="contrast">
                                         {post.title}
-                                    </a>
+                                    </FastA>
                                 </th>
                                 <th scope="row">{post.date}</th>
                             </tr>
