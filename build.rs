@@ -11,7 +11,7 @@ use syntect::{
 };
 
 static POSTS: &[(&str, &str)] = &[
-    // ("2025-08-12", "faster-than-light-website"),
+    ("2025-08-30", "this-website-is-faster-than-light"),
     ("2024-12-08", "overengineered-blog-deployment"),
     ("2024-12-07", "nix-and-direnv-a-match-made-in-heaven"),
     ("2024-08-24", "nixos-cured-my-ocd"),
