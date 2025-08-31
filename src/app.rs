@@ -79,7 +79,7 @@ fn HomePage() -> impl IntoView {
     view! {
         <h1>"Hi there, I’m Khue 👋"</h1>
         <p>
-            "Welcome to my website, where I write about Linux, DevOps, homelab, workflow optimization, and more!"
+            "Welcome to my website, where I write about Linux, homelab, workflow optimization, and more!"
         </p>
         <PostList />
     }
