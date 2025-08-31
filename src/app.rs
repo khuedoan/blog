@@ -130,8 +130,8 @@ fn Contact() -> impl IntoView {
             │    ┌──website─┐
             │    │          │
             mail@khuedoan.com
-            │      │
-            └──────┘
+                 │      │
+                 └──────┘
             github & linkedin"#
         </pre>
         <p>You can reach me via one of the following links:</p>
