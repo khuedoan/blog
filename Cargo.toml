@@ -14,7 +14,7 @@ leptos_axum = { version = "0.8.0", optional = true }
 leptos_meta = { version = "0.8.0" }
 leptos_router = { version = "0.8.0" }
 tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
-wasm-bindgen = { version = "=0.2.105", optional = true }
+wasm-bindgen = { version = "=0.2.100", optional = true }
 
 [build-dependencies]
 pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }
