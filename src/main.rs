@@ -2,7 +2,9 @@
 #[tokio::main]
 async fn main() {
     use axum::Router;
+    use axum::routing::get;
     use blog::app::*;
+    use blog::feed::atom_feed;
     use leptos::logging::log;
     use leptos::prelude::*;
     use leptos_axum::{LeptosRoutes, generate_route_list};
@@ -12,6 +14,7 @@ async fn main() {
     let routes = generate_route_list(App);
 
     let app = Router::new()
+        .route("/atom.xml", get(atom_feed))
         .leptos_routes(&leptos_options, routes, {
             let leptos_options = leptos_options.clone();
             move || shell(leptos_options.clone())

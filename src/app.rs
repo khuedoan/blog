@@ -17,6 +17,12 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="description" content="Khue's personal website" />
                 <meta name="color-scheme" content="light dark" />
+                <link
+                    rel="alternate"
+                    type="application/atom+xml"
+                    title="Khue Doan"
+                    href="/atom.xml"
+                />
                 <AutoReload options=options.clone() />
                 <HydrationScripts options />
                 <MetaTags />

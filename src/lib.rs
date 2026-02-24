@@ -1,4 +1,6 @@
 pub mod app;
+#[cfg(feature = "ssr")]
+pub mod feed;
 pub mod posts;
 
 #[cfg(feature = "hydrate")]

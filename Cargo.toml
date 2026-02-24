@@ -17,6 +17,7 @@ tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
 wasm-bindgen = { version = "=0.2.100", optional = true }
 
 [build-dependencies]
+atom_syndication = "0.12"
 pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }
 syntect = "5"
 

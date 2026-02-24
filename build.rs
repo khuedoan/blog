@@ -1,3 +1,4 @@
+use atom_syndication::{Content, Entry, Feed, FixedDateTime, Link, Person, Text};
 use pulldown_cmark::{CodeBlockKind, CowStr, Event, Options, Parser, Tag, TagEnd, html};
 use std::{env, fs, path::Path};
 use syntect::{
@@ -62,13 +63,81 @@ fn main() {
         .collect();
 
     fs::write(
-        dest_path,
+        &dest_path,
         format!(
             "static POSTS: &[(&str, &str, &str, &str)] = &[\n{}\n];",
             entries.join("\n")
         ),
     )
     .unwrap();
+
+    generate_atom_feed(&out_dir);
+}
+
+fn generate_atom_feed(out_dir: &str) {
+    let base_url = "https://khuedoan.com";
+
+    let entries: Vec<Entry> = POSTS
+        .iter()
+        .map(|(date, id)| {
+            let markdown = fs::read_to_string(format!("./content/posts/{id}.md"))
+                .unwrap_or_else(|_| panic!("Failed to read Markdown file for {id}"));
+            let title = markdown
+                .lines()
+                .next()
+                .and_then(|line| line.strip_prefix("# "))
+                .unwrap_or_else(|| panic!("Title not found for {id}"))
+                .to_string();
+            let html = markdown_to_html(&markdown);
+            let url = format!("{base_url}/posts/{id}");
+
+            Entry {
+                id: url.clone(),
+                title: Text::plain(&title),
+                updated: format!("{date}T00:00:00Z")
+                    .parse::<FixedDateTime>()
+                    .unwrap(),
+                links: vec![Link {
+                    href: url,
+                    ..Default::default()
+                }],
+                content: Some(Content {
+                    content_type: Some("html".to_string()),
+                    value: Some(html),
+                    ..Default::default()
+                }),
+                ..Default::default()
+            }
+        })
+        .collect();
+
+    let feed = Feed {
+        id: format!("{base_url}/"),
+        title: Text::plain("Khue Doan"),
+        updated: entries.first().map(|e| e.updated).unwrap(),
+        authors: vec![Person {
+            name: "Khue Doan".to_string(),
+            uri: Some(format!("{base_url}/")),
+            ..Default::default()
+        }],
+        links: vec![
+            Link {
+                href: format!("{base_url}/"),
+                ..Default::default()
+            },
+            Link {
+                href: format!("{base_url}/atom.xml"),
+                rel: "self".to_string(),
+                mime_type: Some("application/atom+xml".to_string()),
+                ..Default::default()
+            },
+        ],
+        entries,
+        ..Default::default()
+    };
+
+    fs::write(Path::new(out_dir).join("atom.xml"), feed.to_string())
+        .expect("Failed to write atom.xml");
 }
 
 fn markdown_to_html(markdown: &str) -> String {
