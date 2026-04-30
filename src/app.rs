@@ -151,11 +151,14 @@ fn Contact() -> impl IntoView {
                 <a target="_blank" href="https://github.com/khuedoan">
                     GitHub
                 </a>
-                " (or my Git server at "
+                ", "
+                <a target="_blank" href="https://tangled.org/khuedoan.com">
+                    Tangled
+                </a>
+                " or my Git server at "
                 <a target="_blank" href="https://code.khuedoan.com">
                     code.khuedoan.com
                 </a>
-                ")"
             </li>
             <li>
                 <a target="_blank" href="https://linkedin.com/in/khuedoan">
@@ -165,6 +168,11 @@ fn Contact() -> impl IntoView {
             <li>
                 <a target="_blank" href="https://twitter.com/KhueDoanID">
                     Twitter
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://bsky.app/profile/khuedoan.com">
+                    Bluesky
                 </a>
             </li>
         </ul>
