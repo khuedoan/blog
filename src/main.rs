@@ -22,7 +22,9 @@ async fn main() {
         .fallback(leptos_axum::file_and_error_handler(shell))
         .with_state(leptos_options);
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("[::]:3000")
+        .await
+        .expect("failed to bind [::]:3000");
     log!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app.into_make_service())
         .await
