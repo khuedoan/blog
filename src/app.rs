@@ -70,6 +70,10 @@ fn Nav() -> impl IntoView {
             </ul>
             <ul>
                 <li>
+                    // Don't use FastA because Atom feed is served by the backend
+                    <a href="/atom.xml">Feed</a>
+                </li>
+                <li>
                     <FastA href="/contact">"Contact"</FastA>
                 </li>
                 <li>
