@@ -3,17 +3,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
   };
 
-  outputs = { self, nixpkgs }:
-  let
-    supportedSystems = nixpkgs.lib.genAttrs [
-      "x86_64-linux"
-      "aarch64-linux"
-      "aarch64-darwin"
-    ];
-  in
+  outputs = { nixpkgs, ... }:
   {
-    devShells = supportedSystems (system: {
-      default = with nixpkgs.legacyPackages.${system}; mkShell {
+    devShells = builtins.mapAttrs (system: pkgs: {
+      default = with pkgs; mkShell {
         packages = [
           bacon
           binaryen
@@ -26,10 +19,10 @@
           lld
           rustc
           rustfmt
-        ] ++ lib.optional stdenv.isDarwin [
+        ] ++ lib.optionals stdenv.isDarwin [
           libiconv
         ];
       };
-    });
+    }) nixpkgs.legacyPackages;
   };
 }
